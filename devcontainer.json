@@ -1,0 +1,19 @@
+{
+  "name": "R + Quarto (rocker/verse)",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "context": "."
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "quarto.quarto",
+        "REditorSupport.r",
+        "ms-python.python",
+        "GitHub.copilot"
+      ]
+    }
+  },
+  "postCreateCommand": "R -q -e \"install.packages(c('dplyr','ggplot2','purrr','broom','gt','readr'))\"",
+  "remoteUser": "rstudio"
+}
