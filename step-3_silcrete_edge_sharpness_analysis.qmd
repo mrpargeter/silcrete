@@ -353,14 +353,20 @@ ggplot2::ggsave(filename = file.path(exports_dir, "fig_comparison_adjusted_means
 ggplot2::ggsave(filename = file.path(exports_dir, "fig_comparison_adjusted_means.pdf"),
        plot = p_comp, width = 9, height = 5.5, units = "in")
 
-ggplot2::ggsave(filename = file.path(exports_dir, "three_point_stepping_summary_plot.pdf"),
-       plot = three_point_stepping_summary_plot, width = 9, height = 5.5, units = "in")
+if (!is.null(three_point_stepping_summary_plot)) {
+  ggplot2::ggsave(filename = file.path(exports_dir, "three_point_stepping_summary_plot.pdf"),
+         plot = three_point_stepping_summary_plot, width = 9, height = 5.5, units = "in")
+}
 
-ggplot2::ggsave(filename = file.path(exports_dir, "bestfitcircle_20_inter_plot.pdf"),
-       plot = bestfitcircle_20_inter_plot, width = 9, height = 5.5, units = "in")
+if (exists("bestfitcircle_20_inter_plot") && !is.null(bestfitcircle_20_inter_plot)) {
+  ggplot2::ggsave(filename = file.path(exports_dir, "bestfitcircle_20_inter_plot.pdf"),
+         plot = bestfitcircle_20_inter_plot, width = 9, height = 5.5, units = "in")
+}
 
-ggplot2::ggsave(filename = file.path(exports_dir, "bestfitcircle_10_inter_plot.pdf"),
-       plot = bestfitcircle_10_inter_plot, width = 9, height = 5.5, units = "in")
+if (exists("bestfitcircle_10_inter_plot") && !is.null(bestfitcircle_10_inter_plot)) {
+  ggplot2::ggsave(filename = file.path(exports_dir, "bestfitcircle_10_inter_plot.pdf"),
+         plot = bestfitcircle_10_inter_plot, width = 9, height = 5.5, units = "in")
+}
 
 
 ```
