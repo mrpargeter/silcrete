@@ -1,0 +1,771 @@
+method,scale,distance,treatment,heating_condition,flake,nodule_number,nodule_sub_number,flake_number,average_curvature,standard_deviation,sheet,fuelwood,wood_density,fuelwood_key,n_source_rows
+old method,10um,0.1,Unheated,unheated,O.N.87_A_14,87,A,14,21.6432928229619,20.1930581,old-0.1-10,none,NA,none,153
+old method,10um,0.1,Unheated,unheated,O.N.87_A_17,87,A,17,15.6877157016195,17.83680979,old-0.1-10,none,NA,none,153
+old method,10um,0.1,Unheated,unheated,O.N.87_A_19,87,A,19,32.3206762629654,30.71621361,old-0.1-10,none,NA,none,153
+old method,10um,0.1,Unheated,unheated,O.N.87_A_22,87,A,22,29.6932415996678,30.41358123,old-0.1-10,none,NA,none,153
+old method,10um,0.1,Unheated,unheated,O.N.87_A_29,87,A,29,10.4921017006797,9.664216578,old-0.1-10,none,NA,none,153
+old method,10um,0.1,Unheated,unheated,O.N.87_A_4,87,A,4,24.3999710029505,35.26870715,old-0.1-10,none,NA,none,153
+old method,10um,0.1,Unheated,unheated,O.N.87_A_5,87,A,5,15.6663744132505,19.70190614,old-0.1-10,none,NA,none,153
+old method,10um,0.1,Unheated,unheated,O.N.87_A_9,87,A,9,8.75368871136577,13.51590798,old-0.1-10,none,NA,none,153
+old method,10um,0.1,Unheated,unheated,O.N.87_B_13,87,B,13,16.1386915353964,26.45713603,old-0.1-10,none,NA,none,153
+old method,10um,0.1,Unheated,unheated,O.N.87_B_19,87,B,19,18.0933316669607,24.55908555,old-0.1-10,none,NA,none,153
+old method,10um,0.1,Unheated,unheated,O.N.87_B_23,87,B,23,18.308651695953095,19.38358294,old-0.1-10,none,NA,none,153
+old method,10um,0.1,Unheated,unheated,O.N.87_B_24,87,B,24,13.8562489972862,12.99127852,old-0.1-10,none,NA,none,153
+old method,10um,0.1,Unheated,unheated,O.N.87_B_28,87,B,28,25.870376764080305,28.68195328,old-0.1-10,none,NA,none,153
+old method,10um,0.1,Unheated,unheated,O.N.87_B_2,87,B,2,24.7480999145633,44.36178569,old-0.1-10,none,NA,none,153
+old method,10um,0.1,Unheated,unheated,O.N.87_B_31,87,B,31,23.3700860964645,32.11255548,old-0.1-10,none,NA,none,153
+old method,10um,0.1,Unheated,unheated,O.N.87_B_6,87,B,6,19.450693337658695,17.5465877,old-0.1-10,none,NA,none,153
+old method,10um,0.1,Unheated,unheated,O.N.87_B_7,87,B,7,12.9684290084026,13.71179121,old-0.1-10,none,NA,none,153
+old method,10um,0.1,F1S,sand,O_N_37_2,37,NA,2,14.5464982784351,19.31063404,old-0.1-10,Searsia lucida,0.7,searsia lucida,171
+old method,10um,0.1,F1S,sand,O_N_37_3A,37,NA,3A,5.71126851573304,11.61732257,old-0.1-10,Searsia lucida,0.7,searsia lucida,171
+old method,10um,0.1,F1S,sand,O_N_37_4A,37,NA,4A,21.7881284421195,31.13876267,old-0.1-10,Searsia lucida,0.7,searsia lucida,171
+old method,10um,0.1,F1S,sand,O_N_37_8A,37,NA,8A,16.5288666399492,22.08174907,old-0.1-10,Searsia lucida,0.7,searsia lucida,171
+old method,10um,0.1,F1S,sand,O_N_37_8B,37,NA,8B,30.0673887020281,36.55670559,old-0.1-10,Searsia lucida,0.7,searsia lucida,171
+old method,10um,0.1,F1S,sand,O_N_37_12A,37,NA,12A,21.700966964170895,33.62214121,old-0.1-10,Searsia lucida,0.7,searsia lucida,171
+old method,10um,0.1,F1S,sand,O_N_37_17A,37,NA,17A,20.2565876116112,26.33264201,old-0.1-10,Searsia lucida,0.7,searsia lucida,171
+old method,10um,0.1,F1S,sand,O_N_37_21,37,NA,21,27.9702282765533,48.53570466,old-0.1-10,Searsia lucida,0.7,searsia lucida,171
+old method,10um,0.1,F1S,sand,O_N_37_30,37,NA,30,14.2079978220234,29.59571448,old-0.1-10,Searsia lucida,0.7,searsia lucida,171
+old method,10um,0.1,F1S,sand,O_N_37_45,37,NA,45,12.1708117266848,23.39155789,old-0.1-10,Searsia lucida,0.7,searsia lucida,171
+old method,10um,0.1,F1S,sand,O_N_1_1,1,NA,1,8.35251404732308,9.239885597,old-0.1-10,Pterocelastrus tricuspidatus,0.65,pterocelastrus tricuspidatus,90
+old method,10um,0.1,F1S,sand,O_N_1_6A,1,NA,6A,16.5227231029024,18.7892586,old-0.1-10,Pterocelastrus tricuspidatus,0.65,pterocelastrus tricuspidatus,90
+old method,10um,0.1,F1S,sand,O_N_1_7A,1,NA,7A,22.3341094320252,37.69731484,old-0.1-10,Pterocelastrus tricuspidatus,0.65,pterocelastrus tricuspidatus,90
+old method,10um,0.1,F1S,sand,O_N_1_7B,1,NA,7B,22.5692347503456,35.20012528,old-0.1-10,Pterocelastrus tricuspidatus,0.65,pterocelastrus tricuspidatus,90
+old method,10um,0.1,F1S,sand,O_N_1_8A,1,NA,8A,18.2043928298447,27.58669569,old-0.1-10,Pterocelastrus tricuspidatus,0.65,pterocelastrus tricuspidatus,90
+old method,10um,0.1,F1S,sand,O_N_1_15A,1,NA,15A,12.6681210043594,11.57190099,old-0.1-10,Pterocelastrus tricuspidatus,0.65,pterocelastrus tricuspidatus,90
+old method,10um,0.1,F1S,sand,O_N_1_21,1,NA,21,21.1977668732784,17.80548327,old-0.1-10,Pterocelastrus tricuspidatus,0.65,pterocelastrus tricuspidatus,90
+old method,10um,0.1,F2S,sand,O_N_31_3A,31,NA,3A,26.9995934417988,52.19302864,old-0.1-10,Searsia glauca,0.72,searsia glauca,189
+old method,10um,0.1,F2S,sand,O_N_31_5A,31,NA,5A,13.9268235497013,19.82359099,old-0.1-10,Searsia glauca,0.72,searsia glauca,189
+old method,10um,0.1,F2S,sand,O_N_31_8,31,NA,8,19.3678781133179,38.95016361,old-0.1-10,Searsia glauca,0.72,searsia glauca,189
+old method,10um,0.1,F2S,sand,O_N_31_12A,31,NA,12A,19.5605735010062,39.51323794,old-0.1-10,Searsia glauca,0.72,searsia glauca,189
+old method,10um,0.1,F2S,sand,O_N_31_12B,31,NA,12B,26.3598352377137,46.58417451,old-0.1-10,Searsia glauca,0.72,searsia glauca,189
+old method,10um,0.1,F2S,sand,O_N_31_16,31,NA,16,36.1644986462944,63.44294093,old-0.1-10,Searsia glauca,0.72,searsia glauca,189
+old method,10um,0.1,F2S,sand,O_N_31_26,31,NA,26,18.3777800006278,23.21966793,old-0.1-10,Searsia glauca,0.72,searsia glauca,189
+old method,10um,0.1,F2S,sand,O_N_31_28,31,NA,28,12.5513756254956,16.73363363,old-0.1-10,Searsia glauca,0.72,searsia glauca,189
+old method,10um,0.1,F2S,sand,O_N_31_32,31,NA,32,25.1661972795326,45.90233795,old-0.1-10,Searsia glauca,0.72,searsia glauca,189
+old method,10um,0.1,F2S,sand,O_N_31_39,31,NA,39,19.8795111198976,23.37487603,old-0.1-10,Searsia glauca,0.72,searsia glauca,189
+old method,10um,0.1,F2S,sand,O_N_31_47,31,NA,47,36.9256218815595,48.9340253,old-0.1-10,Searsia glauca,0.72,searsia glauca,189
+old method,10um,0.1,F2S,sand,O_N_31_50,31,NA,50,32.2511058885431,40.31094025,old-0.1-10,Searsia glauca,0.72,searsia glauca,189
+old method,10um,0.1,F2S,sand,O_N_35_6,35,NA,6,18.1080666863676,32.9094658,old-0.1-10,Olea exasperata,0.75,olea exasperata,45
+old method,10um,0.1,F2S,sand,O_N_35_28,35,NA,28,18.068923271070496,31.60378978,old-0.1-10,Olea exasperata,0.75,olea exasperata,45
+old method,10um,0.1,F2S,sand,O_N_35_29,35,NA,29,17.0578864613155,36.22264326,old-0.1-10,Olea exasperata,0.75,olea exasperata,45
+old method,10um,0.1,F2S,sand,O_N_35_31,35,NA,31,17.4602988011382,18.66138444,old-0.1-10,Olea exasperata,0.75,olea exasperata,45
+old method,10um,0.1,F2S,sand,O_N_35_33,35,NA,33,16.1686425359907,22.88510589,old-0.1-10,Olea exasperata,0.75,olea exasperata,45
+old method,10um,0.1,F1F,ember,O_N_38_2,38,NA,2,16.1423066767055,29.93928952,old-0.1-10,Searsia lucida,0.7,searsia lucida,171
+old method,10um,0.1,F1F,ember,O_N_38_3,38,NA,3,15.4183849534385,31.44322005,old-0.1-10,Searsia lucida,0.7,searsia lucida,171
+old method,10um,0.1,F1F,ember,O_N_38_9,38,NA,9,21.3764893811345,33.38776297,old-0.1-10,Searsia lucida,0.7,searsia lucida,171
+old method,10um,0.1,F1F,ember,O_N_38_10,38,NA,10,11.1524016416303,19.57838798,old-0.1-10,Searsia lucida,0.7,searsia lucida,171
+old method,10um,0.1,F1F,ember,O_N_38_13,38,NA,13,18.4212991236043,30.51370802,old-0.1-10,Searsia lucida,0.7,searsia lucida,171
+old method,10um,0.1,F1F,ember,O_N_38_18,38,NA,18,24.5132093097566,28.78318774,old-0.1-10,Searsia lucida,0.7,searsia lucida,171
+old method,10um,0.1,F1F,ember,O_N_38_20,38,NA,20,15.4997661924668,27.03142835,old-0.1-10,Searsia lucida,0.7,searsia lucida,171
+old method,10um,0.1,F1F,ember,O_N_38_22A,38,NA,22A,16.0426338713334,28.12013386,old-0.1-10,Searsia lucida,0.7,searsia lucida,171
+old method,10um,0.1,F1F,ember,O_N_38_25,38,NA,25,17.4471079433943,27.24181406,old-0.1-10,Searsia lucida,0.7,searsia lucida,171
+old method,10um,0.1,F1F,ember,O_N_54A_15,54,A,15,51.071539637249295,55.42654135,old-0.1-10,Protea susannae,0.6,protea susannae,18
+old method,10um,0.1,F1F,ember,O_N_2_11B,2,NA,11B,18.4011181279131,26.36501431,old-0.1-10,Pterocelastrus tricuspidatus,0.65,pterocelastrus tricuspidatus,90
+old method,10um,0.1,F1F,ember,O_N_2_11A,2,NA,11A,18.9161629063254,35.12064698,old-0.1-10,Pterocelastrus tricuspidatus,0.65,pterocelastrus tricuspidatus,90
+old method,10um,0.1,F1F,ember,O_N_2_19,2,NA,19,14.9430392602302,26.55871649,old-0.1-10,Pterocelastrus tricuspidatus,0.65,pterocelastrus tricuspidatus,90
+old method,10um,0.1,F1F,ember,O_N_14A_4,14,A,4,14.8770886954874,25.75115153,old-0.1-10,Protea obtusifolia,0.58,protea obtusifolia,27
+old method,10um,0.1,F1F,ember,O_N_14A_15,14,A,15,19.943144387166505,38.28154868,old-0.1-10,Protea obtusifolia,0.58,protea obtusifolia,27
+old method,10um,0.1,F1F,ember,O_N_54A_31,54,A,31,15.6847896278418,24.75894751,old-0.1-10,Protea susannae,0.6,protea susannae,18
+old method,10um,0.1,F1F,ember,O_N_14A_27,14,A,27,20.4714742967216,32.53266106,old-0.1-10,Protea obtusifolia,0.58,protea obtusifolia,27
+old method,10um,0.1,F2F,ember,O_N_32A-3,32,A,3,20.400373657530402,23.75866744,old-0.1-10,Searsia glauca,0.72,searsia glauca,189
+old method,10um,0.1,F2F,ember,O_N_32A-21,32,A,21,16.0248882238075,25.54033576,old-0.1-10,Searsia glauca,0.72,searsia glauca,189
+old method,10um,0.1,F2F,ember,O_N_32A-29,32,A,29,18.815260475944,29.00361883,old-0.1-10,Searsia glauca,0.72,searsia glauca,189
+old method,10um,0.1,F2F,ember,O_N_32B-3,32,B,3,17.0377629240748,35.0219121,old-0.1-10,Searsia glauca,0.72,searsia glauca,189
+old method,10um,0.1,F2F,ember,O_N_32B-7,32,B,7,16.0449753315962,26.04715244,old-0.1-10,Searsia glauca,0.72,searsia glauca,189
+old method,10um,0.1,F2F,ember,O_N_32B-16,32,B,16,21.963968678525905,36.82466569,old-0.1-10,Searsia glauca,0.72,searsia glauca,189
+old method,10um,0.1,F2F,ember,O_N_32C-3,32,C,3,28.7346957255272,39.250283,old-0.1-10,Searsia glauca,0.72,searsia glauca,189
+old method,10um,0.1,F2F,ember,O_N_32C-4,32,C,4,19.8759986181459,35.07043681,old-0.1-10,Searsia glauca,0.72,searsia glauca,189
+old method,10um,0.1,F2F,ember,O_N_32C-7,32,C,7,20.051559804913,35.99628669,old-0.1-10,Searsia glauca,0.72,searsia glauca,189
+old method,20um,0.1,Unheated,unheated,O.N.87_A_14,87,A,14,14.6553561894159,18.68450616,old-0.1-20,none,NA,none,153
+old method,20um,0.1,Unheated,unheated,O.N.87_A_17,87,A,17,12.1765595617906,15.42857595,old-0.1-20,none,NA,none,153
+old method,20um,0.1,Unheated,unheated,O.N.87_A_19,87,A,19,24.239692946359895,23.56939296,old-0.1-20,none,NA,none,153
+old method,20um,0.1,Unheated,unheated,O.N.87_A_22,87,A,22,16.3848073625548,17.85248139,old-0.1-20,none,NA,none,153
+old method,20um,0.1,Unheated,unheated,O.N.87_A_29,87,A,29,8.45483131568904,9.375455089,old-0.1-20,none,NA,none,153
+old method,20um,0.1,Unheated,unheated,O.N.87_A_4,87,A,4,18.4545663703459,27.1459246,old-0.1-20,none,NA,none,153
+old method,20um,0.1,Unheated,unheated,O.N.87_A_5,87,A,5,12.5157987472286,17.13513215,old-0.1-20,none,NA,none,153
+old method,20um,0.1,Unheated,unheated,O.N.87_A_9,87,A,9,6.635156790031769,10.48267059,old-0.1-20,none,NA,none,153
+old method,20um,0.1,Unheated,unheated,O.N.87_B_13,87,B,13,11.5473325721702,21.81559279,old-0.1-20,none,NA,none,153
+old method,20um,0.1,Unheated,unheated,O.N.87_B_19,87,B,19,12.3512036052231,19.09613782,old-0.1-20,none,NA,none,153
+old method,20um,0.1,Unheated,unheated,O.N.87_B_23,87,B,23,13.1544855189677,14.80242173,old-0.1-20,none,NA,none,153
+old method,20um,0.1,Unheated,unheated,O.N.87_B_24,87,B,24,9.42901973313731,9.7704902830000009,old-0.1-20,none,NA,none,153
+old method,20um,0.1,Unheated,unheated,O.N.87_B_28,87,B,28,19.4227502712796,19.20863428,old-0.1-20,none,NA,none,153
+old method,20um,0.1,Unheated,unheated,O.N.87_B_2,87,B,2,17.1076484312481,24.8677785,old-0.1-20,none,NA,none,153
+old method,20um,0.1,Unheated,unheated,O.N.87_B_31,87,B,31,16.9129013335779,20.64530328,old-0.1-20,none,NA,none,153
+old method,20um,0.1,Unheated,unheated,O.N.87_B_6,87,B,6,13.0322201007512,11.59333146,old-0.1-20,none,NA,none,153
+old method,20um,0.1,Unheated,unheated,O.N.87_B_7,87,B,7,10.3484736052402,11.58089826,old-0.1-20,none,NA,none,153
+old method,20um,0.1,F1S,sand,O_N_37_2,37,NA,2,11.1152321229857,14.44929342,old-0.1-20,Searsia lucida,0.7,searsia lucida,171
+old method,20um,0.1,F1S,sand,O_N_37_3A,37,NA,3A,4.45822910831935,9.35455128,old-0.1-20,Searsia lucida,0.7,searsia lucida,171
+old method,20um,0.1,F1S,sand,O_N_37_4A,37,NA,4A,16.5085834453203,23.29976007,old-0.1-20,Searsia lucida,0.7,searsia lucida,171
+old method,20um,0.1,F1S,sand,O_N_37_8A,37,NA,8A,12.1493021328213,18.78216739,old-0.1-20,Searsia lucida,0.7,searsia lucida,171
+old method,20um,0.1,F1S,sand,O_N_37_8B,37,NA,8B,12.5954837222733,15.76933976,old-0.1-20,Searsia lucida,0.7,searsia lucida,171
+old method,20um,0.1,F1S,sand,O_N_37_12A,37,NA,12A,15.3796710150743,27.03978531,old-0.1-20,Searsia lucida,0.7,searsia lucida,171
+old method,20um,0.1,F1S,sand,O_N_37_17A,37,NA,17A,12.4273966802901,20.61466855,old-0.1-20,Searsia lucida,0.7,searsia lucida,171
+old method,20um,0.1,F1S,sand,O_N_37_21,37,NA,21,20.674542797598296,34.80690224,old-0.1-20,Searsia lucida,0.7,searsia lucida,171
+old method,20um,0.1,F1S,sand,O_N_37_30,37,NA,30,10.8692625449007,18.84126998,old-0.1-20,Searsia lucida,0.7,searsia lucida,171
+old method,20um,0.1,F1S,sand,O_N_37_45,37,NA,45,10.7373723370018,19.70167572,old-0.1-20,Searsia lucida,0.7,searsia lucida,171
+old method,20um,0.1,F1S,sand,O_N_1_1,1,NA,1,5.05197608144378,5.442202592,old-0.1-20,Pterocelastrus tricuspidatus,0.65,pterocelastrus tricuspidatus,90
+old method,20um,0.1,F1S,sand,O_N_1_6A,1,NA,6A,13.0020812638024,14.27712444,old-0.1-20,Pterocelastrus tricuspidatus,0.65,pterocelastrus tricuspidatus,90
+old method,20um,0.1,F1S,sand,O_N_1_7A,1,NA,7A,16.0737933579014,28.35958012,old-0.1-20,Pterocelastrus tricuspidatus,0.65,pterocelastrus tricuspidatus,90
+old method,20um,0.1,F1S,sand,O_N_1_7B,1,NA,7B,14.0925137789612,23.57749589,old-0.1-20,Pterocelastrus tricuspidatus,0.65,pterocelastrus tricuspidatus,90
+old method,20um,0.1,F1S,sand,O_N_1_8A,1,NA,8A,13.3031303280551,19.73160457,old-0.1-20,Pterocelastrus tricuspidatus,0.65,pterocelastrus tricuspidatus,90
+old method,20um,0.1,F1S,sand,O_N_1_15A,1,NA,15A,11.2595620657577,10.49119776,old-0.1-20,Pterocelastrus tricuspidatus,0.65,pterocelastrus tricuspidatus,90
+old method,20um,0.1,F1S,sand,O_N_1_21,1,NA,21,12.9792536124486,12.28712226,old-0.1-20,Pterocelastrus tricuspidatus,0.65,pterocelastrus tricuspidatus,90
+old method,20um,0.1,F2S,sand,O_N_31_3A,31,NA,3A,18.587634129500096,26.37634262,old-0.1-20,Searsia glauca,0.72,searsia glauca,189
+old method,20um,0.1,F2S,sand,O_N_31_5A,31,NA,5A,11.6233614354602,15.07904774,old-0.1-20,Searsia glauca,0.72,searsia glauca,189
+old method,20um,0.1,F2S,sand,O_N_31_8,31,NA,8,17.401779782166,27.6899049,old-0.1-20,Searsia glauca,0.72,searsia glauca,189
+old method,20um,0.1,F2S,sand,O_N_31_12A,31,NA,12A,15.9376699763685,23.34935173,old-0.1-20,Searsia glauca,0.72,searsia glauca,189
+old method,20um,0.1,F2S,sand,O_N_31_12B,31,NA,12B,16.7939230454965,26.41411771,old-0.1-20,Searsia glauca,0.72,searsia glauca,189
+old method,20um,0.1,F2S,sand,O_N_31_16,31,NA,16,26.0715212377875,45.75368306,old-0.1-20,Searsia glauca,0.72,searsia glauca,189
+old method,20um,0.1,F2S,sand,O_N_31_26,31,NA,26,12.8904553748777,17.49148024,old-0.1-20,Searsia glauca,0.72,searsia glauca,189
+old method,20um,0.1,F2S,sand,O_N_31_28,31,NA,28,10.7343638087426,14.14303873,old-0.1-20,Searsia glauca,0.72,searsia glauca,189
+old method,20um,0.1,F2S,sand,O_N_31_32,31,NA,32,18.280711674809,31.49740403,old-0.1-20,Searsia glauca,0.72,searsia glauca,189
+old method,20um,0.1,F2S,sand,O_N_31_39,31,NA,39,13.8206814424782,16.10685396,old-0.1-20,Searsia glauca,0.72,searsia glauca,189
+old method,20um,0.1,F2S,sand,O_N_31_47,31,NA,47,29.2027388050935,35.1798162,old-0.1-20,Searsia glauca,0.72,searsia glauca,189
+old method,20um,0.1,F2S,sand,O_N_31_50,31,NA,50,18.3481110489197,23.4406495,old-0.1-20,Searsia glauca,0.72,searsia glauca,189
+old method,20um,0.1,F2S,sand,O_N_35_6,35,NA,6,13.498981263587,21.67326866,old-0.1-20,Olea exasperata,0.75,olea exasperata,45
+old method,20um,0.1,F2S,sand,O_N_35_28,35,NA,28,14.8526443523768,22.02929008,old-0.1-20,Olea exasperata,0.75,olea exasperata,45
+old method,20um,0.1,F2S,sand,O_N_35_29,35,NA,29,12.1575331359691,24.12020717,old-0.1-20,Olea exasperata,0.75,olea exasperata,45
+old method,20um,0.1,F2S,sand,O_N_35_31,35,NA,31,12.0263540703242,11.19729844,old-0.1-20,Olea exasperata,0.75,olea exasperata,45
+old method,20um,0.1,F2S,sand,O_N_35_33,35,NA,33,13.8987732400285,19.11613098,old-0.1-20,Olea exasperata,0.75,olea exasperata,45
+old method,20um,0.1,F1F,ember,O_N_38_2,38,NA,2,12.353936177103,20.06138287,old-0.1-20,Searsia lucida,0.7,searsia lucida,171
+old method,20um,0.1,F1F,ember,O_N_38_3,38,NA,3,14.0372973370072,20.76753605,old-0.1-20,Searsia lucida,0.7,searsia lucida,171
+old method,20um,0.1,F1F,ember,O_N_38_9,38,NA,9,18.9276254734936,28.85928357,old-0.1-20,Searsia lucida,0.7,searsia lucida,171
+old method,20um,0.1,F1F,ember,O_N_38_10,38,NA,10,9.06630085704008,15.02732743,old-0.1-20,Searsia lucida,0.7,searsia lucida,171
+old method,20um,0.1,F1F,ember,O_N_38_13,38,NA,13,14.4142275715539,21.82856808,old-0.1-20,Searsia lucida,0.7,searsia lucida,171
+old method,20um,0.1,F1F,ember,O_N_38_18,38,NA,18,16.1905151049567,17.52013578,old-0.1-20,Searsia lucida,0.7,searsia lucida,171
+old method,20um,0.1,F1F,ember,O_N_38_20,38,NA,20,11.9893009813012,20.93116809,old-0.1-20,Searsia lucida,0.7,searsia lucida,171
+old method,20um,0.1,F1F,ember,O_N_38_22A,38,NA,22A,11.445025934785,20.50746845,old-0.1-20,Searsia lucida,0.7,searsia lucida,171
+old method,20um,0.1,F1F,ember,O_N_38_25,38,NA,25,13.4881021596508,21.65822098,old-0.1-20,Searsia lucida,0.7,searsia lucida,171
+old method,20um,0.1,F1F,ember,O_N_54A_15,54,A,15,37.0329260055228,29.60264692,old-0.1-20,Protea susannae,0.6,protea susannae,18
+old method,20um,0.1,F1F,ember,O_N_2_11B,2,NA,11B,15.4695343148033,22.7160871,old-0.1-20,Pterocelastrus tricuspidatus,0.65,pterocelastrus tricuspidatus,90
+old method,20um,0.1,F1F,ember,O_N_2_11A,2,NA,11A,13.0199686335296,19.989529,old-0.1-20,Pterocelastrus tricuspidatus,0.65,pterocelastrus tricuspidatus,90
+old method,20um,0.1,F1F,ember,O_N_2_19,2,NA,19,11.2386099198341,20.8031098,old-0.1-20,Pterocelastrus tricuspidatus,0.65,pterocelastrus tricuspidatus,90
+old method,20um,0.1,F1F,ember,O_N_14A_4,14,A,4,11.5748335928648,18.72412878,old-0.1-20,Protea obtusifolia,0.58,protea obtusifolia,27
+old method,20um,0.1,F1F,ember,O_N_14A_15,14,A,15,14.2485775958559,24.32217841,old-0.1-20,Protea obtusifolia,0.58,protea obtusifolia,27
+old method,20um,0.1,F1F,ember,O_N_54A_31,54,A,31,12.1988171245516,19.36161936,old-0.1-20,Protea susannae,0.6,protea susannae,18
+old method,20um,0.1,F1F,ember,O_N_14A_27,14,A,27,15.9640383479693,24.75250132,old-0.1-20,Protea obtusifolia,0.58,protea obtusifolia,27
+old method,20um,0.1,F2F,ember,O_N_32A-3,32,A,3,15.6069453210854,17.07642396,old-0.1-20,Searsia glauca,0.72,searsia glauca,189
+old method,20um,0.1,F2F,ember,O_N_32A-21,32,A,21,12.1765511985847,18.70299985,old-0.1-20,Searsia glauca,0.72,searsia glauca,189
+old method,20um,0.1,F2F,ember,O_N_32A-29,32,A,29,14.4902960395256,21.88785341,old-0.1-20,Searsia glauca,0.72,searsia glauca,189
+old method,20um,0.1,F2F,ember,O_N_32B-3,32,B,3,15.054311325106,25.13558536,old-0.1-20,Searsia glauca,0.72,searsia glauca,189
+old method,20um,0.1,F2F,ember,O_N_32B-7,32,B,7,12.4312428300006,19.58601178,old-0.1-20,Searsia glauca,0.72,searsia glauca,189
+old method,20um,0.1,F2F,ember,O_N_32B-16,32,B,16,20.8318756295429,31.97373238,old-0.1-20,Searsia glauca,0.72,searsia glauca,189
+old method,20um,0.1,F2F,ember,O_N_32C-3,32,C,3,19.278655291304,24.32385118,old-0.1-20,Searsia glauca,0.72,searsia glauca,189
+old method,20um,0.1,F2F,ember,O_N_32C-4,32,C,4,14.8015146939889,24.10884744,old-0.1-20,Searsia glauca,0.72,searsia glauca,189
+old method,20um,0.1,F2F,ember,O_N_32C-7,32,C,7,16.3338266763541,28.4005131,old-0.1-20,Searsia glauca,0.72,searsia glauca,189
+old method,10um,0.5,Unheated,unheated,O.N.87_A_14,87,A,14,11.6305689551669,13.0141454811901,old-0.5-10,none,NA,none,153
+old method,10um,0.5,Unheated,unheated,O.N.87_A_17,87,A,17,12.0034062015111,12.8998409277592,old-0.5-10,none,NA,none,153
+old method,10um,0.5,Unheated,unheated,O.N.87_A_19,87,A,19,28.871226432611,34.5155810075172,old-0.5-10,none,NA,none,153
+old method,10um,0.5,Unheated,unheated,O.N.87_A_22,87,A,22,19.067905368665695,23.4688032344904,old-0.5-10,none,NA,none,153
+old method,10um,0.5,Unheated,unheated,O.N.87_A_29,87,A,29,9.326853721789009,8.140487213282249,old-0.5-10,none,NA,none,153
+old method,10um,0.5,Unheated,unheated,O.N.87_A_4,87,A,4,11.1926131982232,18.2639751105774,old-0.5-10,none,NA,none,153
+old method,10um,0.5,Unheated,unheated,O.N.87_A_5,87,A,5,13.8292066785867,14.9152124989442,old-0.5-10,none,NA,none,153
+old method,10um,0.5,Unheated,unheated,O.N.87_A_9,87,A,9,7.12508178672607,8.71806153750823,old-0.5-10,none,NA,none,153
+old method,10um,0.5,Unheated,unheated,O.N.87_B_13,87,B,13,10.4041691441635,15.5391352150697,old-0.5-10,none,NA,none,153
+old method,10um,0.5,Unheated,unheated,O.N.87_B_19,87,B,19,9.960715315410468,14.019428774669,old-0.5-10,none,NA,none,153
+old method,10um,0.5,Unheated,unheated,O.N.87_B_23,87,B,23,14.3339327038314,16.7392122335658,old-0.5-10,none,NA,none,153
+old method,10um,0.5,Unheated,unheated,O.N.87_B_24,87,B,24,15.0304260783443,19.85198856,old-0.5-10,none,NA,none,153
+old method,10um,0.5,Unheated,unheated,O.N.87_B_28,87,B,28,18.9814692648925,23.5491991207528,old-0.5-10,none,NA,none,153
+old method,10um,0.5,Unheated,unheated,O.N.87_B_2,87,B,2,17.8527446865269,25.460270584672696,old-0.5-10,none,NA,none,153
+old method,10um,0.5,Unheated,unheated,O.N.87_B_31,87,B,31,24.2063829041486,34.0350106152949,old-0.5-10,none,NA,none,153
+old method,10um,0.5,Unheated,unheated,O.N.87_B_6,87,B,6,17.5207481961988,17.39301198,old-0.5-10,none,NA,none,153
+old method,10um,0.5,Unheated,unheated,O.N.87_B_7,87,B,7,8.84462190096871,8.36511177043461,old-0.5-10,none,NA,none,153
+old method,10um,0.5,F1S,sand,O_N_37_2,37,NA,2,27.198868245203695,37.3161359683009,old-0.5-10,Searsia lucida,0.7,searsia lucida,171
+old method,10um,0.5,F1S,sand,O_N_37_3A,37,NA,3A,4.50122559508747,8.05877763453255,old-0.5-10,Searsia lucida,0.7,searsia lucida,171
+old method,10um,0.5,F1S,sand,O_N_37_4A,37,NA,4A,9.39797129930921,18.0043410155738,old-0.5-10,Searsia lucida,0.7,searsia lucida,171
+old method,10um,0.5,F1S,sand,O_N_37_8A,37,NA,8A,17.5448577662505,29.0715699346731,old-0.5-10,Searsia lucida,0.7,searsia lucida,171
+old method,10um,0.5,F1S,sand,O_N_37_8B,37,NA,8B,15.6185880395072,26.2918638568822,old-0.5-10,Searsia lucida,0.7,searsia lucida,171
+old method,10um,0.5,F1S,sand,O_N_37_12A,37,NA,12A,13.0451346635171,18.2098483232291,old-0.5-10,Searsia lucida,0.7,searsia lucida,171
+old method,10um,0.5,F1S,sand,O_N_37_17A,37,NA,17A,13.8966958074388,22.237934433304495,old-0.5-10,Searsia lucida,0.7,searsia lucida,171
+old method,10um,0.5,F1S,sand,O_N_37_21,37,NA,21,10.5333469468768,26.1431586379599,old-0.5-10,Searsia lucida,0.7,searsia lucida,171
+old method,10um,0.5,F1S,sand,O_N_37_30,37,NA,30,7.0379516824268,14.8260649872348,old-0.5-10,Searsia lucida,0.7,searsia lucida,171
+old method,10um,0.5,F1S,sand,O_N_37_45,37,NA,45,5.13605757979715,12.4741171124525,old-0.5-10,Searsia lucida,0.7,searsia lucida,171
+old method,10um,0.5,F1S,sand,O_N_1_1,1,NA,1,12.1250072289125,12.7041642836997,old-0.5-10,Pterocelastrus tricuspidatus,0.65,pterocelastrus tricuspidatus,90
+old method,10um,0.5,F1S,sand,O_N_1_6A,1,NA,6A,10.989211422706,13.9932755035562,old-0.5-10,Pterocelastrus tricuspidatus,0.65,pterocelastrus tricuspidatus,90
+old method,10um,0.5,F1S,sand,O_N_1_7A,1,NA,7A,14.0134295140098,20.8522985399719,old-0.5-10,Pterocelastrus tricuspidatus,0.65,pterocelastrus tricuspidatus,90
+old method,10um,0.5,F1S,sand,O_N_1_7B,1,NA,7B,20.1141255414575,27.7346979267909,old-0.5-10,Pterocelastrus tricuspidatus,0.65,pterocelastrus tricuspidatus,90
+old method,10um,0.5,F1S,sand,O_N_1_8A,1,NA,8A,15.8152839642774,19.2522965304498,old-0.5-10,Pterocelastrus tricuspidatus,0.65,pterocelastrus tricuspidatus,90
+old method,10um,0.5,F1S,sand,O_N_1_15A,1,NA,15A,18.110558441068296,19.82778757,old-0.5-10,Pterocelastrus tricuspidatus,0.65,pterocelastrus tricuspidatus,90
+old method,10um,0.5,F1S,sand,O_N_1_21,1,NA,21,21.3061088695208,27.886930926077895,old-0.5-10,Pterocelastrus tricuspidatus,0.65,pterocelastrus tricuspidatus,90
+old method,10um,0.5,F2S,sand,O_N_31_3A,31,NA,3A,8.91043939603137,27.0706576895262,old-0.5-10,Searsia glauca,0.72,searsia glauca,189
+old method,10um,0.5,F2S,sand,O_N_31_5A,31,NA,5A,6.45860328959996,10.4320192599459,old-0.5-10,Searsia glauca,0.72,searsia glauca,189
+old method,10um,0.5,F2S,sand,O_N_31_8,31,NA,8,7.13179952884879,18.9288459,old-0.5-10,Searsia glauca,0.72,searsia glauca,189
+old method,10um,0.5,F2S,sand,O_N_31_12A,31,NA,12A,9.52853591031803,20.6939629750444,old-0.5-10,Searsia glauca,0.72,searsia glauca,189
+old method,10um,0.5,F2S,sand,O_N_31_12B,31,NA,12B,15.7389894608363,27.943808881227095,old-0.5-10,Searsia glauca,0.72,searsia glauca,189
+old method,10um,0.5,F2S,sand,O_N_31_16,31,NA,16,18.9013165843072,42.3569273647925,old-0.5-10,Searsia glauca,0.72,searsia glauca,189
+old method,10um,0.5,F2S,sand,O_N_31_26,31,NA,26,13.3777661706027,18.6427282455538,old-0.5-10,Searsia glauca,0.72,searsia glauca,189
+old method,10um,0.5,F2S,sand,O_N_31_28,31,NA,28,6.3584882185267695,9.275840521970322,old-0.5-10,Searsia glauca,0.72,searsia glauca,189
+old method,10um,0.5,F2S,sand,O_N_31_32,31,NA,32,9.73226596914536,26.3596931292718,old-0.5-10,Searsia glauca,0.72,searsia glauca,189
+old method,10um,0.5,F2S,sand,O_N_31_39,31,NA,39,9.69184863375405,14.9239526708214,old-0.5-10,Searsia glauca,0.72,searsia glauca,189
+old method,10um,0.5,F2S,sand,O_N_31_47,31,NA,47,16.3473097089825,30.7903298178364,old-0.5-10,Searsia glauca,0.72,searsia glauca,189
+old method,10um,0.5,F2S,sand,O_N_31_50,31,NA,50,14.544228916216,27.3379086988324,old-0.5-10,Searsia glauca,0.72,searsia glauca,189
+old method,10um,0.5,F2S,sand,O_N_35_6,35,NA,6,8.38443158176533,17.3417934776412,old-0.5-10,Olea exasperata,0.75,olea exasperata,45
+old method,10um,0.5,F2S,sand,O_N_35_28,35,NA,28,7.0106766882395695,15.7697798794004,old-0.5-10,Olea exasperata,0.75,olea exasperata,45
+old method,10um,0.5,F2S,sand,O_N_35_29,35,NA,29,7.58863267170663,19.5386759461588,old-0.5-10,Olea exasperata,0.75,olea exasperata,45
+old method,10um,0.5,F2S,sand,O_N_35_31,35,NA,31,10.0753897435068,13.2093576548055,old-0.5-10,Olea exasperata,0.75,olea exasperata,45
+old method,10um,0.5,F2S,sand,O_N_35_33,35,NA,33,6.35096074491327,12.471967942891,old-0.5-10,Olea exasperata,0.75,olea exasperata,45
+old method,10um,0.5,F1F,ember,O_N_38_2,38,NA,2,6.62801072511373,14.5970658620572,old-0.5-10,Searsia lucida,0.7,searsia lucida,171
+old method,10um,0.5,F1F,ember,O_N_38_3,38,NA,3,6.42731211122026,16.2501373375438,old-0.5-10,Searsia lucida,0.7,searsia lucida,171
+old method,10um,0.5,F1F,ember,O_N_38_9,38,NA,9,12.4988841495697,22.5392688645091,old-0.5-10,Searsia lucida,0.7,searsia lucida,171
+old method,10um,0.5,F1F,ember,O_N_38_10,38,NA,10,7.917589735940769,11.8594666734756,old-0.5-10,Searsia lucida,0.7,searsia lucida,171
+old method,10um,0.5,F1F,ember,O_N_38_13,38,NA,13,6.19691609571998,15.4233217047926,old-0.5-10,Searsia lucida,0.7,searsia lucida,171
+old method,10um,0.5,F1F,ember,O_N_38_18,38,NA,18,14.9597103708406,27.2080860171114,old-0.5-10,Searsia lucida,0.7,searsia lucida,171
+old method,10um,0.5,F1F,ember,O_N_38_20,38,NA,20,6.028748048471569,14.2611164990153,old-0.5-10,Searsia lucida,0.7,searsia lucida,171
+old method,10um,0.5,F1F,ember,O_N_38_22A,38,NA,22A,7.01355378991697,14.6309924262413,old-0.5-10,Searsia lucida,0.7,searsia lucida,171
+old method,10um,0.5,F1F,ember,O_N_38_25,38,NA,25,8.9996027261628,14.3021283090039,old-0.5-10,Searsia lucida,0.7,searsia lucida,171
+old method,10um,0.5,F1F,ember,O_N_54A_15,54,A,15,26.1185913299938,37.7139199732582,old-0.5-10,Protea susannae,0.6,protea susannae,18
+old method,10um,0.5,F1F,ember,O_N_2_11B,2,NA,11B,6.9503890455855295,14.4593881122718,old-0.5-10,Pterocelastrus tricuspidatus,0.65,pterocelastrus tricuspidatus,90
+old method,10um,0.5,F1F,ember,O_N_2_11A,2,NA,11A,7.882654965240739,16.8547915712394,old-0.5-10,Pterocelastrus tricuspidatus,0.65,pterocelastrus tricuspidatus,90
+old method,10um,0.5,F1F,ember,O_N_2_19,2,NA,19,11.6742644892444,16.5218102599737,old-0.5-10,Pterocelastrus tricuspidatus,0.65,pterocelastrus tricuspidatus,90
+old method,10um,0.5,F1F,ember,O_N_14A_4,14,A,4,8.750529664691332,15.2976455816801,old-0.5-10,Protea obtusifolia,0.58,protea obtusifolia,27
+old method,10um,0.5,F1F,ember,O_N_14A_15,14,A,15,5.64596235191843,19.09927985,old-0.5-10,Protea obtusifolia,0.58,protea obtusifolia,27
+old method,10um,0.5,F1F,ember,O_N_54A_31,54,A,31,7.04459542173328,12.8997541967542,old-0.5-10,Protea susannae,0.6,protea susannae,18
+old method,10um,0.5,F1F,ember,O_N_14A_27,14,A,27,6.72147914867938,17.451501021792,old-0.5-10,Protea obtusifolia,0.58,protea obtusifolia,27
+old method,10um,0.5,F2F,ember,O_N_32A-3,32,A,3,9.62838354124629,13.8558788821085,old-0.5-10,Searsia glauca,0.72,searsia glauca,189
+old method,10um,0.5,F2F,ember,O_N_32A-21,32,A,21,15.3975741342816,28.581655369101,old-0.5-10,Searsia glauca,0.72,searsia glauca,189
+old method,10um,0.5,F2F,ember,O_N_32A-29,32,A,29,6.82891266965549,15.0299173126553,old-0.5-10,Searsia glauca,0.72,searsia glauca,189
+old method,10um,0.5,F2F,ember,O_N_32B-3,32,B,3,8.28181772244673,18.00447857,old-0.5-10,Searsia glauca,0.72,searsia glauca,189
+old method,10um,0.5,F2F,ember,O_N_32B-7,32,B,7,6.76582046157068,15.1558700251174,old-0.5-10,Searsia glauca,0.72,searsia glauca,189
+old method,10um,0.5,F2F,ember,O_N_32B-16,32,B,16,9.57325661854652,18.9032191201355,old-0.5-10,Searsia glauca,0.72,searsia glauca,189
+old method,10um,0.5,F2F,ember,O_N_32C-3,32,C,3,17.860424706324,30.0141000831931,old-0.5-10,Searsia glauca,0.72,searsia glauca,189
+old method,10um,0.5,F2F,ember,O_N_32C-4,32,C,4,7.630671047240659,17.9333586115948,old-0.5-10,Searsia glauca,0.72,searsia glauca,189
+old method,10um,0.5,F2F,ember,O_N_32C-7,32,C,7,8.21878740732599,17.801165946566,old-0.5-10,Searsia glauca,0.72,searsia glauca,189
+old method,20um,0.5,Unheated,unheated,O.N.87_A_14,87,A,14,7.302558936619492,10.6622751080339,old-0.5-20,none,NA,none,153
+old method,20um,0.5,Unheated,unheated,O.N.87_A_17,87,A,17,8.77745379485519,9.4624775465928,old-0.5-20,none,NA,none,153
+old method,20um,0.5,Unheated,unheated,O.N.87_A_19,87,A,19,21.647773915381105,20.8699099658193,old-0.5-20,none,NA,none,153
+old method,20um,0.5,Unheated,unheated,O.N.87_A_22,87,A,22,13.5871561776116,15.2342410011443,old-0.5-20,none,NA,none,153
+old method,20um,0.5,Unheated,unheated,O.N.87_A_29,87,A,29,6.39397185898623,6.50602193326448,old-0.5-20,none,NA,none,153
+old method,20um,0.5,Unheated,unheated,O.N.87_A_4,87,A,4,8.14160853367102,13.9155062629497,old-0.5-20,none,NA,none,153
+old method,20um,0.5,Unheated,unheated,O.N.87_A_5,87,A,5,10.0193268023557,11.2985509986105,old-0.5-20,none,NA,none,153
+old method,20um,0.5,Unheated,unheated,O.N.87_A_9,87,A,9,5.04690016285672,6.60338692633588,old-0.5-20,none,NA,none,153
+old method,20um,0.5,Unheated,unheated,O.N.87_B_13,87,B,13,7.974487227823718,12.3685511176907,old-0.5-20,none,NA,none,153
+old method,20um,0.5,Unheated,unheated,O.N.87_B_19,87,B,19,6.97534627084919,10.4127126038819,old-0.5-20,none,NA,none,153
+old method,20um,0.5,Unheated,unheated,O.N.87_B_23,87,B,23,10.1469815650647,11.508390921468,old-0.5-20,none,NA,none,153
+old method,20um,0.5,Unheated,unheated,O.N.87_B_24,87,B,24,8.61584445601809,9.599082547,old-0.5-20,none,NA,none,153
+old method,20um,0.5,Unheated,unheated,O.N.87_B_28,87,B,28,13.8474959126773,15.814390760495,old-0.5-20,none,NA,none,153
+old method,20um,0.5,Unheated,unheated,O.N.87_B_2,87,B,2,12.2025325025122,14.7673532139153,old-0.5-20,none,NA,none,153
+old method,20um,0.5,Unheated,unheated,O.N.87_B_31,87,B,31,16.5083105557683,18.8797643310846,old-0.5-20,none,NA,none,153
+old method,20um,0.5,Unheated,unheated,O.N.87_B_6,87,B,6,10.9865688162379,10.5207110259719,old-0.5-20,none,NA,none,153
+old method,20um,0.5,Unheated,unheated,O.N.87_B_7,87,B,7,5.65609346819645,6.44139100344652,old-0.5-20,none,NA,none,153
+old method,20um,0.5,F1S,sand,O_N_37_2,37,NA,2,20.212722955611696,27.5097972571663,old-0.5-20,Searsia lucida,0.7,searsia lucida,171
+old method,20um,0.5,F1S,sand,O_N_37_3A,37,NA,3A,3.38129773915607,6.49584110620489,old-0.5-20,Searsia lucida,0.7,searsia lucida,171
+old method,20um,0.5,F1S,sand,O_N_37_4A,37,NA,4A,6.57739599466199,13.4199731622659,old-0.5-20,Searsia lucida,0.7,searsia lucida,171
+old method,20um,0.5,F1S,sand,O_N_37_8A,37,NA,8A,12.6631636936163,18.2570119672881,old-0.5-20,Searsia lucida,0.7,searsia lucida,171
+old method,20um,0.5,F1S,sand,O_N_37_8B,37,NA,8B,7.3090074643545,11.1196470267226,old-0.5-20,Searsia lucida,0.7,searsia lucida,171
+old method,20um,0.5,F1S,sand,O_N_37_12A,37,NA,12A,10.6545580372416,14.1541189113361,old-0.5-20,Searsia lucida,0.7,searsia lucida,171
+old method,20um,0.5,F1S,sand,O_N_37_17A,37,NA,17A,7.286769808303869,12.4364693755353,old-0.5-20,Searsia lucida,0.7,searsia lucida,171
+old method,20um,0.5,F1S,sand,O_N_37_21,37,NA,21,6.544082298209,18.5668480219229,old-0.5-20,Searsia lucida,0.7,searsia lucida,171
+old method,20um,0.5,F1S,sand,O_N_37_30,37,NA,30,4.42117044129719,9.62312216262134,old-0.5-20,Searsia lucida,0.7,searsia lucida,171
+old method,20um,0.5,F1S,sand,O_N_37_45,37,NA,45,3.92247308315942,10.5985183126432,old-0.5-20,Searsia lucida,0.7,searsia lucida,171
+old method,20um,0.5,F1S,sand,O_N_1_1,1,NA,1,8.18493208771867,8.27628487508477,old-0.5-20,Pterocelastrus tricuspidatus,0.65,pterocelastrus tricuspidatus,90
+old method,20um,0.5,F1S,sand,O_N_1_6A,1,NA,6A,7.989484069091129,10.0453734575043,old-0.5-20,Pterocelastrus tricuspidatus,0.65,pterocelastrus tricuspidatus,90
+old method,20um,0.5,F1S,sand,O_N_1_7A,1,NA,7A,9.79750334431912,15.4918081483435,old-0.5-20,Pterocelastrus tricuspidatus,0.65,pterocelastrus tricuspidatus,90
+old method,20um,0.5,F1S,sand,O_N_1_7B,1,NA,7B,13.2838065052174,16.979981705279,old-0.5-20,Pterocelastrus tricuspidatus,0.65,pterocelastrus tricuspidatus,90
+old method,20um,0.5,F1S,sand,O_N_1_8A,1,NA,8A,9.96038530039242,11.8444557808213,old-0.5-20,Pterocelastrus tricuspidatus,0.65,pterocelastrus tricuspidatus,90
+old method,20um,0.5,F1S,sand,O_N_1_15A,1,NA,15A,13.0552669237759,15.7693961761482,old-0.5-20,Pterocelastrus tricuspidatus,0.65,pterocelastrus tricuspidatus,90
+old method,20um,0.5,F1S,sand,O_N_1_21,1,NA,21,16.1350422614599,19.0929983362469,old-0.5-20,Pterocelastrus tricuspidatus,0.65,pterocelastrus tricuspidatus,90
+old method,20um,0.5,F2S,sand,O_N_31_3A,31,NA,3A,5.79375577984594,14.5527061085894,old-0.5-20,Searsia glauca,0.72,searsia glauca,189
+old method,20um,0.5,F2S,sand,O_N_31_5A,31,NA,5A,4.70359333208601,8.1715334644456,old-0.5-20,Searsia glauca,0.72,searsia glauca,189
+old method,20um,0.5,F2S,sand,O_N_31_8,31,NA,8,5.34684071137914,14.0471565387412,old-0.5-20,Searsia glauca,0.72,searsia glauca,189
+old method,20um,0.5,F2S,sand,O_N_31_12A,31,NA,12A,7.57363996125452,13.5544545799498,old-0.5-20,Searsia glauca,0.72,searsia glauca,189
+old method,20um,0.5,F2S,sand,O_N_31_12B,31,NA,12B,11.8846177731272,19.1136747067282,old-0.5-20,Searsia glauca,0.72,searsia glauca,189
+old method,20um,0.5,F2S,sand,O_N_31_16,31,NA,16,10.5834582464468,24.6933764658923,old-0.5-20,Searsia glauca,0.72,searsia glauca,189
+old method,20um,0.5,F2S,sand,O_N_31_26,31,NA,26,8.676609546060478,13.2131063023345,old-0.5-20,Searsia glauca,0.72,searsia glauca,189
+old method,20um,0.5,F2S,sand,O_N_31_28,31,NA,28,4.65814018660993,7.80044845310936,old-0.5-20,Searsia glauca,0.72,searsia glauca,189
+old method,20um,0.5,F2S,sand,O_N_31_32,31,NA,32,6.19867408208109,17.5261724447628,old-0.5-20,Searsia glauca,0.72,searsia glauca,189
+old method,20um,0.5,F2S,sand,O_N_31_39,31,NA,39,6.07007068019032,10.2775940669058,old-0.5-20,Searsia glauca,0.72,searsia glauca,189
+old method,20um,0.5,F2S,sand,O_N_31_47,31,NA,47,11.0019362503868,22.3908247887542,old-0.5-20,Searsia glauca,0.72,searsia glauca,189
+old method,20um,0.5,F2S,sand,O_N_31_50,31,NA,50,9.18095349532704,16.8748244385657,old-0.5-20,Searsia glauca,0.72,searsia glauca,189
+old method,20um,0.5,F2S,sand,O_N_35_6,35,NA,6,5.97169437170658,11.5071974668966,old-0.5-20,Olea exasperata,0.75,olea exasperata,45
+old method,20um,0.5,F2S,sand,O_N_35_28,35,NA,28,5.35668091268276,11.3405446602469,old-0.5-20,Olea exasperata,0.75,olea exasperata,45
+old method,20um,0.5,F2S,sand,O_N_35_29,35,NA,29,4.7496202921034,13.0245053445978,old-0.5-20,Olea exasperata,0.75,olea exasperata,45
+old method,20um,0.5,F2S,sand,O_N_35_31,35,NA,31,6.03249268651122,7.87294713045316,old-0.5-20,Olea exasperata,0.75,olea exasperata,45
+old method,20um,0.5,F2S,sand,O_N_35_33,35,NA,33,4.80034129127496,10.551548722406,old-0.5-20,Olea exasperata,0.75,olea exasperata,45
+old method,20um,0.5,F1F,ember,O_N_38_2,38,NA,2,4.32224979109091,10.0033473663061,old-0.5-20,Searsia lucida,0.7,searsia lucida,171
+old method,20um,0.5,F1F,ember,O_N_38_3,38,NA,3,4.71642489762398,11.2790396162113,old-0.5-20,Searsia lucida,0.7,searsia lucida,171
+old method,20um,0.5,F1F,ember,O_N_38_9,38,NA,9,8.79588854441768,16.0120910552789,old-0.5-20,Searsia lucida,0.7,searsia lucida,171
+old method,20um,0.5,F1F,ember,O_N_38_10,38,NA,10,5.80236747546142,8.843909786446,old-0.5-20,Searsia lucida,0.7,searsia lucida,171
+old method,20um,0.5,F1F,ember,O_N_38_13,38,NA,13,4.47963993679673,11.2353977748475,old-0.5-20,Searsia lucida,0.7,searsia lucida,171
+old method,20um,0.5,F1F,ember,O_N_38_18,38,NA,18,8.31147936579832,12.4499108320386,old-0.5-20,Searsia lucida,0.7,searsia lucida,171
+old method,20um,0.5,F1F,ember,O_N_38_20,38,NA,20,4.30145947418177,11.0793590191202,old-0.5-20,Searsia lucida,0.7,searsia lucida,171
+old method,20um,0.5,F1F,ember,O_N_38_22A,38,NA,22A,4.50478402827824,10.5109175580423,old-0.5-20,Searsia lucida,0.7,searsia lucida,171
+old method,20um,0.5,F1F,ember,O_N_38_25,38,NA,25,5.34958569662553,10.945322894209,old-0.5-20,Searsia lucida,0.7,searsia lucida,171
+old method,20um,0.5,F1F,ember,O_N_54A_15,54,A,15,18.053112128011495,22.843316950674495,old-0.5-20,Protea susannae,0.6,protea susannae,18
+old method,20um,0.5,F1F,ember,O_N_2_11B,2,NA,11B,5.26002666260488,12.4275722953792,old-0.5-20,Pterocelastrus tricuspidatus,0.65,pterocelastrus tricuspidatus,90
+old method,20um,0.5,F1F,ember,O_N_2_11A,2,NA,11A,4.9155867981009695,9.99823646264905,old-0.5-20,Pterocelastrus tricuspidatus,0.65,pterocelastrus tricuspidatus,90
+old method,20um,0.5,F1F,ember,O_N_2_19,2,NA,19,8.38347721325052,12.4304500755926,old-0.5-20,Pterocelastrus tricuspidatus,0.65,pterocelastrus tricuspidatus,90
+old method,20um,0.5,F1F,ember,O_N_14A_4,14,A,4,5.80865760225066,10.0818626873598,old-0.5-20,Protea obtusifolia,0.58,protea obtusifolia,27
+old method,20um,0.5,F1F,ember,O_N_14A_15,14,A,15,4.04301599008172,12.3773952133536,old-0.5-20,Protea obtusifolia,0.58,protea obtusifolia,27
+old method,20um,0.5,F1F,ember,O_N_54A_31,54,A,31,4.84608029054207,10.0670884214745,old-0.5-20,Protea susannae,0.6,protea susannae,18
+old method,20um,0.5,F1F,ember,O_N_14A_27,14,A,27,4.9751417892998004,13.3821781142579,old-0.5-20,Protea obtusifolia,0.58,protea obtusifolia,27
+old method,20um,0.5,F2F,ember,O_N_32A-3,32,A,3,6.31228576140645,10.261397459248,old-0.5-20,Searsia glauca,0.72,searsia glauca,189
+old method,20um,0.5,F2F,ember,O_N_32A-21,32,A,21,9.48955288186163,12.35323822,old-0.5-20,Searsia glauca,0.72,searsia glauca,189
+old method,20um,0.5,F2F,ember,O_N_32A-29,32,A,29,4.87941890339372,11.4659863804855,old-0.5-20,Searsia glauca,0.72,searsia glauca,189
+old method,20um,0.5,F2F,ember,O_N_32B-3,32,B,3,6.68114659550062,13.2548621964625,old-0.5-20,Searsia glauca,0.72,searsia glauca,189
+old method,20um,0.5,F2F,ember,O_N_32B-7,32,B,7,4.8624032037991904,11.5210154942039,old-0.5-20,Searsia glauca,0.72,searsia glauca,189
+old method,20um,0.5,F2F,ember,O_N_32B-16,32,B,16,7.62965492900919,16.1661030130442,old-0.5-20,Searsia glauca,0.72,searsia glauca,189
+old method,20um,0.5,F2F,ember,O_N_32C-3,32,C,3,12.9093453217969,18.9112553104917,old-0.5-20,Searsia glauca,0.72,searsia glauca,189
+old method,20um,0.5,F2F,ember,O_N_32C-4,32,C,4,5.18563453732244,12.5570731172879,old-0.5-20,Searsia glauca,0.72,searsia glauca,189
+old method,20um,0.5,F2F,ember,O_N_32C-7,32,C,7,5.7985003672216,14.1248402570313,old-0.5-20,Searsia glauca,0.72,searsia glauca,189
+old method,10um,1,Unheated,unheated,O.N.87_A_14,87,A,14,11.4669752154457,11.13515411,old-1.0-10,none,NA,none,153
+old method,10um,1,Unheated,unheated,O.N.87_A_17,87,A,17,9.89553834398352,10.62801427,old-1.0-10,none,NA,none,153
+old method,10um,1,Unheated,unheated,O.N.87_A_19,87,A,19,26.9338578284576,32.79213604,old-1.0-10,none,NA,none,153
+old method,10um,1,Unheated,unheated,O.N.87_A_22,87,A,22,18.784521737231305,26.94577752,old-1.0-10,none,NA,none,153
+old method,10um,1,Unheated,unheated,O.N.87_A_29,87,A,29,8.70226402707768,7.73320425,old-1.0-10,none,NA,none,153
+old method,10um,1,Unheated,unheated,O.N.87_A_4,87,A,4,9.67790424937041,13.89794314,old-1.0-10,none,NA,none,153
+old method,10um,1,Unheated,unheated,O.N.87_A_5,87,A,5,10.8908367868945,12.4898556,old-1.0-10,none,NA,none,153
+old method,10um,1,Unheated,unheated,O.N.87_A_9,87,A,9,7.16005197580902,7.740436389,old-1.0-10,none,NA,none,153
+old method,10um,1,Unheated,unheated,O.N.87_B_13,87,B,13,9.73174002620882,12.82357872,old-1.0-10,none,NA,none,153
+old method,10um,1,Unheated,unheated,O.N.87_B_19,87,B,19,10.7809476627056,12.3211511,old-1.0-10,none,NA,none,153
+old method,10um,1,Unheated,unheated,O.N.87_B_23,87,B,23,13.0703035522526,14.81458699,old-1.0-10,none,NA,none,153
+old method,10um,1,Unheated,unheated,O.N.87_B_24,87,B,24,21.3106790732047,30.9335052,old-1.0-10,none,NA,none,153
+old method,10um,1,Unheated,unheated,O.N.87_B_28,87,B,28,14.2099883524138,19.94708571,old-1.0-10,none,NA,none,153
+old method,10um,1,Unheated,unheated,O.N.87_B_2,87,B,2,14.6760668003502,20.14764795,old-1.0-10,none,NA,none,153
+old method,10um,1,Unheated,unheated,O.N.87_B_31,87,B,31,24.6989611450428,33.03669365,old-1.0-10,none,NA,none,153
+old method,10um,1,Unheated,unheated,O.N.87_B_6,87,B,6,23.106320073282696,28.0581875,old-1.0-10,none,NA,none,153
+old method,10um,1,Unheated,unheated,O.N.87_B_7,87,B,7,12.8851915661716,15.29062868,old-1.0-10,none,NA,none,153
+old method,10um,1,F1S,sand,O_N_37_2,37,NA,2,18.9935162463935,31.32714489,old-1.0-10,Searsia lucida,0.7,searsia lucida,171
+old method,10um,1,F1S,sand,O_N_37_3A,37,NA,3A,6.84240889994331,10.89381623,old-1.0-10,Searsia lucida,0.7,searsia lucida,171
+old method,10um,1,F1S,sand,O_N_37_4A,37,NA,4A,6.54655543993575,13.72438964,old-1.0-10,Searsia lucida,0.7,searsia lucida,171
+old method,10um,1,F1S,sand,O_N_37_8A,37,NA,8A,18.682232413571896,30.7931381,old-1.0-10,Searsia lucida,0.7,searsia lucida,171
+old method,10um,1,F1S,sand,O_N_37_8B,37,NA,8B,10.7706939185572,21.13386515,old-1.0-10,Searsia lucida,0.7,searsia lucida,171
+old method,10um,1,F1S,sand,O_N_37_12A,37,NA,12A,10.6776176971747,15.04365054,old-1.0-10,Searsia lucida,0.7,searsia lucida,171
+old method,10um,1,F1S,sand,O_N_37_17A,37,NA,17A,9.58432809433963,16.46668811,old-1.0-10,Searsia lucida,0.7,searsia lucida,171
+old method,10um,1,F1S,sand,O_N_37_21,37,NA,21,14.6557880543382,30.54240954,old-1.0-10,Searsia lucida,0.7,searsia lucida,171
+old method,10um,1,F1S,sand,O_N_37_30,37,NA,30,7.396709804129809,13.15848113,old-1.0-10,Searsia lucida,0.7,searsia lucida,171
+old method,10um,1,F1S,sand,O_N_37_45,37,NA,45,4.95517122040299,10.62911025,old-1.0-10,Searsia lucida,0.7,searsia lucida,171
+old method,10um,1,F1S,sand,O_N_1_1,1,NA,1,12.477414615855,15.54028598,old-1.0-10,Pterocelastrus tricuspidatus,0.65,pterocelastrus tricuspidatus,90
+old method,10um,1,F1S,sand,O_N_1_6A,1,NA,6A,20.3747074327756,26.71457986,old-1.0-10,Pterocelastrus tricuspidatus,0.65,pterocelastrus tricuspidatus,90
+old method,10um,1,F1S,sand,O_N_1_7A,1,NA,7A,11.9174244276715,16.89569171,old-1.0-10,Pterocelastrus tricuspidatus,0.65,pterocelastrus tricuspidatus,90
+old method,10um,1,F1S,sand,O_N_1_7B,1,NA,7B,21.0358113859816,31.54628937,old-1.0-10,Pterocelastrus tricuspidatus,0.65,pterocelastrus tricuspidatus,90
+old method,10um,1,F1S,sand,O_N_1_8A,1,NA,8A,19.9986489701308,27.2918314,old-1.0-10,Pterocelastrus tricuspidatus,0.65,pterocelastrus tricuspidatus,90
+old method,10um,1,F1S,sand,O_N_1_15A,1,NA,15A,20.7466968128972,23.62091046,old-1.0-10,Pterocelastrus tricuspidatus,0.65,pterocelastrus tricuspidatus,90
+old method,10um,1,F1S,sand,O_N_1_21,1,NA,21,21.692797556349696,27.73994784,old-1.0-10,Pterocelastrus tricuspidatus,0.65,pterocelastrus tricuspidatus,90
+old method,10um,1,F2S,sand,O_N_31_3A,31,NA,3A,6.119238020323089,19.53870591,old-1.0-10,Searsia glauca,0.72,searsia glauca,189
+old method,10um,1,F2S,sand,O_N_31_5A,31,NA,5A,6.76800633259547,8.889080848,old-1.0-10,Searsia glauca,0.72,searsia glauca,189
+old method,10um,1,F2S,sand,O_N_31_8,31,NA,8,5.948815617072049,13.95173805,old-1.0-10,Searsia glauca,0.72,searsia glauca,189
+old method,10um,1,F2S,sand,O_N_31_12A,31,NA,12A,7.744044794567991,16.12282065,old-1.0-10,Searsia glauca,0.72,searsia glauca,189
+old method,10um,1,F2S,sand,O_N_31_12B,31,NA,12B,11.5353815652609,21.73737487,old-1.0-10,Searsia glauca,0.72,searsia glauca,189
+old method,10um,1,F2S,sand,O_N_31_16,31,NA,16,21.2888633820375,41.33674315,old-1.0-10,Searsia glauca,0.72,searsia glauca,189
+old method,10um,1,F2S,sand,O_N_31_26,31,NA,26,9.78608090075556,14.78299387,old-1.0-10,Searsia glauca,0.72,searsia glauca,189
+old method,10um,1,F2S,sand,O_N_31_28,31,NA,28,5.75841448155321,7.485662535,old-1.0-10,Searsia glauca,0.72,searsia glauca,189
+old method,10um,1,F2S,sand,O_N_31_32,31,NA,32,6.65495231013834,19.43960428,old-1.0-10,Searsia glauca,0.72,searsia glauca,189
+old method,10um,1,F2S,sand,O_N_31_39,31,NA,39,8.58741679477002,12.4720363,old-1.0-10,Searsia glauca,0.72,searsia glauca,189
+old method,10um,1,F2S,sand,O_N_31_47,31,NA,47,11.6950074502312,23.77871576,old-1.0-10,Searsia glauca,0.72,searsia glauca,189
+old method,10um,1,F2S,sand,O_N_31_50,31,NA,50,14.5335061202246,23.69096392,old-1.0-10,Searsia glauca,0.72,searsia glauca,189
+old method,10um,1,F2S,sand,O_N_35_6,35,NA,6,6.14277581321925,12.72848785,old-1.0-10,Olea exasperata,0.75,olea exasperata,45
+old method,10um,1,F2S,sand,O_N_35_28,35,NA,28,5.56885731225607,11.59718284,old-1.0-10,Olea exasperata,0.75,olea exasperata,45
+old method,10um,1,F2S,sand,O_N_35_29,35,NA,29,7.39646428191454,16.39992826,old-1.0-10,Olea exasperata,0.75,olea exasperata,45
+old method,10um,1,F2S,sand,O_N_35_31,35,NA,31,11.5869237209475,17.88056949,old-1.0-10,Olea exasperata,0.75,olea exasperata,45
+old method,10um,1,F2S,sand,O_N_35_33,35,NA,33,5.32902511275274,9.434183894,old-1.0-10,Olea exasperata,0.75,olea exasperata,45
+old method,10um,1,F1F,ember,O_N_38_2,38,NA,2,5.19700507274643,10.73859181,old-1.0-10,Searsia lucida,0.7,searsia lucida,171
+old method,10um,1,F1F,ember,O_N_38_3,38,NA,3,4.45565428567128,12.02433435,old-1.0-10,Searsia lucida,0.7,searsia lucida,171
+old method,10um,1,F1F,ember,O_N_38_9,38,NA,9,9.671619378447668,17.34939716,old-1.0-10,Searsia lucida,0.7,searsia lucida,171
+old method,10um,1,F1F,ember,O_N_38_10,38,NA,10,6.308390754053369,9.227323451,old-1.0-10,Searsia lucida,0.7,searsia lucida,171
+old method,10um,1,F1F,ember,O_N_38_13,38,NA,13,7.00541731750685,12.65121988,old-1.0-10,Searsia lucida,0.7,searsia lucida,171
+old method,10um,1,F1F,ember,O_N_38_18,38,NA,18,11.4245451791692,20.37254547,old-1.0-10,Searsia lucida,0.7,searsia lucida,171
+old method,10um,1,F1F,ember,O_N_38_20,38,NA,20,6.67312579261915,13.08371731,old-1.0-10,Searsia lucida,0.7,searsia lucida,171
+old method,10um,1,F1F,ember,O_N_38_22A,38,NA,22A,6.41325077420038,11.65860355,old-1.0-10,Searsia lucida,0.7,searsia lucida,171
+old method,10um,1,F1F,ember,O_N_38_25,38,NA,25,7.62459470597759,11.59224054,old-1.0-10,Searsia lucida,0.7,searsia lucida,171
+old method,10um,1,F1F,ember,O_N_54A_15,54,A,15,23.780290901028305,33.14530823,old-1.0-10,Protea susannae,0.6,protea susannae,18
+old method,10um,1,F1F,ember,O_N_2_11B,2,NA,11B,5.487081660553329,10.80683986,old-1.0-10,Pterocelastrus tricuspidatus,0.65,pterocelastrus tricuspidatus,90
+old method,10um,1,F1F,ember,O_N_2_11A,2,NA,11A,6.96462478904526,12.64759924,old-1.0-10,Pterocelastrus tricuspidatus,0.65,pterocelastrus tricuspidatus,90
+old method,10um,1,F1F,ember,O_N_2_19,2,NA,19,9.916630112152868,13.20739791,old-1.0-10,Pterocelastrus tricuspidatus,0.65,pterocelastrus tricuspidatus,90
+old method,10um,1,F1F,ember,O_N_14A_4,14,A,4,5.932721497459849,11.56793382,old-1.0-10,Protea obtusifolia,0.58,protea obtusifolia,27
+old method,10um,1,F1F,ember,O_N_14A_15,14,A,15,4.06752451875912,13.9079467,old-1.0-10,Protea obtusifolia,0.58,protea obtusifolia,27
+old method,10um,1,F1F,ember,O_N_54A_31,54,A,31,5.973807745471969,9.793381683,old-1.0-10,Protea susannae,0.6,protea susannae,18
+old method,10um,1,F1F,ember,O_N_14A_27,14,A,27,5.0023956409815,12.70101362,old-1.0-10,Protea obtusifolia,0.58,protea obtusifolia,27
+old method,10um,1,F2F,ember,O_N_32A-3,32,A,3,7.2052193284427695,10.61550584,old-1.0-10,Searsia glauca,0.72,searsia glauca,189
+old method,10um,1,F2F,ember,O_N_32A-21,32,A,21,13.4276771905674,22.49170097,old-1.0-10,Searsia glauca,0.72,searsia glauca,189
+old method,10um,1,F2F,ember,O_N_32A-29,32,A,29,5.93142215326603,11.31158307,old-1.0-10,Searsia glauca,0.72,searsia glauca,189
+old method,10um,1,F2F,ember,O_N_32B-3,32,B,3,5.96678075246101,13.51743154,old-1.0-10,Searsia glauca,0.72,searsia glauca,189
+old method,10um,1,F2F,ember,O_N_32B-7,32,B,7,6.17975216523502,11.47375556,old-1.0-10,Searsia glauca,0.72,searsia glauca,189
+old method,10um,1,F2F,ember,O_N_32B-16,32,B,16,6.73134769404906,14.01135303,old-1.0-10,Searsia glauca,0.72,searsia glauca,189
+old method,10um,1,F2F,ember,O_N_32C-3,32,C,3,13.1693393291293,24.24853958,old-1.0-10,Searsia glauca,0.72,searsia glauca,189
+old method,10um,1,F2F,ember,O_N_32C-4,32,C,4,6.06222424786634,13.2429218,old-1.0-10,Searsia glauca,0.72,searsia glauca,189
+old method,10um,1,F2F,ember,O_N_32C-7,32,C,7,6.8989712890638,14.13011241,old-1.0-10,Searsia glauca,0.72,searsia glauca,189
+old method,20um,1,Unheated,unheated,O.N.87_A_14,87,A,14,7.43058535223898,8.296025517,old-1.0-20,none,NA,none,153
+old method,20um,1,Unheated,unheated,O.N.87_A_17,87,A,17,7.15682320047902,7.853303151,old-1.0-20,none,NA,none,153
+old method,20um,1,Unheated,unheated,O.N.87_A_19,87,A,19,19.2765996378248,19.82493201,old-1.0-20,none,NA,none,153
+old method,20um,1,Unheated,unheated,O.N.87_A_22,87,A,22,12.3311827541535,17.22177039,old-1.0-20,none,NA,none,153
+old method,20um,1,Unheated,unheated,O.N.87_A_29,87,A,29,5.68979893992224,5.584522509,old-1.0-20,none,NA,none,153
+old method,20um,1,Unheated,unheated,O.N.87_A_4,87,A,4,7.17967127132875,10.50058763,old-1.0-20,none,NA,none,153
+old method,20um,1,Unheated,unheated,O.N.87_A_5,87,A,5,7.82394414336008,9.172028804,old-1.0-20,none,NA,none,153
+old method,20um,1,Unheated,unheated,O.N.87_A_9,87,A,9,4.55498416215174,5.335954095,old-1.0-20,none,NA,none,153
+old method,20um,1,Unheated,unheated,O.N.87_B_13,87,B,13,7.2227766700312,9.637427972,old-1.0-20,none,NA,none,153
+old method,20um,1,Unheated,unheated,O.N.87_B_19,87,B,19,7.49740939978054,8.683534779,old-1.0-20,none,NA,none,153
+old method,20um,1,Unheated,unheated,O.N.87_B_23,87,B,23,8.663228116397438,10.06319729,old-1.0-20,none,NA,none,153
+old method,20um,1,Unheated,unheated,O.N.87_B_24,87,B,24,12.4018323200237,16.06362982,old-1.0-20,none,NA,none,153
+old method,20um,1,Unheated,unheated,O.N.87_B_28,87,B,28,10.2402184342172,13.48714222,old-1.0-20,none,NA,none,153
+old method,20um,1,Unheated,unheated,O.N.87_B_2,87,B,2,9.662368348141529,11.94125634,old-1.0-20,none,NA,none,153
+old method,20um,1,Unheated,unheated,O.N.87_B_31,87,B,31,16.3918046355174,18.96987304,old-1.0-20,none,NA,none,153
+old method,20um,1,Unheated,unheated,O.N.87_B_6,87,B,6,15.1645964027891,17.63684455,old-1.0-20,none,NA,none,153
+old method,20um,1,Unheated,unheated,O.N.87_B_7,87,B,7,7.94839142830651,9.19384939,old-1.0-20,none,NA,none,153
+old method,20um,1,F1S,sand,O_N_37_2,37,NA,2,13.6747921306961,23.18690129,old-1.0-20,Searsia lucida,0.7,searsia lucida,171
+old method,20um,1,F1S,sand,O_N_37_3A,37,NA,3A,4.79977211324208,7.800032544999999,old-1.0-20,Searsia lucida,0.7,searsia lucida,171
+old method,20um,1,F1S,sand,O_N_37_4A,37,NA,4A,4.3016311563431,10.1928129,old-1.0-20,Searsia lucida,0.7,searsia lucida,171
+old method,20um,1,F1S,sand,O_N_37_8A,37,NA,8A,12.858796339545,19.00589161,old-1.0-20,Searsia lucida,0.7,searsia lucida,171
+old method,20um,1,F1S,sand,O_N_37_8B,37,NA,8B,5.24443052957276,8.975213462999998,old-1.0-20,Searsia lucida,0.7,searsia lucida,171
+old method,20um,1,F1S,sand,O_N_37_12A,37,NA,12A,8.19383046062957,11.72439676,old-1.0-20,Searsia lucida,0.7,searsia lucida,171
+old method,20um,1,F1S,sand,O_N_37_17A,37,NA,17A,4.90779429935904,8.969222761999998,old-1.0-20,Searsia lucida,0.7,searsia lucida,171
+old method,20um,1,F1S,sand,O_N_37_21,37,NA,21,10.7038444677058,19.69550359,old-1.0-20,Searsia lucida,0.7,searsia lucida,171
+old method,20um,1,F1S,sand,O_N_37_30,37,NA,30,4.554406650653729,8.90493481,old-1.0-20,Searsia lucida,0.7,searsia lucida,171
+old method,20um,1,F1S,sand,O_N_37_45,37,NA,45,3.1625705069692,8.198140999999998,old-1.0-20,Searsia lucida,0.7,searsia lucida,171
+old method,20um,1,F1S,sand,O_N_1_1,1,NA,1,8.009929290750929,8.956864333,old-1.0-20,Pterocelastrus tricuspidatus,0.65,pterocelastrus tricuspidatus,90
+old method,20um,1,F1S,sand,O_N_1_6A,1,NA,6A,15.0995518004357,19.17528108,old-1.0-20,Pterocelastrus tricuspidatus,0.65,pterocelastrus tricuspidatus,90
+old method,20um,1,F1S,sand,O_N_1_7A,1,NA,7A,8.2550272754679,12.42451933,old-1.0-20,Pterocelastrus tricuspidatus,0.65,pterocelastrus tricuspidatus,90
+old method,20um,1,F1S,sand,O_N_1_7B,1,NA,7B,13.3912804054818,16.76498916,old-1.0-20,Pterocelastrus tricuspidatus,0.65,pterocelastrus tricuspidatus,90
+old method,20um,1,F1S,sand,O_N_1_8A,1,NA,8A,12.6748384920585,18.24296596,old-1.0-20,Pterocelastrus tricuspidatus,0.65,pterocelastrus tricuspidatus,90
+old method,20um,1,F1S,sand,O_N_1_15A,1,NA,15A,14.2764257390018,15.98719503,old-1.0-20,Pterocelastrus tricuspidatus,0.65,pterocelastrus tricuspidatus,90
+old method,20um,1,F1S,sand,O_N_1_21,1,NA,21,15.3965325942445,18.10352018,old-1.0-20,Pterocelastrus tricuspidatus,0.65,pterocelastrus tricuspidatus,90
+old method,20um,1,F2S,sand,O_N_31_3A,31,NA,3A,3.7835154180476,10.59139552,old-1.0-20,Searsia glauca,0.72,searsia glauca,189
+old method,20um,1,F2S,sand,O_N_31_5A,31,NA,5A,4.39250148504319,6.392498492,old-1.0-20,Searsia glauca,0.72,searsia glauca,189
+old method,20um,1,F2S,sand,O_N_31_8,31,NA,8,3.80676902865018,10.2300813,old-1.0-20,Searsia glauca,0.72,searsia glauca,189
+old method,20um,1,F2S,sand,O_N_31_12A,31,NA,12A,5.65784466307351,10.46273356,old-1.0-20,Searsia glauca,0.72,searsia glauca,189
+old method,20um,1,F2S,sand,O_N_31_12B,31,NA,12B,8.103422784648249,15.09076429,old-1.0-20,Searsia glauca,0.72,searsia glauca,189
+old method,20um,1,F2S,sand,O_N_31_16,31,NA,16,13.8991521094662,25.8460223,old-1.0-20,Searsia glauca,0.72,searsia glauca,189
+old method,20um,1,F2S,sand,O_N_31_26,31,NA,26,5.89292151300824,10.26459682,old-1.0-20,Searsia glauca,0.72,searsia glauca,189
+old method,20um,1,F2S,sand,O_N_31_28,31,NA,28,3.6147814350537,5.902957735,old-1.0-20,Searsia glauca,0.72,searsia glauca,189
+old method,20um,1,F2S,sand,O_N_31_32,31,NA,32,4.16383263402709,12.89944379,old-1.0-20,Searsia glauca,0.72,searsia glauca,189
+old method,20um,1,F2S,sand,O_N_31_39,31,NA,39,5.3030104729118,8.322920431,old-1.0-20,Searsia glauca,0.72,searsia glauca,189
+old method,20um,1,F2S,sand,O_N_31_47,31,NA,47,7.371552921377439,17.17124344,old-1.0-20,Searsia glauca,0.72,searsia glauca,189
+old method,20um,1,F2S,sand,O_N_31_50,31,NA,50,8.05993175057462,13.57243227,old-1.0-20,Searsia glauca,0.72,searsia glauca,189
+old method,20um,1,F2S,sand,O_N_35_6,35,NA,6,4.0058023499767295,8.499572113999998,old-1.0-20,Olea exasperata,0.75,olea exasperata,45
+old method,20um,1,F2S,sand,O_N_35_28,35,NA,28,3.8187754697256,8.300673415,old-1.0-20,Olea exasperata,0.75,olea exasperata,45
+old method,20um,1,F2S,sand,O_N_35_29,35,NA,29,5.16326335766727,11.11260167,old-1.0-20,Olea exasperata,0.75,olea exasperata,45
+old method,20um,1,F2S,sand,O_N_35_31,35,NA,31,6.83949333677667,10.7832892,old-1.0-20,Olea exasperata,0.75,olea exasperata,45
+old method,20um,1,F2S,sand,O_N_35_33,35,NA,33,3.72229199301158,7.875169778,old-1.0-20,Olea exasperata,0.75,olea exasperata,45
+old method,20um,1,F1F,ember,O_N_38_2,38,NA,2,3.3093959440696494,7.339196403,old-1.0-20,Searsia lucida,0.7,searsia lucida,171
+old method,20um,1,F1F,ember,O_N_38_3,38,NA,3,3.0955654308518494,8.357962693999998,old-1.0-20,Searsia lucida,0.7,searsia lucida,171
+old method,20um,1,F1F,ember,O_N_38_9,38,NA,9,6.04988006171187,12.02044192,old-1.0-20,Searsia lucida,0.7,searsia lucida,171
+old method,20um,1,F1F,ember,O_N_38_10,38,NA,10,4.3673284581427,6.936421841,old-1.0-20,Searsia lucida,0.7,searsia lucida,171
+old method,20um,1,F1F,ember,O_N_38_13,38,NA,13,4.9789819867947,9.810803391,old-1.0-20,Searsia lucida,0.7,searsia lucida,171
+old method,20um,1,F1F,ember,O_N_38_18,38,NA,18,6.12140907579338,9.478372008,old-1.0-20,Searsia lucida,0.7,searsia lucida,171
+old method,20um,1,F1F,ember,O_N_38_20,38,NA,20,4.63583711661609,9.568238312,old-1.0-20,Searsia lucida,0.7,searsia lucida,171
+old method,20um,1,F1F,ember,O_N_38_22A,38,NA,22A,3.8560912101667695,8.029935395,old-1.0-20,Searsia lucida,0.7,searsia lucida,171
+old method,20um,1,F1F,ember,O_N_38_25,38,NA,25,4.37037926704334,8.497388390999998,old-1.0-20,Searsia lucida,0.7,searsia lucida,171
+old method,20um,1,F1F,ember,O_N_54A_15,54,A,15,16.3439454095082,21.23073266,old-1.0-20,Protea susannae,0.6,protea susannae,18
+old method,20um,1,F1F,ember,O_N_2_11B,2,NA,11B,3.62105220581291,9.064368984,old-1.0-20,Pterocelastrus tricuspidatus,0.65,pterocelastrus tricuspidatus,90
+old method,20um,1,F1F,ember,O_N_2_11A,2,NA,11A,3.98852483587374,7.267321228,old-1.0-20,Pterocelastrus tricuspidatus,0.65,pterocelastrus tricuspidatus,90
+old method,20um,1,F1F,ember,O_N_2_19,2,NA,19,6.96880282573984,9.675633826,old-1.0-20,Pterocelastrus tricuspidatus,0.65,pterocelastrus tricuspidatus,90
+old method,20um,1,F1F,ember,O_N_14A_4,14,A,4,3.80971263726072,7.643373414,old-1.0-20,Protea obtusifolia,0.58,protea obtusifolia,27
+old method,20um,1,F1F,ember,O_N_14A_15,14,A,15,2.68293781138627,9.04760606,old-1.0-20,Protea obtusifolia,0.58,protea obtusifolia,27
+old method,20um,1,F1F,ember,O_N_54A_31,54,A,31,3.82040087607224,7.446644389,old-1.0-20,Protea susannae,0.6,protea susannae,18
+old method,20um,1,F1F,ember,O_N_14A_27,14,A,27,3.39862155658555,9.736494026,old-1.0-20,Protea obtusifolia,0.58,protea obtusifolia,27
+old method,20um,1,F2F,ember,O_N_32A-3,32,A,3,4.61269893881304,7.728439486,old-1.0-20,Searsia glauca,0.72,searsia glauca,189
+old method,20um,1,F2F,ember,O_N_32A-21,32,A,21,7.954147865794271,10.07731032,old-1.0-20,Searsia glauca,0.72,searsia glauca,189
+old method,20um,1,F2F,ember,O_N_32A-29,32,A,29,4.08513900136064,8.440917455,old-1.0-20,Searsia glauca,0.72,searsia glauca,189
+old method,20um,1,F2F,ember,O_N_32B-3,32,B,3,4.47110353939339,9.983739741,old-1.0-20,Searsia glauca,0.72,searsia glauca,189
+old method,20um,1,F2F,ember,O_N_32B-7,32,B,7,4.15462105675915,8.582605165,old-1.0-20,Searsia glauca,0.72,searsia glauca,189
+old method,20um,1,F2F,ember,O_N_32B-16,32,B,16,4.91383275891127,11.95903389,old-1.0-20,Searsia glauca,0.72,searsia glauca,189
+old method,20um,1,F2F,ember,O_N_32C-3,32,C,3,9.522788966922148,15.47251435,old-1.0-20,Searsia glauca,0.72,searsia glauca,189
+old method,20um,1,F2F,ember,O_N_32C-4,32,C,4,3.9451613388713,9.27319454,old-1.0-20,Searsia glauca,0.72,searsia glauca,189
+old method,20um,1,F2F,ember,O_N_32C-7,32,C,7,4.67269580789635,10.71080939,old-1.0-20,Searsia glauca,0.72,searsia glauca,189
+old method,10um,2,Unheated,unheated,O.N.87_A_14,87,A,14,10.90138591,10.8149881953938,old-2.0-10,none,NA,none,153
+old method,10um,2,Unheated,unheated,O.N.87_A_17,87,A,17,8.78768658,9.60589912635118,old-2.0-10,none,NA,none,153
+old method,10um,2,Unheated,unheated,O.N.87_A_19,87,A,19,25.11191209,29.3764485077434,old-2.0-10,none,NA,none,153
+old method,10um,2,Unheated,unheated,O.N.87_A_22,87,A,22,16.22469955,23.84295432,old-2.0-10,none,NA,none,153
+old method,10um,2,Unheated,unheated,O.N.87_A_29,87,A,29,11.00950688,10.7212559441446,old-2.0-10,none,NA,none,153
+old method,10um,2,Unheated,unheated,O.N.87_A_4,87,A,4,10.21132993,13.946821173893,old-2.0-10,none,NA,none,153
+old method,10um,2,Unheated,unheated,O.N.87_A_5,87,A,5,9.714987212,10.457069888439,old-2.0-10,none,NA,none,153
+old method,10um,2,Unheated,unheated,O.N.87_A_9,87,A,9,6.694073631,6.77871761131983,old-2.0-10,none,NA,none,153
+old method,10um,2,Unheated,unheated,O.N.87_B_13,87,B,13,8.185994256,10.1251404254939,old-2.0-10,none,NA,none,153
+old method,10um,2,Unheated,unheated,O.N.87_B_19,87,B,19,12.90538605,15.4800272569119,old-2.0-10,none,NA,none,153
+old method,10um,2,Unheated,unheated,O.N.87_B_23,87,B,23,11.84850398,12.947165831867,old-2.0-10,none,NA,none,153
+old method,10um,2,Unheated,unheated,O.N.87_B_24,87,B,24,21.52603136,30.2004534941967,old-2.0-10,none,NA,none,153
+old method,10um,2,Unheated,unheated,O.N.87_B_28,87,B,28,14.06919363,20.229792560004,old-2.0-10,none,NA,none,153
+old method,10um,2,Unheated,unheated,O.N.87_B_2,87,B,2,13.84595292,16.7959351278774,old-2.0-10,none,NA,none,153
+old method,10um,2,Unheated,unheated,O.N.87_B_31,87,B,31,27.32471583,33.8434886017555,old-2.0-10,none,NA,none,153
+old method,10um,2,Unheated,unheated,O.N.87_B_6,87,B,6,21.76241166,25.9617617278879,old-2.0-10,none,NA,none,153
+old method,10um,2,Unheated,unheated,O.N.87_B_7,87,B,7,18.62569459,24.3196040478928,old-2.0-10,none,NA,none,153
+old method,10um,2,F1S,sand,O_N_37_2,37,NA,2,14.38477369,24.7705173348644,old-2.0-10,Searsia lucida,0.7,searsia lucida,171
+old method,10um,2,F1S,sand,O_N_37_3A,37,NA,3A,6.546715092,10.0462282481899,old-2.0-10,Searsia lucida,0.7,searsia lucida,171
+old method,10um,2,F1S,sand,O_N_37_4A,37,NA,4A,8.235844787999998,16.6487108915351,old-2.0-10,Searsia lucida,0.7,searsia lucida,171
+old method,10um,2,F1S,sand,O_N_37_8A,37,NA,8A,17.628969,26.9978915824338,old-2.0-10,Searsia lucida,0.7,searsia lucida,171
+old method,10um,2,F1S,sand,O_N_37_8B,37,NA,8B,7.655283048,16.1599676823976,old-2.0-10,Searsia lucida,0.7,searsia lucida,171
+old method,10um,2,F1S,sand,O_N_37_12A,37,NA,12A,9.434061257,12.2156063740077,old-2.0-10,Searsia lucida,0.7,searsia lucida,171
+old method,10um,2,F1S,sand,O_N_37_17A,37,NA,17A,7.846972267,12.6239394213709,old-2.0-10,Searsia lucida,0.7,searsia lucida,171
+old method,10um,2,F1S,sand,O_N_37_21,37,NA,21,9.816683018,23.7777807792237,old-2.0-10,Searsia lucida,0.7,searsia lucida,171
+old method,10um,2,F1S,sand,O_N_37_30,37,NA,30,7.200608471,11.9082390247544,old-2.0-10,Searsia lucida,0.7,searsia lucida,171
+old method,10um,2,F1S,sand,O_N_37_45,37,NA,45,9.359713462,16.7074602651322,old-2.0-10,Searsia lucida,0.7,searsia lucida,171
+old method,10um,2,F1S,sand,O_N_1_1,1,NA,1,12.41178625,14.2556366706996,old-2.0-10,Pterocelastrus tricuspidatus,0.65,pterocelastrus tricuspidatus,90
+old method,10um,2,F1S,sand,O_N_1_6A,1,NA,6A,17.91582519,23.411173541550095,old-2.0-10,Pterocelastrus tricuspidatus,0.65,pterocelastrus tricuspidatus,90
+old method,10um,2,F1S,sand,O_N_1_7A,1,NA,7A,12.29118123,15.2226602119037,old-2.0-10,Pterocelastrus tricuspidatus,0.65,pterocelastrus tricuspidatus,90
+old method,10um,2,F1S,sand,O_N_1_7B,1,NA,7B,18.19112509,26.95901729156,old-2.0-10,Pterocelastrus tricuspidatus,0.65,pterocelastrus tricuspidatus,90
+old method,10um,2,F1S,sand,O_N_1_8A,1,NA,8A,17.95256507,23.1642653083478,old-2.0-10,Pterocelastrus tricuspidatus,0.65,pterocelastrus tricuspidatus,90
+old method,10um,2,F1S,sand,O_N_1_15A,1,NA,15A,15.9328948,19.958450812318,old-2.0-10,Pterocelastrus tricuspidatus,0.65,pterocelastrus tricuspidatus,90
+old method,10um,2,F1S,sand,O_N_1_21,1,NA,21,19.33823192,26.459044708738,old-2.0-10,Pterocelastrus tricuspidatus,0.65,pterocelastrus tricuspidatus,90
+old method,10um,2,F2S,sand,O_N_31_3A,31,NA,3A,4.853025522,14.2840488054487,old-2.0-10,Searsia glauca,0.72,searsia glauca,189
+old method,10um,2,F2S,sand,O_N_31_5A,31,NA,5A,6.062367307,7.12521034627102,old-2.0-10,Searsia glauca,0.72,searsia glauca,189
+old method,10um,2,F2S,sand,O_N_31_8,31,NA,8,6.509131306,11.1067076445402,old-2.0-10,Searsia glauca,0.72,searsia glauca,189
+old method,10um,2,F2S,sand,O_N_31_12A,31,NA,12A,8.455119135,17.5868998720072,old-2.0-10,Searsia glauca,0.72,searsia glauca,189
+old method,10um,2,F2S,sand,O_N_31_12B,31,NA,12B,8.159251547,16.5525708804304,old-2.0-10,Searsia glauca,0.72,searsia glauca,189
+old method,10um,2,F2S,sand,O_N_31_16,31,NA,16,14.40145417,31.823237712244495,old-2.0-10,Searsia glauca,0.72,searsia glauca,189
+old method,10um,2,F2S,sand,O_N_31_26,31,NA,26,8.329085893,11.5941925142899,old-2.0-10,Searsia glauca,0.72,searsia glauca,189
+old method,10um,2,F2S,sand,O_N_31_28,31,NA,28,5.215640927,6.104246443949689,old-2.0-10,Searsia glauca,0.72,searsia glauca,189
+old method,10um,2,F2S,sand,O_N_31_32,31,NA,32,6.322342643,14.2515154671601,old-2.0-10,Searsia glauca,0.72,searsia glauca,189
+old method,10um,2,F2S,sand,O_N_31_39,31,NA,39,7.828610613,10.4373315590535,old-2.0-10,Searsia glauca,0.72,searsia glauca,189
+old method,10um,2,F2S,sand,O_N_31_47,31,NA,47,9.661996931,18.446335693168,old-2.0-10,Searsia glauca,0.72,searsia glauca,189
+old method,10um,2,F2S,sand,O_N_31_50,31,NA,50,13.05905635,19.5414282831488,old-2.0-10,Searsia glauca,0.72,searsia glauca,189
+old method,10um,2,F2S,sand,O_N_35_6,35,NA,6,14.8027284,22.21953815827,old-2.0-10,Olea exasperata,0.75,olea exasperata,45
+old method,10um,2,F2S,sand,O_N_35_28,35,NA,28,5.240150126,8.6488442067569,old-2.0-10,Olea exasperata,0.75,olea exasperata,45
+old method,10um,2,F2S,sand,O_N_35_29,35,NA,29,5.719815705,12.2615477936251,old-2.0-10,Olea exasperata,0.75,olea exasperata,45
+old method,10um,2,F2S,sand,O_N_35_31,35,NA,31,7.881504866,13.9317946407623,old-2.0-10,Olea exasperata,0.75,olea exasperata,45
+old method,10um,2,F2S,sand,O_N_35_33,35,NA,33,6.218232123,9.62768114030878,old-2.0-10,Olea exasperata,0.75,olea exasperata,45
+old method,10um,2,F1F,ember,O_N_38_2,38,NA,2,4.606496072,8.04605971809475,old-2.0-10,Searsia lucida,0.7,searsia lucida,171
+old method,10um,2,F1F,ember,O_N_38_3,38,NA,3,3.910246669,8.9221951292824,old-2.0-10,Searsia lucida,0.7,searsia lucida,171
+old method,10um,2,F1F,ember,O_N_38_9,38,NA,9,7.007272186,13.0837164964753,old-2.0-10,Searsia lucida,0.7,searsia lucida,171
+old method,10um,2,F1F,ember,O_N_38_10,38,NA,10,5.947177974,7.718275519453299,old-2.0-10,Searsia lucida,0.7,searsia lucida,171
+old method,10um,2,F1F,ember,O_N_38_13,38,NA,13,5.913453014,9.5604768235788,old-2.0-10,Searsia lucida,0.7,searsia lucida,171
+old method,10um,2,F1F,ember,O_N_38_18,38,NA,18,12.22357282,17.2423152295976,old-2.0-10,Searsia lucida,0.7,searsia lucida,171
+old method,10um,2,F1F,ember,O_N_38_20,38,NA,20,5.35017854,9.92514752531978,old-2.0-10,Searsia lucida,0.7,searsia lucida,171
+old method,10um,2,F1F,ember,O_N_38_22A,38,NA,22A,5.270805023,8.97248389811581,old-2.0-10,Searsia lucida,0.7,searsia lucida,171
+old method,10um,2,F1F,ember,O_N_38_25,38,NA,25,8.390524181,12.1371454598923,old-2.0-10,Searsia lucida,0.7,searsia lucida,171
+old method,10um,2,F1F,ember,O_N_54A_15,54,A,15,20.20108221,29.015208631728,old-2.0-10,Protea susannae,0.6,protea susannae,18
+old method,10um,2,F1F,ember,O_N_2_11B,2,NA,11B,4.503978542,8.07000418810558,old-2.0-10,Pterocelastrus tricuspidatus,0.65,pterocelastrus tricuspidatus,90
+old method,10um,2,F1F,ember,O_N_2_11A,2,NA,11A,5.69845797,10.2898896534354,old-2.0-10,Pterocelastrus tricuspidatus,0.65,pterocelastrus tricuspidatus,90
+old method,10um,2,F1F,ember,O_N_2_19,2,NA,19,9.434080262,11.4503890166648,old-2.0-10,Pterocelastrus tricuspidatus,0.65,pterocelastrus tricuspidatus,90
+old method,10um,2,F1F,ember,O_N_14A_4,14,A,4,4.72007738,8.60653170549873,old-2.0-10,Protea obtusifolia,0.58,protea obtusifolia,27
+old method,10um,2,F1F,ember,O_N_14A_15,14,A,15,6.869767842,15.962545635645,old-2.0-10,Protea obtusifolia,0.58,protea obtusifolia,27
+old method,10um,2,F1F,ember,O_N_54A_31,54,A,31,4.850920685,7.49434628081208,old-2.0-10,Protea susannae,0.6,protea susannae,18
+old method,10um,2,F1F,ember,O_N_14A_27,14,A,27,4.258811588,9.460855849791889,old-2.0-10,Protea obtusifolia,0.58,protea obtusifolia,27
+old method,10um,2,F2F,ember,O_N_32A-3,32,A,3,6.985874407,9.844961315,old-2.0-10,Searsia glauca,0.72,searsia glauca,189
+old method,10um,2,F2F,ember,O_N_32A-21,32,A,21,11.26412536,19.020136194053496,old-2.0-10,Searsia glauca,0.72,searsia glauca,189
+old method,10um,2,F2F,ember,O_N_32A-29,32,A,29,5.578639266,8.581462762,old-2.0-10,Searsia glauca,0.72,searsia glauca,189
+old method,10um,2,F2F,ember,O_N_32B-3,32,B,3,8.453412111,14.8770839078891,old-2.0-10,Searsia glauca,0.72,searsia glauca,189
+old method,10um,2,F2F,ember,O_N_32B-7,32,B,7,6.315769056,9.41392944317394,old-2.0-10,Searsia glauca,0.72,searsia glauca,189
+old method,10um,2,F2F,ember,O_N_32B-16,32,B,16,6.651225083,11.2051103735112,old-2.0-10,Searsia glauca,0.72,searsia glauca,189
+old method,10um,2,F2F,ember,O_N_32C-3,32,C,3,12.50653084,21.952907368331296,old-2.0-10,Searsia glauca,0.72,searsia glauca,189
+old method,10um,2,F2F,ember,O_N_32C-4,32,C,4,5.262186725,9.958181279,old-2.0-10,Searsia glauca,0.72,searsia glauca,189
+old method,10um,2,F2F,ember,O_N_32C-7,32,C,7,7.218568477,12.8563235212195,old-2.0-10,Searsia glauca,0.72,searsia glauca,189
+old method,20um,2,Unheated,unheated,O.N.87_A_14,87,A,14,7.282168924999999,8.08231523628296,old-2.0-20,none,NA,none,153
+old method,20um,2,Unheated,unheated,O.N.87_A_17,87,A,17,6.406155652,6.77582411175003,old-2.0-20,none,NA,none,153
+old method,20um,2,Unheated,unheated,O.N.87_A_19,87,A,19,17.12111876,17.3468997843926,old-2.0-20,none,NA,none,153
+old method,20um,2,Unheated,unheated,O.N.87_A_22,87,A,22,10.1469161,15.055906343138,old-2.0-20,none,NA,none,153
+old method,20um,2,Unheated,unheated,O.N.87_A_29,87,A,29,6.908853879,5.88716917311972,old-2.0-20,none,NA,none,153
+old method,20um,2,Unheated,unheated,O.N.87_A_4,87,A,4,7.44598581,9.544049082145028,old-2.0-20,none,NA,none,153
+old method,20um,2,Unheated,unheated,O.N.87_A_5,87,A,5,6.787195381,7.34571716056643,old-2.0-20,none,NA,none,153
+old method,20um,2,Unheated,unheated,O.N.87_A_9,87,A,9,4.389964459,4.51099002067475,old-2.0-20,none,NA,none,153
+old method,20um,2,Unheated,unheated,O.N.87_B_13,87,B,13,5.811575694,7.479297396906899,old-2.0-20,none,NA,none,153
+old method,20um,2,Unheated,unheated,O.N.87_B_19,87,B,19,8.831225272999998,10.3714719969714,old-2.0-20,none,NA,none,153
+old method,20um,2,Unheated,unheated,O.N.87_B_23,87,B,23,7.806682361,8.31592988824655,old-2.0-20,none,NA,none,153
+old method,20um,2,Unheated,unheated,O.N.87_B_24,87,B,24,12.10407668,16.0816396000144,old-2.0-20,none,NA,none,153
+old method,20um,2,Unheated,unheated,O.N.87_B_28,87,B,28,8.992770065,11.8539324710423,old-2.0-20,none,NA,none,153
+old method,20um,2,Unheated,unheated,O.N.87_B_2,87,B,2,8.445341207,9.75215506174302,old-2.0-20,none,NA,none,153
+old method,20um,2,Unheated,unheated,O.N.87_B_31,87,B,31,18.02133755,21.065711348513,old-2.0-20,none,NA,none,153
+old method,20um,2,Unheated,unheated,O.N.87_B_6,87,B,6,14.08524677,16.7324268591634,old-2.0-20,none,NA,none,153
+old method,20um,2,Unheated,unheated,O.N.87_B_7,87,B,7,12.1151255,16.7670881708075,old-2.0-20,none,NA,none,153
+old method,20um,2,F1S,sand,O_N_37_2,37,NA,2,9.80370666,18.196542809175,old-2.0-20,Searsia lucida,0.7,searsia lucida,171
+old method,20um,2,F1S,sand,O_N_37_3A,37,NA,3A,4.649839111,7.911777882812091,old-2.0-20,Searsia lucida,0.7,searsia lucida,171
+old method,20um,2,F1S,sand,O_N_37_4A,37,NA,4A,5.635926224,13.0028936641136,old-2.0-20,Searsia lucida,0.7,searsia lucida,171
+old method,20um,2,F1S,sand,O_N_37_8A,37,NA,8A,12.00479524,16.7919600032521,old-2.0-20,Searsia lucida,0.7,searsia lucida,171
+old method,20um,2,F1S,sand,O_N_37_8B,37,NA,8B,3.941661068,6.928738869416249,old-2.0-20,Searsia lucida,0.7,searsia lucida,171
+old method,20um,2,F1S,sand,O_N_37_12A,37,NA,12A,6.600511945,9.365606343,old-2.0-20,Searsia lucida,0.7,searsia lucida,171
+old method,20um,2,F1S,sand,O_N_37_17A,37,NA,17A,3.707973748,6.7713338281835,old-2.0-20,Searsia lucida,0.7,searsia lucida,171
+old method,20um,2,F1S,sand,O_N_37_21,37,NA,21,6.88786015,15.522537002369,old-2.0-20,Searsia lucida,0.7,searsia lucida,171
+old method,20um,2,F1S,sand,O_N_37_30,37,NA,30,4.506932098,8.44589668341105,old-2.0-20,Searsia lucida,0.7,searsia lucida,171
+old method,20um,2,F1S,sand,O_N_37_45,37,NA,45,6.877741467,13.1348892584928,old-2.0-20,Searsia lucida,0.7,searsia lucida,171
+old method,20um,2,F1S,sand,O_N_1_1,1,NA,1,8.021443896,8.40531099602151,old-2.0-20,Pterocelastrus tricuspidatus,0.65,pterocelastrus tricuspidatus,90
+old method,20um,2,F1S,sand,O_N_1_6A,1,NA,6A,12.83690496,16.6461809266587,old-2.0-20,Pterocelastrus tricuspidatus,0.65,pterocelastrus tricuspidatus,90
+old method,20um,2,F1S,sand,O_N_1_7A,1,NA,7A,9.039981197,11.2992745483269,old-2.0-20,Pterocelastrus tricuspidatus,0.65,pterocelastrus tricuspidatus,90
+old method,20um,2,F1S,sand,O_N_1_7B,1,NA,7B,11.61200369,14.8622153845343,old-2.0-20,Pterocelastrus tricuspidatus,0.65,pterocelastrus tricuspidatus,90
+old method,20um,2,F1S,sand,O_N_1_8A,1,NA,8A,11.77565249,15.781779470212,old-2.0-20,Pterocelastrus tricuspidatus,0.65,pterocelastrus tricuspidatus,90
+old method,20um,2,F1S,sand,O_N_1_15A,1,NA,15A,10.96856004,13.57600981452,old-2.0-20,Pterocelastrus tricuspidatus,0.65,pterocelastrus tricuspidatus,90
+old method,20um,2,F1S,sand,O_N_1_21,1,NA,21,13.47500033,17.6972673642384,old-2.0-20,Pterocelastrus tricuspidatus,0.65,pterocelastrus tricuspidatus,90
+old method,20um,2,F2S,sand,O_N_31_3A,31,NA,3A,2.699620966,7.766830779483939,old-2.0-20,Searsia glauca,0.72,searsia glauca,189
+old method,20um,2,F2S,sand,O_N_31_5A,31,NA,5A,3.768849183,4.98458197982423,old-2.0-20,Searsia glauca,0.72,searsia glauca,189
+old method,20um,2,F2S,sand,O_N_31_8,31,NA,8,3.462964235,7.640706105696579,old-2.0-20,Searsia glauca,0.72,searsia glauca,189
+old method,20um,2,F2S,sand,O_N_31_12A,31,NA,12A,6.358583535,13.1801617518721,old-2.0-20,Searsia glauca,0.72,searsia glauca,189
+old method,20um,2,F2S,sand,O_N_31_12B,31,NA,12B,5.488368969,11.5207246303003,old-2.0-20,Searsia glauca,0.72,searsia glauca,189
+old method,20um,2,F2S,sand,O_N_31_16,31,NA,16,8.971538069999998,19.999454426648896,old-2.0-20,Searsia glauca,0.72,searsia glauca,189
+old method,20um,2,F2S,sand,O_N_31_26,31,NA,26,4.859772104,7.81437221142312,old-2.0-20,Searsia glauca,0.72,searsia glauca,189
+old method,20um,2,F2S,sand,O_N_31_28,31,NA,28,2.931433053,4.44140066788575,old-2.0-20,Searsia glauca,0.72,searsia glauca,189
+old method,20um,2,F2S,sand,O_N_31_32,31,NA,32,3.757639889,9.360645257085102,old-2.0-20,Searsia glauca,0.72,searsia glauca,189
+old method,20um,2,F2S,sand,O_N_31_39,31,NA,39,4.268928811,6.3638804824295,old-2.0-20,Searsia glauca,0.72,searsia glauca,189
+old method,20um,2,F2S,sand,O_N_31_47,31,NA,47,5.577281785,12.8961851930078,old-2.0-20,Searsia glauca,0.72,searsia glauca,189
+old method,20um,2,F2S,sand,O_N_31_50,31,NA,50,6.961235424,10.96370263991,old-2.0-20,Searsia glauca,0.72,searsia glauca,189
+old method,20um,2,F2S,sand,O_N_35_6,35,NA,6,10.22262358,14.7797019534112,old-2.0-20,Olea exasperata,0.75,olea exasperata,45
+old method,20um,2,F2S,sand,O_N_35_28,35,NA,28,3.351002722,6.081598143,old-2.0-20,Olea exasperata,0.75,olea exasperata,45
+old method,20um,2,F2S,sand,O_N_35_29,35,NA,29,3.460088924,8.310473687789049,old-2.0-20,Olea exasperata,0.75,olea exasperata,45
+old method,20um,2,F2S,sand,O_N_35_31,35,NA,31,4.411741583,8.372801780999998,old-2.0-20,Olea exasperata,0.75,olea exasperata,45
+old method,20um,2,F2S,sand,O_N_35_33,35,NA,33,4.267275806,7.74977437425208,old-2.0-20,Olea exasperata,0.75,olea exasperata,45
+old method,20um,2,F1F,ember,O_N_38_2,38,NA,2,2.777479967,5.45104488052307,old-2.0-20,Searsia lucida,0.7,searsia lucida,171
+old method,20um,2,F1F,ember,O_N_38_3,38,NA,3,2.469637655,6.11316883483202,old-2.0-20,Searsia lucida,0.7,searsia lucida,171
+old method,20um,2,F1F,ember,O_N_38_9,38,NA,9,4.212489787,8.974053340999998,old-2.0-20,Searsia lucida,0.7,searsia lucida,171
+old method,20um,2,F1F,ember,O_N_38_10,38,NA,10,3.644606952,5.409585524754889,old-2.0-20,Searsia lucida,0.7,searsia lucida,171
+old method,20um,2,F1F,ember,O_N_38_13,38,NA,13,3.962393599,7.3668008820635,old-2.0-20,Searsia lucida,0.7,searsia lucida,171
+old method,20um,2,F1F,ember,O_N_38_18,38,NA,18,7.336744677,9.73482951977029,old-2.0-20,Searsia lucida,0.7,searsia lucida,171
+old method,20um,2,F1F,ember,O_N_38_20,38,NA,20,3.363961082,7.15519313190552,old-2.0-20,Searsia lucida,0.7,searsia lucida,171
+old method,20um,2,F1F,ember,O_N_38_22A,38,NA,22A,3.107194835,6.16313755553743,old-2.0-20,Searsia lucida,0.7,searsia lucida,171
+old method,20um,2,F1F,ember,O_N_38_25,38,NA,25,4.817292198,7.8317497752876095,old-2.0-20,Searsia lucida,0.7,searsia lucida,171
+old method,20um,2,F1F,ember,O_N_54A_15,54,A,15,13.92821426,19.0897326680128,old-2.0-20,Protea susannae,0.6,protea susannae,18
+old method,20um,2,F1F,ember,O_N_2_11B,2,NA,11B,2.774837969,6.57668850882602,old-2.0-20,Pterocelastrus tricuspidatus,0.65,pterocelastrus tricuspidatus,90
+old method,20um,2,F1F,ember,O_N_2_11A,2,NA,11A,3.367830514,6.19744751466706,old-2.0-20,Pterocelastrus tricuspidatus,0.65,pterocelastrus tricuspidatus,90
+old method,20um,2,F1F,ember,O_N_2_19,2,NA,19,5.873865792,7.71629107334822,old-2.0-20,Pterocelastrus tricuspidatus,0.65,pterocelastrus tricuspidatus,90
+old method,20um,2,F1F,ember,O_N_14A_4,14,A,4,2.995357457,5.70093171887582,old-2.0-20,Protea obtusifolia,0.58,protea obtusifolia,27
+old method,20um,2,F1F,ember,O_N_14A_15,14,A,15,5.129458559,11.8764876242648,old-2.0-20,Protea obtusifolia,0.58,protea obtusifolia,27
+old method,20um,2,F1F,ember,O_N_54A_31,54,A,31,2.855026921,5.50272863543655,old-2.0-20,Protea susannae,0.6,protea susannae,18
+old method,20um,2,F1F,ember,O_N_14A_27,14,A,27,2.656980064,7.10567066823098,old-2.0-20,Protea obtusifolia,0.58,protea obtusifolia,27
+old method,20um,2,F2F,ember,O_N_32A-3,32,A,3,3.978735193,6.02283936280934,old-2.0-20,Searsia glauca,0.72,searsia glauca,189
+old method,20um,2,F2F,ember,O_N_32A-21,32,A,21,6.364686771,7.9372337413892895,old-2.0-20,Searsia glauca,0.72,searsia glauca,189
+old method,20um,2,F2F,ember,O_N_32A-29,32,A,29,3.570523717,6.25416632668668,old-2.0-20,Searsia glauca,0.72,searsia glauca,189
+old method,20um,2,F2F,ember,O_N_32B-3,32,B,3,6.469297105,11.3140749859947,old-2.0-20,Searsia glauca,0.72,searsia glauca,189
+old method,20um,2,F2F,ember,O_N_32B-7,32,B,7,4.22868709,6.86904610445521,old-2.0-20,Searsia glauca,0.72,searsia glauca,189
+old method,20um,2,F2F,ember,O_N_32B-16,32,B,16,4.187534077,8.977819835554659,old-2.0-20,Searsia glauca,0.72,searsia glauca,189
+old method,20um,2,F2F,ember,O_N_32C-3,32,C,3,8.853150728999998,13.6742692010554,old-2.0-20,Searsia glauca,0.72,searsia glauca,189
+old method,20um,2,F2F,ember,O_N_32C-4,32,C,4,3.246917088,6.8519188724514,old-2.0-20,Searsia glauca,0.72,searsia glauca,189
+old method,20um,2,F2F,ember,O_N_32C-7,32,C,7,5.010159685,9.504881341702948,old-2.0-20,Searsia glauca,0.72,searsia glauca,189
+new method,10um,NA,Unheated,unheated,O.N.87_A_14,87,A,14,66.04534224,31.89765785,new-10,none,NA,none,153
+new method,10um,NA,Unheated,unheated,O.N.87_A_17,87,A,17,66.10652398,45.12761337,new-10,none,NA,none,153
+new method,10um,NA,Unheated,unheated,O.N.87_A_19,87,A,19,38.7413743,22.20675996,new-10,none,NA,none,153
+new method,10um,NA,Unheated,unheated,O.N.87_A_22,87,A,22,54.1488041,32.90235918,new-10,none,NA,none,153
+new method,10um,NA,Unheated,unheated,O.N.87_A_29,87,A,29,55.77753004,17.75889391,new-10,none,NA,none,153
+new method,10um,NA,Unheated,unheated,O.N.87_A_4,87,A,4,70.83467947,31.33335793,new-10,none,NA,none,153
+new method,10um,NA,Unheated,unheated,O.N.87_A_5,87,A,5,60.06734786,28.42895062,new-10,none,NA,none,153
+new method,10um,NA,Unheated,unheated,O.N.87_A_9,87,A,9,71.07018668,30.71596934,new-10,none,NA,none,153
+new method,10um,NA,Unheated,unheated,O.N.87_B_13,87,B,13,81.08432338999998,30.12381575,new-10,none,NA,none,153
+new method,10um,NA,Unheated,unheated,O.N.87_B_19,87,B,19,61.81660604,29.4805433,new-10,none,NA,none,153
+new method,10um,NA,Unheated,unheated,O.N.87_B_23,87,B,23,84.84744102,39.08035795,new-10,none,NA,none,153
+new method,10um,NA,Unheated,unheated,O.N.87_B_24,87,B,24,48.80091844,28.09402421,new-10,none,NA,none,153
+new method,10um,NA,Unheated,unheated,O.N.87_B_28,87,B,28,66.10130263,38.5052736,new-10,none,NA,none,153
+new method,10um,NA,Unheated,unheated,O.N.87_B_2,87,B,2,63.23181634,33.15283258,new-10,none,NA,none,153
+new method,10um,NA,Unheated,unheated,O.N.87_B_31,87,B,31,77.88777166,62.19828335,new-10,none,NA,none,153
+new method,10um,NA,Unheated,unheated,O.N.87_B_6,87,B,6,39.26001387,29.84861608,new-10,none,NA,none,153
+new method,10um,NA,Unheated,unheated,O.N.87_B_7,87,B,7,46.62281586,37.9425366,new-10,none,NA,none,153
+new method,10um,NA,F1S,sand,O_N_37_2,37,NA,2,70.87044936,27.14777269,new-10,Searsia lucida,0.7,searsia lucida,171
+new method,10um,NA,F1S,sand,O_N_37_3A,37,NA,3A,72.50354876999998,45.41984774,new-10,Searsia lucida,0.7,searsia lucida,171
+new method,10um,NA,F1S,sand,O_N_37_4A,37,NA,4A,107.7978781,48.12259923,new-10,Searsia lucida,0.7,searsia lucida,171
+new method,10um,NA,F1S,sand,O_N_37_8A,37,NA,8A,91.5260178,53.67106902,new-10,Searsia lucida,0.7,searsia lucida,171
+new method,10um,NA,F1S,sand,O_N_37_8B,37,NA,8B,56.71319831,49.86493558,new-10,Searsia lucida,0.7,searsia lucida,171
+new method,10um,NA,F1S,sand,O_N_37_12A,37,NA,12A,62.70520198,30.26130924,new-10,Searsia lucida,0.7,searsia lucida,171
+new method,10um,NA,F1S,sand,O_N_37_17A,37,NA,17A,89.61790293999998,24.04596729,new-10,Searsia lucida,0.7,searsia lucida,171
+new method,10um,NA,F1S,sand,O_N_37_21,37,NA,21,96.41729981,34.02984447,new-10,Searsia lucida,0.7,searsia lucida,171
+new method,10um,NA,F1S,sand,O_N_37_30,37,NA,30,93.68662556,15.69858185,new-10,Searsia lucida,0.7,searsia lucida,171
+new method,10um,NA,F1S,sand,O_N_37_45,37,NA,45,64.36269854,44.10952384,new-10,Searsia lucida,0.7,searsia lucida,171
+new method,10um,NA,F1S,sand,O_N_1_1,1,NA,1,79.04723475999998,43.18002254,new-10,Pterocelastrus tricuspidatus,0.65,pterocelastrus tricuspidatus,90
+new method,10um,NA,F1S,sand,O_N_1_6A,1,NA,6A,52.97139197,31.25778038,new-10,Pterocelastrus tricuspidatus,0.65,pterocelastrus tricuspidatus,90
+new method,10um,NA,F1S,sand,O_N_1_7A,1,NA,7A,65.83506815,34.1931183,new-10,Pterocelastrus tricuspidatus,0.65,pterocelastrus tricuspidatus,90
+new method,10um,NA,F1S,sand,O_N_1_7B,1,NA,7B,55.57084886,25.23895242,new-10,Pterocelastrus tricuspidatus,0.65,pterocelastrus tricuspidatus,90
+new method,10um,NA,F1S,sand,O_N_1_8A,1,NA,8A,51.69005023,35.23492375,new-10,Pterocelastrus tricuspidatus,0.65,pterocelastrus tricuspidatus,90
+new method,10um,NA,F1S,sand,O_N_1_15A,1,NA,15A,32.54692741,22.26197153,new-10,Pterocelastrus tricuspidatus,0.65,pterocelastrus tricuspidatus,90
+new method,10um,NA,F1S,sand,O_N_1_21,1,NA,21,70.80647092,30.4735012,new-10,Pterocelastrus tricuspidatus,0.65,pterocelastrus tricuspidatus,90
+new method,10um,NA,F2S,sand,O_N_31_3A,31,NA,3A,92.96904069,17.80284246,new-10,Searsia glauca,0.72,searsia glauca,189
+new method,10um,NA,F2S,sand,O_N_31_5A,31,NA,5A,57.65108917,49.23530471,new-10,Searsia glauca,0.72,searsia glauca,189
+new method,10um,NA,F2S,sand,O_N_31_8,31,NA,8,96.51461432,19.26656331,new-10,Searsia glauca,0.72,searsia glauca,189
+new method,10um,NA,F2S,sand,O_N_31_12A,31,NA,12A,84.19760359,39.80278413,new-10,Searsia glauca,0.72,searsia glauca,189
+new method,10um,NA,F2S,sand,O_N_31_12B,31,NA,12B,81.08757645,40.41670302,new-10,Searsia glauca,0.72,searsia glauca,189
+new method,10um,NA,F2S,sand,O_N_31_16,31,NA,16,108.3717956,24.14049706,new-10,Searsia glauca,0.72,searsia glauca,189
+new method,10um,NA,F2S,sand,O_N_31_26,31,NA,26,70.55858345,30.86129152,new-10,Searsia glauca,0.72,searsia glauca,189
+new method,10um,NA,F2S,sand,O_N_31_28,31,NA,28,88.57922497,27.07304622,new-10,Searsia glauca,0.72,searsia glauca,189
+new method,10um,NA,F2S,sand,O_N_31_32,31,NA,32,91.4201607,36.79782318,new-10,Searsia glauca,0.72,searsia glauca,189
+new method,10um,NA,F2S,sand,O_N_31_39,31,NA,39,78.19616632999998,22.69325319,new-10,Searsia glauca,0.72,searsia glauca,189
+new method,10um,NA,F2S,sand,O_N_31_47,31,NA,47,89.36492172,34.45631715,new-10,Searsia glauca,0.72,searsia glauca,189
+new method,10um,NA,F2S,sand,O_N_31_50,31,NA,50,62.78573357,31.0975628,new-10,Searsia glauca,0.72,searsia glauca,189
+new method,10um,NA,F2S,sand,O_N_35_6,35,NA,6,91.0723653,33.86254912,new-10,Olea exasperata,0.75,olea exasperata,45
+new method,10um,NA,F2S,sand,O_N_35_28,35,NA,28,106.0728296,31.72103758,new-10,Olea exasperata,0.75,olea exasperata,45
+new method,10um,NA,F2S,sand,O_N_35_29,35,NA,29,81.00480485999998,15.06529606,new-10,Olea exasperata,0.75,olea exasperata,45
+new method,10um,NA,F2S,sand,O_N_35_31,35,NA,31,39.14062733,30.41958538,new-10,Olea exasperata,0.75,olea exasperata,45
+new method,10um,NA,F2S,sand,O_N_35_33,35,NA,33,26.97098301,23.17437881,new-10,Olea exasperata,0.75,olea exasperata,45
+new method,10um,NA,F1F,ember,O_N_38_2,38,NA,2,80.23544076,38.86355595,new-10,Searsia lucida,0.7,searsia lucida,171
+new method,10um,NA,F1F,ember,O_N_38_3,38,NA,3,99.03220864,33.38429517,new-10,Searsia lucida,0.7,searsia lucida,171
+new method,10um,NA,F1F,ember,O_N_38_9,38,NA,9,115.2321151,106.6240642,new-10,Searsia lucida,0.7,searsia lucida,171
+new method,10um,NA,F1F,ember,O_N_38_10,38,NA,10,81.48656208,23.18515307,new-10,Searsia lucida,0.7,searsia lucida,171
+new method,10um,NA,F1F,ember,O_N_38_13,38,NA,13,120.942142,64.46226235,new-10,Searsia lucida,0.7,searsia lucida,171
+new method,10um,NA,F1F,ember,O_N_38_18,38,NA,18,84.77021392,26.78950352,new-10,Searsia lucida,0.7,searsia lucida,171
+new method,10um,NA,F1F,ember,O_N_38_20,38,NA,20,101.2014068,20.8071997,new-10,Searsia lucida,0.7,searsia lucida,171
+new method,10um,NA,F1F,ember,O_N_38_22A,38,NA,22A,79.85996145,28.04203305,new-10,Searsia lucida,0.7,searsia lucida,171
+new method,10um,NA,F1F,ember,O_N_38_25,38,NA,25,85.99281731,13.99414152,new-10,Searsia lucida,0.7,searsia lucida,171
+new method,10um,NA,F1F,ember,O_N_54A_15,54,A,15,86.61449670999998,31.87454837,new-10,Protea susannae,0.6,protea susannae,18
+new method,10um,NA,F1F,ember,O_N_2_11B,2,NA,11B,83.39515747,20.36442077,new-10,Pterocelastrus tricuspidatus,0.65,pterocelastrus tricuspidatus,90
+new method,10um,NA,F1F,ember,O_N_2_11A,2,NA,11A,86.18476676999998,29.8670619,new-10,Pterocelastrus tricuspidatus,0.65,pterocelastrus tricuspidatus,90
+new method,10um,NA,F1F,ember,O_N_2_19,2,NA,19,73.57711587999998,6.385226306,new-10,Pterocelastrus tricuspidatus,0.65,pterocelastrus tricuspidatus,90
+new method,10um,NA,F1F,ember,O_N_14A_4,14,A,4,108.2712987,53.41231983,new-10,Protea obtusifolia,0.58,protea obtusifolia,27
+new method,10um,NA,F1F,ember,O_N_14A_15,14,A,15,89.87437776,18.84568329,new-10,Protea obtusifolia,0.58,protea obtusifolia,27
+new method,10um,NA,F1F,ember,O_N_54A_31,54,A,31,95.78246589,44.05151083,new-10,Protea susannae,0.6,protea susannae,18
+new method,10um,NA,F1F,ember,O_N_14A_27,14,A,27,97.53687231,32.73718334,new-10,Protea obtusifolia,0.58,protea obtusifolia,27
+new method,10um,NA,F2F,ember,O_N_32A-3,32,A,3,81.66273826,24.11933452,new-10,Searsia glauca,0.72,searsia glauca,189
+new method,10um,NA,F2F,ember,O_N_32A-21,32,A,21,82.57902760999998,41.11754379,new-10,Searsia glauca,0.72,searsia glauca,189
+new method,10um,NA,F2F,ember,O_N_32A-29,32,A,29,77.80928693,31.15184908,new-10,Searsia glauca,0.72,searsia glauca,189
+new method,10um,NA,F2F,ember,O_N_32B-3,32,B,3,89.8972921,24.58089458,new-10,Searsia glauca,0.72,searsia glauca,189
+new method,10um,NA,F2F,ember,O_N_32B-7,32,B,7,89.88458013999998,30.03109545,new-10,Searsia glauca,0.72,searsia glauca,189
+new method,10um,NA,F2F,ember,O_N_32B-16,32,B,16,127.1359391,127.1912741,new-10,Searsia glauca,0.72,searsia glauca,189
+new method,10um,NA,F2F,ember,O_N_32C-3,32,C,3,70.76353669,21.94533891,new-10,Searsia glauca,0.72,searsia glauca,189
+new method,10um,NA,F2F,ember,O_N_32C-4,32,C,4,73.166763220000007,28.63572285,new-10,Searsia glauca,0.72,searsia glauca,189
+new method,10um,NA,F2F,ember,O_N_32C-7,32,C,7,107.9093693,99.42100404,new-10,Searsia glauca,0.72,searsia glauca,189
+new method,20um,NA,Unheated,unheated,O.N.87_A_14,87,A,14,54.7940956,22.97612625,new-20,none,NA,none,153
+new method,20um,NA,Unheated,unheated,O.N.87_A_17,87,A,17,43.46207686,26.55218235,new-20,none,NA,none,153
+new method,20um,NA,Unheated,unheated,O.N.87_A_19,87,A,19,31.63594344,22.58431695,new-20,none,NA,none,153
+new method,20um,NA,Unheated,unheated,O.N.87_A_22,87,A,22,42.39759871,29.78018397,new-20,none,NA,none,153
+new method,20um,NA,Unheated,unheated,O.N.87_A_29,87,A,29,44.95905251,22.2689491,new-20,none,NA,none,153
+new method,20um,NA,Unheated,unheated,O.N.87_A_4,87,A,4,49.68188768,25.83708832,new-20,none,NA,none,153
+new method,20um,NA,Unheated,unheated,O.N.87_A_5,87,A,5,43.21274906,21.22589219,new-20,none,NA,none,153
+new method,20um,NA,Unheated,unheated,O.N.87_A_9,87,A,9,55.37438878,23.21309619,new-20,none,NA,none,153
+new method,20um,NA,Unheated,unheated,O.N.87_B_13,87,B,13,66.25044267,20.34759025,new-20,none,NA,none,153
+new method,20um,NA,Unheated,unheated,O.N.87_B_19,87,B,19,50.45721817,22.09846353,new-20,none,NA,none,153
+new method,20um,NA,Unheated,unheated,O.N.87_B_23,87,B,23,67.65719007,32.34598419,new-20,none,NA,none,153
+new method,20um,NA,Unheated,unheated,O.N.87_B_24,87,B,24,41.99800884,20.2610669,new-20,none,NA,none,153
+new method,20um,NA,Unheated,unheated,O.N.87_B_28,87,B,28,44.53408219,26.97838902,new-20,none,NA,none,153
+new method,20um,NA,Unheated,unheated,O.N.87_B_2,87,B,2,48.36805639,20.02215422,new-20,none,NA,none,153
+new method,20um,NA,Unheated,unheated,O.N.87_B_31,87,B,31,72.68328633999998,63.61933133,new-20,none,NA,none,153
+new method,20um,NA,Unheated,unheated,O.N.87_B_6,87,B,6,35.81415261,22.33897461,new-20,none,NA,none,153
+new method,20um,NA,Unheated,unheated,O.N.87_B_7,87,B,7,37.88032026,29.15673814,new-20,none,NA,none,153
+new method,20um,NA,F1S,sand,O_N_37_2,37,NA,2,55.82625345,24.16377464,new-20,Searsia lucida,0.7,searsia lucida,171
+new method,20um,NA,F1S,sand,O_N_37_3A,37,NA,3A,62.77332305,34.01587336,new-20,Searsia lucida,0.7,searsia lucida,171
+new method,20um,NA,F1S,sand,O_N_37_4A,37,NA,4A,79.58348445,22.43541728,new-20,Searsia lucida,0.7,searsia lucida,171
+new method,20um,NA,F1S,sand,O_N_37_8A,37,NA,8A,60.24799405,22.78507994,new-20,Searsia lucida,0.7,searsia lucida,171
+new method,20um,NA,F1S,sand,O_N_37_8B,37,NA,8B,37.7467164,29.89431917,new-20,Searsia lucida,0.7,searsia lucida,171
+new method,20um,NA,F1S,sand,O_N_37_12A,37,NA,12A,48.07080974,20.85769836,new-20,Searsia lucida,0.7,searsia lucida,171
+new method,20um,NA,F1S,sand,O_N_37_17A,37,NA,17A,68.42793099,18.00716261,new-20,Searsia lucida,0.7,searsia lucida,171
+new method,20um,NA,F1S,sand,O_N_37_21,37,NA,21,77.13571254,27.85231304,new-20,Searsia lucida,0.7,searsia lucida,171
+new method,20um,NA,F1S,sand,O_N_37_30,37,NA,30,65.96876142,11.12393383,new-20,Searsia lucida,0.7,searsia lucida,171
+new method,20um,NA,F1S,sand,O_N_37_45,37,NA,45,61.69349722,47.00270949,new-20,Searsia lucida,0.7,searsia lucida,171
+new method,20um,NA,F1S,sand,O_N_1_1,1,NA,1,53.96641386,27.6899805,new-20,Pterocelastrus tricuspidatus,0.65,pterocelastrus tricuspidatus,90
+new method,20um,NA,F1S,sand,O_N_1_6A,1,NA,6A,41.78958205,22.42253895,new-20,Pterocelastrus tricuspidatus,0.65,pterocelastrus tricuspidatus,90
+new method,20um,NA,F1S,sand,O_N_1_7A,1,NA,7A,52.84810733,32.71809063,new-20,Pterocelastrus tricuspidatus,0.65,pterocelastrus tricuspidatus,90
+new method,20um,NA,F1S,sand,O_N_1_7B,1,NA,7B,39.4665,17.56797198,new-20,Pterocelastrus tricuspidatus,0.65,pterocelastrus tricuspidatus,90
+new method,20um,NA,F1S,sand,O_N_1_8A,1,NA,8A,45.52412803,23.71601563,new-20,Pterocelastrus tricuspidatus,0.65,pterocelastrus tricuspidatus,90
+new method,20um,NA,F1S,sand,O_N_1_15A,1,NA,15A,25.85408456,20.99592596,new-20,Pterocelastrus tricuspidatus,0.65,pterocelastrus tricuspidatus,90
+new method,20um,NA,F1S,sand,O_N_1_21,1,NA,21,55.31779809,24.35041854,new-20,Pterocelastrus tricuspidatus,0.65,pterocelastrus tricuspidatus,90
+new method,20um,NA,F2S,sand,O_N_31_3A,31,NA,3A,71.67646572,12.83180475,new-20,Searsia glauca,0.72,searsia glauca,189
+new method,20um,NA,F2S,sand,O_N_31_5A,31,NA,5A,44.83965682,22.68583408,new-20,Searsia glauca,0.72,searsia glauca,189
+new method,20um,NA,F2S,sand,O_N_31_8,31,NA,8,72.24135914,9.847366033,new-20,Searsia glauca,0.72,searsia glauca,189
+new method,20um,NA,F2S,sand,O_N_31_12A,31,NA,12A,62.54665928,22.30612071,new-20,Searsia glauca,0.72,searsia glauca,189
+new method,20um,NA,F2S,sand,O_N_31_12B,31,NA,12B,67.20119106,23.2186652,new-20,Searsia glauca,0.72,searsia glauca,189
+new method,20um,NA,F2S,sand,O_N_31_16,31,NA,16,81.77867969,23.30717751,new-20,Searsia glauca,0.72,searsia glauca,189
+new method,20um,NA,F2S,sand,O_N_31_26,31,NA,26,53.9891897,19.19428381,new-20,Searsia glauca,0.72,searsia glauca,189
+new method,20um,NA,F2S,sand,O_N_31_28,31,NA,28,65.66540031,22.15250764,new-20,Searsia glauca,0.72,searsia glauca,189
+new method,20um,NA,F2S,sand,O_N_31_32,31,NA,32,69.6152323,34.01421498,new-20,Searsia glauca,0.72,searsia glauca,189
+new method,20um,NA,F2S,sand,O_N_31_39,31,NA,39,61.18156854,11.38981258,new-20,Searsia glauca,0.72,searsia glauca,189
+new method,20um,NA,F2S,sand,O_N_31_47,31,NA,47,65.33954283,17.30223254,new-20,Searsia glauca,0.72,searsia glauca,189
+new method,20um,NA,F2S,sand,O_N_31_50,31,NA,50,46.3186353,24.12025691,new-20,Searsia glauca,0.72,searsia glauca,189
+new method,20um,NA,F2S,sand,O_N_35_6,35,NA,6,67.81219263,34.69315464,new-20,Olea exasperata,0.75,olea exasperata,45
+new method,20um,NA,F2S,sand,O_N_35_28,35,NA,28,84.93096160999998,24.28239331,new-20,Olea exasperata,0.75,olea exasperata,45
+new method,20um,NA,F2S,sand,O_N_35_29,35,NA,29,61.42154834,11.95041262,new-20,Olea exasperata,0.75,olea exasperata,45
+new method,20um,NA,F2S,sand,O_N_35_31,35,NA,31,33.6750165,20.42489448,new-20,Olea exasperata,0.75,olea exasperata,45
+new method,20um,NA,F2S,sand,O_N_35_33,35,NA,33,20.46757803,17.58768378,new-20,Olea exasperata,0.75,olea exasperata,45
+new method,20um,NA,F1F,ember,O_N_38_2,38,NA,2,64.82374819,23.33976716,new-20,Searsia lucida,0.7,searsia lucida,171
+new method,20um,NA,F1F,ember,O_N_38_3,38,NA,3,77.79191661,23.43734417,new-20,Searsia lucida,0.7,searsia lucida,171
+new method,20um,NA,F1F,ember,O_N_38_9,38,NA,9,98.65254215,101.2353168,new-20,Searsia lucida,0.7,searsia lucida,171
+new method,20um,NA,F1F,ember,O_N_38_10,38,NA,10,65.52054931,19.50285085,new-20,Searsia lucida,0.7,searsia lucida,171
+new method,20um,NA,F1F,ember,O_N_38_13,38,NA,13,98.537921,65.14761474,new-20,Searsia lucida,0.7,searsia lucida,171
+new method,20um,NA,F1F,ember,O_N_38_18,38,NA,18,65.92982122,25.1416539,new-20,Searsia lucida,0.7,searsia lucida,171
+new method,20um,NA,F1F,ember,O_N_38_20,38,NA,20,73.13079329,15.2126537,new-20,Searsia lucida,0.7,searsia lucida,171
+new method,20um,NA,F1F,ember,O_N_38_22A,38,NA,22A,60.54501956,18.20975306,new-20,Searsia lucida,0.7,searsia lucida,171
+new method,20um,NA,F1F,ember,O_N_38_25,38,NA,25,66.3436298,10.19209237,new-20,Searsia lucida,0.7,searsia lucida,171
+new method,20um,NA,F1F,ember,O_N_54A_15,54,A,15,65.96989446,24.27695037,new-20,Protea susannae,0.6,protea susannae,18
+new method,20um,NA,F1F,ember,O_N_2_11B,2,NA,11B,62.5291333,13.26591838,new-20,Pterocelastrus tricuspidatus,0.65,pterocelastrus tricuspidatus,90
+new method,20um,NA,F1F,ember,O_N_2_11A,2,NA,11A,66.53484266,23.33536365,new-20,Pterocelastrus tricuspidatus,0.65,pterocelastrus tricuspidatus,90
+new method,20um,NA,F1F,ember,O_N_2_19,2,NA,19,65.84620555,10.91642631,new-20,Pterocelastrus tricuspidatus,0.65,pterocelastrus tricuspidatus,90
+new method,20um,NA,F1F,ember,O_N_14A_4,14,A,4,88.97273644,53.22769799,new-20,Protea obtusifolia,0.58,protea obtusifolia,27
+new method,20um,NA,F1F,ember,O_N_14A_15,14,A,15,72.47562112,16.47990411,new-20,Protea obtusifolia,0.58,protea obtusifolia,27
+new method,20um,NA,F1F,ember,O_N_54A_31,54,A,31,66.63277192,17.52702176,new-20,Protea susannae,0.6,protea susannae,18
+new method,20um,NA,F1F,ember,O_N_14A_27,14,A,27,81.38928335,37.06360908,new-20,Protea obtusifolia,0.58,protea obtusifolia,27
+new method,20um,NA,F2F,ember,O_N_32A-3,32,A,3,68.72255062,13.82591171,new-20,Searsia glauca,0.72,searsia glauca,189
+new method,20um,NA,F2F,ember,O_N_32A-21,32,A,21,66.74016056,26.26852516,new-20,Searsia glauca,0.72,searsia glauca,189
+new method,20um,NA,F2F,ember,O_N_32A-29,32,A,29,59.53145558,14.97871018,new-20,Searsia glauca,0.72,searsia glauca,189
+new method,20um,NA,F2F,ember,O_N_32B-3,32,B,3,67.31211103,14.5692235,new-20,Searsia glauca,0.72,searsia glauca,189
+new method,20um,NA,F2F,ember,O_N_32B-7,32,B,7,60.70581434,28.48335255,new-20,Searsia glauca,0.72,searsia glauca,189
+new method,20um,NA,F2F,ember,O_N_32B-16,32,B,16,110.9859432,127.579081,new-20,Searsia glauca,0.72,searsia glauca,189
+new method,20um,NA,F2F,ember,O_N_32C-3,32,C,3,48.5666931,25.07634128,new-20,Searsia glauca,0.72,searsia glauca,189
+new method,20um,NA,F2F,ember,O_N_32C-4,32,C,4,60.00442731,24.73864047,new-20,Searsia glauca,0.72,searsia glauca,189
+new method,20um,NA,F2F,ember,O_N_32C-7,32,C,7,83.83360933999998,100.0736699,new-20,Searsia glauca,0.72,searsia glauca,189

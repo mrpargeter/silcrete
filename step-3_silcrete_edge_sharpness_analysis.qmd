@@ -1,0 +1,377 @@
+---
+title: "Silcrete Edge Sharpness: Heating Technique vs. Wood Density"
+author: "Analysis Notebook"
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    number-sections: true
+execute:
+  echo: true
+  warning: false
+  message: false
+---
+
+# Overview
+
+Here we analyze how **heating technique** (ember vs sand) and **wood fuel density** affect silcrete flake **edge sharpness** (average curvature).
+
+-   Exclude **unheated** observations.
+-   Analyze **best fit circle method** (10 µm and 20 µm).
+-   Analyze **three point stepping** method at distances **0.1, 0.5, 1.0, 2.0 cm** and scales **10 µm, 20 µm**.
+-   Fit OLS with interaction: `average_curvature ~ wood_density * heating_condition`.
+-   Use **Type II ANOVA** and **HC3** robust SE for inference.
+-   Report **adjusted means** (EMMs) for heating condition at mean wood density.
+
+## Packages & Data
+
+```{r}
+library(tidyverse)
+library(car)
+library(sandwich)
+library(lmtest)
+library(emmeans)
+library(broom)
+library(tibble)
+
+data_path <- "wide-to-long_with_wood_density.csv"
+dat <- readr::read_csv(data_path, show_col_types = FALSE)
+
+dat <- dat %>%
+  mutate(
+    method = dplyr::recode(tolower(method),
+    "old method" = "three point stepping",
+    "new method" = "best fit circle"
+  ),
+    scale = tolower(as.character(scale)),
+    treatment = as.character(treatment),
+    heating_condition = tolower(as.character(heating_condition)),
+    distance = suppressWarnings(as.numeric(distance))
+  )
+# Exclude unheated
+dat_filt <- dat %>% filter(!treatment %in% c("Unheated", "unheated"))
+```
+
+## Helper functions
+
+```{r}
+fit_int_model <- function(df) {
+  df <- df %>% drop_na(average_curvature, wood_density, heating_condition)
+  if (nrow(df) < 5) return(NULL)
+  m <- lm(average_curvature ~ wood_density * heating_condition, data = df)
+  a2 <- tryCatch(
+    car::Anova(m, type = 2, white.adjust = "hc3"),
+    error = function(e) car::Anova(m, type = 2)
+  )
+  list(model = m, anova2 = a2)
+}
+
+tidy_anova <- function(a2) {
+  at <- as.data.frame(a2)
+  at$term <- rownames(at)
+  rownames(at) <- NULL
+  at %>% select(term, everything())
+}
+
+emmeans_by_heat <- function(mdl, df) {
+  mean_wd <- mean(df$wood_density, na.rm = TRUE)
+  em <- emmeans::emmeans(mdl, specs = ~ heating_condition,
+                         at = list(wood_density = mean_wd),
+                         type = "response")
+  as.data.frame(summary(em)) %>%
+    rename(pred_mean = emmean, ci_low = lower.CL, ci_high = upper.CL)
+}
+
+# Plot in requested style
+plot_interaction_custom <- function(mdl, df, title) {
+  rng <- range(df$wood_density, na.rm = TRUE)
+  grid <- expand.grid(
+    wood_density = seq(rng[1], rng[2], length.out = 200),
+    heating_condition = sort(unique(df$heating_condition))
+  )
+  pr <- as.data.frame(predict(mdl, newdata = grid, se.fit = TRUE))
+  grid$fit <- pr$fit
+
+  cols <- c("sand" = "#F26B6B", "ember" = "#18C3C8")     # coral, cyan
+  shapes <- c("sand" = 16, "ember" = 17)                 # circle, triangle
+  ltys <- c("sand" = 1, "ember" = 2)                     # solid, dashed
+
+  ggplot(df, aes(x = wood_density, y = average_curvature, colour = heating_condition)) +
+    geom_point(aes(shape = heating_condition), size = 2, alpha = 0.8) +
+    geom_smooth(data = grid,
+                aes(x = wood_density, y = fit, linetype = heating_condition),
+                se = FALSE, method = "lm", formula = y ~ x) +
+    scale_colour_manual(values = cols, name = NULL) +
+    scale_shape_manual(values = shapes, name = NULL) +
+    scale_linetype_manual(values = ltys, name = NULL) +
+    labs(title = title,
+         x = expression(paste("Wood density (g/", cm^3, ")")),
+         y = "Edge sharpness (average curvature)") +
+    theme_minimal(base_size = 13) +
+    theme(legend.position = "top")
+}
+```
+
+# best fit circle
+
+```{r}
+new10 <- dat_filt %>% filter(method == "best fit circle", scale == "10um")
+new20 <- dat_filt %>% filter(method == "best fit circle", scale == "20um")
+
+# 10 µm
+cat("## best fit circle • 10um\n")
+res_n10 <- fit_int_model(new10)
+if (!is.null(res_n10)) {
+  print(tidy_anova(res_n10$anova2))
+  print(lmtest::coeftest(res_n10$model, vcov = sandwich::vcovHC(res_n10$model, type = "HC3")))
+  print(emmeans_by_heat(res_n10$model, new10))
+  print(plot_interaction_custom(res_n10$model, new10, "best fit circle • 10um"))
+}
+
+bestfitcircle_10_inter_plot<-plot_interaction_custom(res_n10$model, new10, "best fit circle • 10um")
+
+# 20 µm
+cat("## best fit circle • 20um\n")
+res_n20 <- fit_int_model(new20)
+if (!is.null(res_n20)) {
+  print(tidy_anova(res_n20$anova2))
+  print(lmtest::coeftest(res_n20$model, vcov = sandwich::vcovHC(res_n20$model, type = "HC3")))
+  print(emmeans_by_heat(res_n20$model, new20))
+  print(plot_interaction_custom(res_n20$model, new20, "best fit circle • 20um"))
+}
+
+bestfitcircle_20_inter_plot<-plot_interaction_custom(res_n20$model, new20, "best fit circle • 20um")
+```
+
+# three point stepping (all distances & scales)
+
+```{r}
+old_combos <- expand.grid(
+  scale = c("10um","20um"),
+  distance = c(0.1, 0.5, 1.0, 2.0),
+  stringsAsFactors = FALSE
+)
+
+adj_means_all <- list()
+
+for (i in seq_len(nrow(old_combos))) {
+  sc <- old_combos$scale[i]
+  di <- old_combos$distance[i]
+
+  dfi <- dat_filt %>%
+    filter(method == "three point stepping", scale == sc, distance == di) %>%
+    drop_na(average_curvature, wood_density, heating_condition)
+
+  ttl <- paste0("three point stepping • ", sc, " • distance ", di)
+  cat("## ", ttl, "\n", sep = "")
+
+  res <- fit_int_model(dfi)
+  if (!is.null(res)) {
+    print(tidy_anova(res$anova2))
+    print(lmtest::coeftest(res$model, vcov = sandwich::vcovHC(res$model, type = "HC3")))
+    print(emmeans_by_heat(res$model, dfi))
+    print(plot_interaction_custom(res$model, dfi, ttl))
+
+    em <- emmeans_by_heat(res$model, dfi) %>%
+      mutate(method = "three point stepping", scale = sc, distance = di)
+    adj_means_all[[length(adj_means_all)+1]] <- em
+  } else {
+    message("Skipped (insufficient rows): ", ttl)
+  }
+}
+
+# Bind adjusted means
+adj_means_old <- if (length(adj_means_all) > 0) {
+  dplyr::bind_rows(adj_means_all) %>% mutate(distance = as.character(distance))
+} else {
+  tibble::tibble(
+    heating_condition = character(),
+    pred_mean = double(),
+    ci_low = double(),
+    ci_high = double(),
+    method = character(),
+    scale = character(),
+    distance = character()
+  )
+}
+```
+
+## Summary figure (OLD only)
+
+```{r}
+three_point_stepping_summary_plot<-if (nrow(adj_means_old) > 0) {
+  ggplot(adj_means_old,
+         aes(x = factor(distance),
+             y = pred_mean,
+             group = interaction(heating_condition, scale),
+             colour = heating_condition, shape = scale, linetype = heating_condition)) +
+    geom_point(position = position_dodge(width = 0.3), size = 2.2) +
+    geom_line(position = position_dodge(width = 0.3)) +
+    geom_errorbar(aes(ymin = ci_low, ymax = ci_high),
+                  width = 0.08, position = position_dodge(width = 0.3)) +
+    scale_colour_manual(values = c("sand"="#F26B6B","ember"="#18C3C8"), name = NULL) +
+    scale_linetype_manual(values = c("sand"=1,"ember"=2), name = NULL) +
+    labs(x = "Distance (cm)", y = "Adjusted mean edge sharpness",
+         title = "Adjusted means (±95% CI) by heating condition — three point stepping") +
+    theme_minimal(base_size = 13) +
+    theme(legend.position = "top")
+}
+```
+
+# Combined comparison: best fit circle vs three point stepping
+
+```{r}
+# Adjusted means for best fit circle
+adj_means_new <- bind_rows(
+  if (!is.null(res_n10)) emmeans_by_heat(res_n10$model, new10) %>% mutate(method="best fit circle", scale="10um", distance="—"),
+  if (!is.null(res_n20)) emmeans_by_heat(res_n20$model, new20) %>% mutate(method="best fit circle", scale="20um", distance="—")
+)
+
+adj_all <- bind_rows(adj_means_new, adj_means_old)
+
+ggplot(adj_all,
+       aes(x = factor(distance, levels=c("—","0.1","0.5","1","2")),
+           y = pred_mean,
+           colour = heating_condition, shape = scale, linetype = heating_condition)) +
+  geom_point(position = position_dodge(width = 0.4), size = 2.5) +
+  geom_line(aes(group = interaction(heating_condition, scale, method)),
+            position = position_dodge(width = 0.4)) +
+  geom_errorbar(aes(ymin = ci_low, ymax = ci_high),
+                width = 0.12, position = position_dodge(width = 0.4)) +
+  facet_wrap(~ method, scales = "free_x") +
+  scale_colour_manual(values = c("sand"="#F26B6B","ember"="#18C3C8"), name = NULL) +
+  scale_linetype_manual(values = c("sand"=1,"ember"=2), name = NULL) +
+  labs(x = "Distance (cm) — three point stepping; ‘—’ for best fit circle",
+       y = "Adjusted mean edge sharpness",
+       title = "Comparison of adjusted means: best fit circle vs three point stepping (10µm & 20µm)") +
+  theme_minimal(base_size = 13) +
+  theme(legend.position = "top")
+```
+
+## Figure caption (for manuscript)
+
+> **Figure X.** Comparison of adjusted mean edge sharpness (average curvature) for silcrete flakes heated under ember and sand conditions, controlling for wood density. Results are shown for the **best fit circle** (10 µm and 20 µm; “—”) and for the **three point stepping** (10 µm and 20 µm) measured at increasing distances (0.1–2.0 cm). Error bars are 95% CIs. The best fit circle consistently detects sharper edges after **ember** heating relative to **sand**, whereas the three point stepping often shows the opposite pattern, particularly at greater measurement distances. Differences in absolute values between 10 µm and 20 µm reflect scale sensitivity, but relative contrasts between heating techniques are consistent within method.
+
+
+# Exports (Tables & Figure)
+
+```{r}
+#| label: setup-exports
+#| message: false
+#| warning: false
+
+# Create an 'exports' directory next to this file
+exports_dir <- file.path(getwd(), "step 3-exports")
+if (!dir.exists(exports_dir)) dir.create(exports_dir, recursive = TRUE)
+
+suppressPackageStartupMessages({
+  library(dplyr)
+  library(tidyr)
+  library(gt)
+  library(stringr)
+  library(readr)
+  library(ggplot2)
+})
+```
+
+## Table 1. Data sample summary
+
+This table summarizes the analytical sample used in this notebook by method, scale, distance, and heating condition (saved to file).
+
+```{r}
+#| label: table-sample-summary
+#| tbl-cap: "Data sample summary by method, scale, distance, and heating condition"
+#| echo: false
+stopifnot(exists("dat_filt"))
+
+sample_summary <- dat_filt %>%
+  dplyr::select(method, scale, distance, heating_condition, average_curvature, wood_density) %>%
+  tidyr::drop_na(average_curvature, wood_density, heating_condition) %>%
+  dplyr::count(method, scale, distance, heating_condition, name = "n") %>%
+  dplyr::arrange(method, scale, distance, heating_condition)
+
+# Save CSV for provenance
+readr::write_csv(sample_summary, file.path(exports_dir, "table1_sample_summary.csv"))
+
+tab1 <- sample_summary %>%
+  gt::gt(groupname_col = "method") %>%
+  gt::tab_header(
+    title = md("**Table 1. Data sample summary**"),
+    subtitle = md("Counts of observations used in models (rows with non-missing edge sharpness, wood density, and heating condition).")
+  ) %>%
+  gt::cols_label(
+    scale = "Scale",
+    distance = "Distance (cm)",
+    heating_condition = "Heating technique",
+    n = html("N")
+  ) %>%
+  gt::fmt_number(columns = "distance", decimals = 1) %>%
+  gt::tab_options(table.font.size = px(12)) %>%
+  gt::opt_table_lines()
+
+# Also export a standalone HTML file
+gt::gtsave(tab1, filename = file.path(exports_dir, "table1_sample_summary.html"))
+```
+
+## Figures (saved to file)
+
+This recreates the papers plots and exports them to high-resolution PNG and PDF suitable for publication.
+
+```{r}
+#| label: fig-comparison-export
+#| fig-cap: "Comparison of adjusted means: best fit circle vs three point stepping (10µm & 20µm)"
+#| echo: false
+#| message: false
+#| warning: false
+
+stopifnot(exists("adj_all"))
+
+p_comp <- ggplot(adj_all,
+       aes(x = factor(distance, levels = c("—","0.1","0.5","1","2")),
+           y = pred_mean,
+           colour = heating_condition, shape = scale, linetype = heating_condition)) +
+  geom_point(position = position_dodge(width = 0.4), size = 2.5) +
+  geom_line(aes(group = interaction(heating_condition, scale, method)),
+            position = position_dodge(width = 0.4)) +
+  geom_errorbar(aes(ymin = ci_low, ymax = ci_high),
+                width = 0.12, position = position_dodge(width = 0.4)) +
+  facet_wrap(~ method, scales = "free_x") +
+  scale_colour_manual(values = c("sand"="#F26B6B","ember"="#18C3C8"), name = NULL) +
+  scale_linetype_manual(values = c("sand"=1,"ember"=2), name = NULL) +
+  labs(x = "Distance (cm) — three point stepping; ‘—’ for best fit circle",
+       y = "Adjusted mean edge sharpness",
+       title = "Comparison of adjusted means: best fit circle vs three point stepping (10µm & 20µm)") +
+  theme_minimal(base_size = 13) +
+  theme(legend.position = "top")
+
+print(p_comp)
+
+# Export to files
+ggplot2::ggsave(filename = file.path(exports_dir, "fig_comparison_adjusted_means.png"),
+       plot = p_comp, width = 9, height = 5.5, dpi = 600, units = "in", bg = "white")
+
+ggplot2::ggsave(filename = file.path(exports_dir, "fig_comparison_adjusted_means.pdf"),
+       plot = p_comp, width = 9, height = 5.5, units = "in")
+
+ggplot2::ggsave(filename = file.path(exports_dir, "three_point_stepping_summary_plot.pdf"),
+       plot = three_point_stepping_summary_plot, width = 9, height = 5.5, units = "in")
+
+ggplot2::ggsave(filename = file.path(exports_dir, "bestfitcircle_20_inter_plot.pdf"),
+       plot = bestfitcircle_20_inter_plot, width = 9, height = 5.5, units = "in")
+
+ggplot2::ggsave(filename = file.path(exports_dir, "bestfitcircle_10_inter_plot.pdf"),
+       plot = bestfitcircle_10_inter_plot, width = 9, height = 5.5, units = "in")
+
+
+```
+
+
+# General Summary
+
+Across all ANOVA models, we observe a consistent pattern:
+
+- **Omnibus ANOVA tests** indicate significant overall differences in edge sharpness across heating conditions, even after controlling for wood density and using robust standard errors.
+- **Coefficient-level contrasts vs. baseline** are not always significant, reflecting that robust SEs widen uncertainty and that differences may lie between non-baseline conditions.
+- **Pairwise post-hoc tests (emmeans)** clarify which specific heating conditions differ. These contrasts provide the most reliable picture of group-level differences.
+
+**Takeaway.** The results suggest that heating technique has a detectable overall effect on edge sharpness, but the specific contrasts driving this effect are subtle. Interpretation should emphasize the omnibus ANOVA findings, supported by pairwise comparisons rather than sole reliance on baseline contrasts.

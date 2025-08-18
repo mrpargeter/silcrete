@@ -1,0 +1,14 @@
+project:
+  type: website
+  output-dir: _site
+
+website:
+  title: "Silcrete Edge Sharpness"
+  navbar:
+    left:
+      - text: "Analysis"
+        file: step-3_silcrete_edge_sharpness_analysis.qmd
+
+format:
+  html:
+    theme: default

@@ -1,0 +1,334 @@
+---
+title: "Wide-to-Long Pipeline (CSV-only) + Fuelwood + Flake Parsing + Validation"
+format: html
+execute:
+  echo: true
+  warning: false
+  message: false
+engine: knitr
+---
+
+```{r}
+#| label: setup
+library(tidyverse)
+library(readxl)
+library(readr)
+library(stringr)
+```
+
+## Inputs
+
+```{r}
+# Workbook with multiple tabs to parse
+in_path <- "wide-to-long data.xlsx"   # change if needed
+
+# Fuelwood CSV with columns 'flake' and 'fuelwood'
+fuel_csv <- "Final data-chatgpt.csv"  # change if needed
+
+# Output CSV (final joined only)
+out_finaljoin_csv  <- "wide-to-long_data_COMBINED_with_parsed_flake_AND_fuelwood.csv"
+```
+
+## Helper functions
+
+```{r}
+# Clean a cell to character or NA
+norm_cell <- function(x) {
+  if (is.na(x)) return(NA_character_)
+  s <- trimws(as.character(x))
+  ifelse(nchar(s) == 0, NA_character_, s)
+}
+
+# First non-empty value in a 0-indexed row (Excel-style 0=first row)
+first_nonnull_in_row <- function(df, row_idx0) {
+  row_idx <- row_idx0 + 1
+  if (row_idx > nrow(df)) return(NA_character_)
+  row <- df[row_idx, , drop = FALSE]
+  vals <- purrr::map_chr(row, ~ norm_cell(.x))
+  vals <- vals[!is.na(vals)]
+  if (length(vals) == 0) return(NA_character_)
+  vals[[1]]
+}
+
+# Vectorized normalizer for flake IDs
+norm_flake_robust <- function(x) {
+  s <- ifelse(is.na(x), NA_character_, toupper(trimws(as.character(x))))
+
+  # Replace whitespace, periods, and hyphens -> underscore; collapse runs
+  s <- stringr::str_replace_all(s, "\\s+", "_")
+  s <- stringr::str_replace_all(s, "[-.]", "_")
+  s <- stringr::str_replace_all(s, "_+", "_")
+
+  # Normalize leading O/N variants to 'ON_'
+  s <- stringr::str_replace(s, "^(O[._]?_?N[._]?_?)", "ON_")
+  s <- stringr::str_replace_all(s, "_+", "_")
+
+  # Ensure 'ON' followed by a digit has underscore: 'ON1' -> 'ON_1'
+  s <- stringr::str_replace(s, "^ON(?=\\d)", "ON_")
+
+  # If first token after ON_ is like '54A', make it '54_A'
+  s <- stringr::str_replace(s, "^(ON_)(\\d+)([A-Z]+)", "\\1\\2_\\3")
+
+  s
+}
+
+# Parse flake ID into nodule number, nodule sub number, and flake number (retain letters in flake number)
+parse_flake_id <- function(flake_raw) {
+  if (is.na(flake_raw)) return(tibble(`nodule number`=NA_integer_,
+                                      `nodule sub number`=NA_character_,
+                                      `flake number`=NA_character_))
+  s <- trimws(as.character(flake_raw))
+  s_norm <- gsub("\\.", "_", s)            # periods -> underscores
+  parts <- str_split(s_norm, "_", simplify = FALSE)[[1]]
+  parts <- parts[parts != ""]
+  # strip leading O and N
+  while (length(parts) > 0 && toupper(parts[1]) == "O") parts <- parts[-1]
+  while (length(parts) > 0 && toupper(parts[1]) == "N") parts <- parts[-1]
+  rest <- if (length(parts) > 0) paste(parts, collapse="_") else ""
+
+  split_digits_letters <- function(token) {
+    # returns list(digits, letters)
+    m1 <- str_match(token, "^(\\d+)([A-Za-z]+)?$")
+    if (!any(is.na(m1))) {
+      return(list(d = m1[,2], L = ifelse(is.na(m1[,3]), "", m1[,3])))
+    }
+    m2 <- str_match(token, "^([A-Za-z]+)(\\d+)$")
+    if (!any(is.na(m2))) {
+      return(list(d = m2[,3], L = m2[,2]))
+    }
+    digits <- str_replace_all(token, "[^0-9]", "")
+    letters <- str_replace_all(token, "[^A-Za-z]", "")
+    list(d = ifelse(nchar(digits)>0, digits, NA_character_),
+         L = ifelse(nchar(letters)>0, letters, ""))
+  }
+
+  nodule_num <- NA_integer_
+  nodule_sub <- ""
+  flake_num  <- NA_character_
+
+  if (str_detect(rest, "-")) {
+    # Pattern like "32A-21"
+    left  <- str_split(rest, "-", n = 2, simplify = TRUE)[,1]
+    right <- str_split(rest, "-", n = 2, simplify = TRUE)[,2]
+    left_main <- str_split(left, "_", simplify = TRUE)[,1]
+    sl <- split_digits_letters(left_main)
+    if (!is.na(sl$d)) nodule_num <- as.integer(sl$d)
+    nodule_sub <- ifelse(nchar(sl$L) > 0, sl$L, "")
+    flake_num <- trimws(right)  # retain letters if present
+  } else {
+    tokens <- if (nchar(rest) > 0) str_split(rest, "_", simplify = FALSE)[[1]] else character(0)
+    tokens <- tokens[tokens != ""]
+    if (length(tokens) >= 3) {
+      s1 <- split_digits_letters(tokens[1])
+      s2 <- split_digits_letters(tokens[2])
+      s3 <- split_digits_letters(tokens[3])
+      if (!is.na(s1$d)) nodule_num <- as.integer(s1$d)
+      nodule_sub <- ifelse(nchar(s2$L) > 0, s2$L,
+                        ifelse(nchar(s1$L) > 0, s1$L, ifelse(nchar(s3$L) > 0, s3$L, "")))
+      flake_num <- tokens[3]  # keep as-is
+    } else if (length(tokens) == 2) {
+      s1 <- split_digits_letters(tokens[1])
+      if (!is.na(s1$d)) nodule_num <- as.integer(s1$d)
+      nodule_sub <- ifelse(nchar(s1$L) > 0, s1$L, "")
+      flake_num <- tokens[2]
+    } else if (length(tokens) == 1) {
+      s1 <- split_digits_letters(tokens[1])
+      if (!is.na(s1$d)) nodule_num <- as.integer(s1$d)
+      nodule_sub <- ifelse(nchar(s1$L) > 0, s1$L, "")
+      flake_num <- NA_character_
+    }
+  }
+
+  tibble(`nodule number` = nodule_num,
+         `nodule sub number` = ifelse(nchar(nodule_sub)>0, nodule_sub, NA_character_),
+         `flake number` = flake_num)
+}
+
+# Parse one sheet with the agreed structure
+parse_sheet_to_long <- function(path, sheet_name) {
+  df <- read_excel(path, sheet = sheet_name, col_names = FALSE)
+  df <- as.data.frame(df)
+  n_rows <- nrow(df); n_cols <- ncol(df)
+
+  norm <- function(i, j) norm_cell(df[i, j])
+
+  # Identify 3-col blocks by header pattern in row 2 (index 1)
+  triplets <- list()
+  for (c in 1:(n_cols-2)) {
+    r1 <- norm(2, c)
+    r2 <- norm(2, c+1)
+    r3 <- norm(2, c+2)
+    if (identical(r1, "Flake") && identical(r2, "Average Curvature") && identical(r3, "Standard Deviation")) {
+      tname <- norm(1, c)
+      # If merged header left is empty, walk left to find the treatment label
+      if (is.na(tname)) {
+        cc <- c
+        while (cc >= 1 && (is.na(tname) || tname == "")) {
+          tname <- norm(1, cc)
+          cc <- cc - 1
+        }
+      }
+      if (!is.na(tname) && tname != "") {
+        triplets <- append(triplets, list(list(col = c, treatment = tname)))
+      }
+    }
+  }
+
+  # Stop data at row 21 (0-indexed 20) if that row has any content; metadata live at rows 21-23
+  data_end <- n_rows
+  if (n_rows >= 21) {
+    row21_has_content <- any(!is.na(df[21, ]))
+    if (row21_has_content) data_end <- 20
+  }
+
+  # Metadata rows (0-indexed 20/21/22 => R rows 21/22/23)
+  method_val   <- first_nonnull_in_row(df, 20)
+  scale_val    <- first_nonnull_in_row(df, 21)
+  distance_val <- first_nonnull_in_row(df, 22)
+
+  # Build long records
+  recs <- list()
+  for (tr in triplets) {
+    c <- tr$col
+    tname <- tr$treatment
+    flake_col <- c
+    avg_col   <- c + 1
+    sd_col    <- c + 2
+
+    if (data_end < 3) next  # no data rows
+
+    for (r in 3:data_end) {   # data start after two header rows
+      flake <- norm_cell(df[r, flake_col])
+      if (!is.na(flake)) {
+        avg <- suppressWarnings(as.numeric(df[r, avg_col]))
+        sd  <- suppressWarnings(as.numeric(df[r, sd_col]))
+        recs <- append(recs, list(tibble(
+          method = method_val,
+          scale = scale_val,
+          distance = distance_val,
+          treatment = tname,
+          flake = flake,
+          `average curvature` = avg,
+          `standard deviation` = sd,
+          sheet = sheet_name
+        )))
+      }
+    }
+  }
+  if (length(recs) == 0) {
+    return(tibble())
+  }
+  bind_rows(recs)
+}
+```
+
+## Parse all sheets and combine
+
+```{r}
+sheets <- excel_sheets(in_path)
+sheets
+```
+
+```{r}
+# Parse and combine
+dfs <- purrr::map(sheets, ~ parse_sheet_to_long(in_path, .x))
+names(dfs) <- sheets
+per_sheet_counts <- purrr::map_int(dfs, nrow)
+per_sheet_counts
+combined <- bind_rows(dfs)
+
+# Add heating_condition from treatment mapping
+heating_map <- function(t) {
+  u <- toupper(trimws(as.character(t)))
+  if (u %in% c("F1F","F2F")) return("ember")
+  if (u %in% c("F1S","F2S")) return("sand")
+  if (u %in% c("UNHEATED"))  return("unheated")
+  return(NA_character_)
+}
+combined <- combined %>%
+  mutate(heating_condition = vapply(treatment, heating_map, FUN.VALUE = character(1))) %>%
+  relocate(heating_condition, .after = treatment)
+
+```
+
+## Parse flake IDs (retain A/B in flake number) and save
+
+```{r}
+parsed_list <- combined %>%
+  mutate(parsed = purrr::map(flake, parse_flake_id)) %>%
+  unnest(parsed)
+
+# Put parsed columns right after 'flake'
+parsed_ordered <- parsed_list %>%
+  relocate(`nodule number`, `nodule sub number`, `flake number`, .after = flake)
+
+# Sanity checks (expect 77 rows per sheet if input is correct)
+table_per_sheet <- parsed_ordered %>% count(sheet, name = "rows_per_sheet")
+table_per_sheet
+nrow(parsed_ordered)
+
+```
+
+## Join fuelwood by flake (robust matching)
+
+```{r}
+# Read fuelwood CSV and normalize column names to simple snake_case
+fuel <- read_csv(fuel_csv, show_col_types = FALSE)
+names(fuel) <- names(fuel) %>%
+  tolower() %>%
+  str_replace_all("\\s+", "_")
+
+# Identify flake and fuelwood columns (assumes they exist as 'flake' and 'fuelwood')
+flake_col <- names(fuel)[which(names(fuel) == "flake")[1]]
+fuel_col  <- names(fuel)[which(names(fuel) == "fuelwood")[1]]
+
+if (is.na(flake_col) || is.na(fuel_col)) {
+  stop("Could not find required columns in the fuel CSV. Expected 'flake' and 'fuelwood'.")
+}
+
+# Build join keys
+left_keyed <- parsed_ordered %>%
+  mutate(flake_join = norm_flake_robust(flake))
+
+fuel_map <- fuel %>%
+  transmute(flake_join = norm_flake_robust(.data[[flake_col]]),
+            fuelwood = .data[[fuel_col]]) %>%
+  group_by(flake_join) %>%
+  summarise(fuelwood = first(na.omit(fuelwood)), .groups = "drop")
+
+# Left join (retain all left columns + only fuelwood from the CSV)
+final_joined <- left_keyed %>%
+  left_join(fuel_map, by = "flake_join") %>%
+  select(-flake_join)
+```
+
+## Validation (match rates and unmatched summaries)
+
+```{r}
+# Overall unmatched
+overall_unmatched <- sum(is.na(final_joined$fuelwood))
+overall_rows <- nrow(final_joined)
+overall_match_rate <- 1 - overall_unmatched / overall_rows
+
+# Per-sheet unmatched
+validation_table <- final_joined %>%
+  group_by(sheet) %>%
+  summarise(
+    rows = n(),
+    unmatched = sum(is.na(fuelwood)),
+    match_rate = 1 - unmatched / rows,
+    .groups = "drop"
+  ) %>%
+  arrange(desc(unmatched))
+
+validation_table
+overall_unmatched
+overall_rows
+overall_match_rate
+```
+
+```{r}
+# Save final joined dataset
+write_csv(final_joined, out_finaljoin_csv)
+cat("Wrote:", out_finaljoin_csv, "\n")
+```

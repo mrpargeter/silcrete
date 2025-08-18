@@ -1,0 +1,21 @@
+method,scale,distance,heating_condition,n
+best fit circle,10um,NA,ember,26
+best fit circle,10um,NA,sand,34
+best fit circle,20um,NA,ember,26
+best fit circle,20um,NA,sand,34
+three point stepping,10um,0.1,ember,26
+three point stepping,10um,0.1,sand,34
+three point stepping,10um,0.5,ember,26
+three point stepping,10um,0.5,sand,34
+three point stepping,10um,1,ember,26
+three point stepping,10um,1,sand,34
+three point stepping,10um,2,ember,26
+three point stepping,10um,2,sand,34
+three point stepping,20um,0.1,ember,26
+three point stepping,20um,0.1,sand,34
+three point stepping,20um,0.5,ember,26
+three point stepping,20um,0.5,sand,34
+three point stepping,20um,1,ember,26
+three point stepping,20um,1,sand,34
+three point stepping,20um,2,ember,26
+three point stepping,20um,2,sand,34

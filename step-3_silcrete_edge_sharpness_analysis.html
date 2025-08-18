@@ -1,0 +1,1129 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.537">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Analysis Notebook">
+
+<title>Silcrete Edge Sharpness: Heating Technique vs.&nbsp;Wood Density</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="step-3_silcrete_edge_sharpness_analysis_files/libs/clipboard/clipboard.min.js"></script>
+<script src="step-3_silcrete_edge_sharpness_analysis_files/libs/quarto-html/quarto.js"></script>
+<script src="step-3_silcrete_edge_sharpness_analysis_files/libs/quarto-html/popper.min.js"></script>
+<script src="step-3_silcrete_edge_sharpness_analysis_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="step-3_silcrete_edge_sharpness_analysis_files/libs/quarto-html/anchor.min.js"></script>
+<link href="step-3_silcrete_edge_sharpness_analysis_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="step-3_silcrete_edge_sharpness_analysis_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="step-3_silcrete_edge_sharpness_analysis_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="step-3_silcrete_edge_sharpness_analysis_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="step-3_silcrete_edge_sharpness_analysis_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body>
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview"><span class="header-section-number">1</span> Overview</a>
+  <ul class="collapse">
+  <li><a href="#packages-data" id="toc-packages-data" class="nav-link" data-scroll-target="#packages-data"><span class="header-section-number">1.1</span> Packages &amp; Data</a></li>
+  <li><a href="#helper-functions" id="toc-helper-functions" class="nav-link" data-scroll-target="#helper-functions"><span class="header-section-number">1.2</span> Helper functions</a></li>
+  </ul></li>
+  <li><a href="#best-fit-circle" id="toc-best-fit-circle" class="nav-link" data-scroll-target="#best-fit-circle"><span class="header-section-number">2</span> best fit circle</a></li>
+  <li><a href="#three-point-stepping-all-distances-scales" id="toc-three-point-stepping-all-distances-scales" class="nav-link" data-scroll-target="#three-point-stepping-all-distances-scales"><span class="header-section-number">3</span> three point stepping (all distances &amp; scales)</a>
+  <ul class="collapse">
+  <li><a href="#summary-figure-old-only" id="toc-summary-figure-old-only" class="nav-link" data-scroll-target="#summary-figure-old-only"><span class="header-section-number">3.1</span> Summary figure (OLD only)</a></li>
+  </ul></li>
+  <li><a href="#combined-comparison-best-fit-circle-vs-three-point-stepping" id="toc-combined-comparison-best-fit-circle-vs-three-point-stepping" class="nav-link" data-scroll-target="#combined-comparison-best-fit-circle-vs-three-point-stepping"><span class="header-section-number">4</span> Combined comparison: best fit circle vs three point stepping</a>
+  <ul class="collapse">
+  <li><a href="#figure-caption-for-manuscript" id="toc-figure-caption-for-manuscript" class="nav-link" data-scroll-target="#figure-caption-for-manuscript"><span class="header-section-number">4.1</span> Figure caption (for manuscript)</a></li>
+  </ul></li>
+  <li><a href="#exports-tables-figure" id="toc-exports-tables-figure" class="nav-link" data-scroll-target="#exports-tables-figure"><span class="header-section-number">5</span> Exports (Tables &amp; Figure)</a>
+  <ul class="collapse">
+  <li><a href="#table-1.-data-sample-summary" id="toc-table-1.-data-sample-summary" class="nav-link" data-scroll-target="#table-1.-data-sample-summary"><span class="header-section-number">5.1</span> Table 1. Data sample summary</a></li>
+  <li><a href="#figures-saved-to-file" id="toc-figures-saved-to-file" class="nav-link" data-scroll-target="#figures-saved-to-file"><span class="header-section-number">5.2</span> Figures (saved to file)</a></li>
+  </ul></li>
+  <li><a href="#general-summary" id="toc-general-summary" class="nav-link" data-scroll-target="#general-summary"><span class="header-section-number">6</span> General Summary</a></li>
+  </ul>
+</nav>
+</div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Silcrete Edge Sharpness: Heating Technique vs.&nbsp;Wood Density</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Analysis Notebook </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="overview" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Overview</h1>
+<p>Here we analyze how <strong>heating technique</strong> (ember vs sand) and <strong>wood fuel density</strong> affect silcrete flake <strong>edge sharpness</strong> (average curvature).</p>
+<ul>
+<li>Exclude <strong>unheated</strong> observations.</li>
+<li>Analyze <strong>best fit circle method</strong> (10 µm and 20 µm).</li>
+<li>Analyze <strong>three point stepping</strong> method at distances <strong>0.1, 0.5, 1.0, 2.0 cm</strong> and scales <strong>10 µm, 20 µm</strong>.</li>
+<li>Fit OLS with interaction: <code>average_curvature ~ wood_density * heating_condition</code>.</li>
+<li>Use <strong>Type II ANOVA</strong> and <strong>HC3</strong> robust SE for inference.</li>
+<li>Report <strong>adjusted means</strong> (EMMs) for heating condition at mean wood density.</li>
+</ul>
+<section id="packages-data" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="packages-data"><span class="header-section-number">1.1</span> Packages &amp; Data</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sandwich)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lmtest)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(emmeans)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(broom)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tibble)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>data_path <span class="ot">&lt;-</span> <span class="st">"wide-to-long_with_wood_density.csv"</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(data_path, <span class="at">show_col_types =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> dat <span class="sc">%&gt;%</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">method =</span> dplyr<span class="sc">::</span><span class="fu">recode</span>(<span class="fu">tolower</span>(method),</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    <span class="st">"old method"</span> <span class="ot">=</span> <span class="st">"three point stepping"</span>,</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    <span class="st">"new method"</span> <span class="ot">=</span> <span class="st">"best fit circle"</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>  ),</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">scale =</span> <span class="fu">tolower</span>(<span class="fu">as.character</span>(scale)),</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">treatment =</span> <span class="fu">as.character</span>(treatment),</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">heating_condition =</span> <span class="fu">tolower</span>(<span class="fu">as.character</span>(heating_condition)),</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">distance =</span> <span class="fu">suppressWarnings</span>(<span class="fu">as.numeric</span>(distance))</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Exclude unheated</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>dat_filt <span class="ot">&lt;-</span> dat <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="sc">!</span>treatment <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Unheated"</span>, <span class="st">"unheated"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="helper-functions" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="helper-functions"><span class="header-section-number">1.2</span> Helper functions</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>fit_int_model <span class="ot">&lt;-</span> <span class="cf">function</span>(df) {</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> <span class="fu">drop_na</span>(average_curvature, wood_density, heating_condition)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">nrow</span>(df) <span class="sc">&lt;</span> <span class="dv">5</span>) <span class="fu">return</span>(<span class="cn">NULL</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  m <span class="ot">&lt;-</span> <span class="fu">lm</span>(average_curvature <span class="sc">~</span> wood_density <span class="sc">*</span> heating_condition, <span class="at">data =</span> df)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  a2 <span class="ot">&lt;-</span> <span class="fu">tryCatch</span>(</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    car<span class="sc">::</span><span class="fu">Anova</span>(m, <span class="at">type =</span> <span class="dv">2</span>, <span class="at">white.adjust =</span> <span class="st">"hc3"</span>),</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">error =</span> <span class="cf">function</span>(e) car<span class="sc">::</span><span class="fu">Anova</span>(m, <span class="at">type =</span> <span class="dv">2</span>)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">list</span>(<span class="at">model =</span> m, <span class="at">anova2 =</span> a2)</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>tidy_anova <span class="ot">&lt;-</span> <span class="cf">function</span>(a2) {</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>  at <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(a2)</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>  at<span class="sc">$</span>term <span class="ot">&lt;-</span> <span class="fu">rownames</span>(at)</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rownames</span>(at) <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>  at <span class="sc">%&gt;%</span> <span class="fu">select</span>(term, <span class="fu">everything</span>())</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>emmeans_by_heat <span class="ot">&lt;-</span> <span class="cf">function</span>(mdl, df) {</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>  mean_wd <span class="ot">&lt;-</span> <span class="fu">mean</span>(df<span class="sc">$</span>wood_density, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>  em <span class="ot">&lt;-</span> emmeans<span class="sc">::</span><span class="fu">emmeans</span>(mdl, <span class="at">specs =</span> <span class="sc">~</span> heating_condition,</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>                         <span class="at">at =</span> <span class="fu">list</span>(<span class="at">wood_density =</span> mean_wd),</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>                         <span class="at">type =</span> <span class="st">"response"</span>)</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.data.frame</span>(<span class="fu">summary</span>(em)) <span class="sc">%&gt;%</span></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rename</span>(<span class="at">pred_mean =</span> emmean, <span class="at">ci_low =</span> lower.CL, <span class="at">ci_high =</span> upper.CL)</span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot in requested style</span></span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>plot_interaction_custom <span class="ot">&lt;-</span> <span class="cf">function</span>(mdl, df, title) {</span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>  rng <span class="ot">&lt;-</span> <span class="fu">range</span>(df<span class="sc">$</span>wood_density, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>  grid <span class="ot">&lt;-</span> <span class="fu">expand.grid</span>(</span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>    <span class="at">wood_density =</span> <span class="fu">seq</span>(rng[<span class="dv">1</span>], rng[<span class="dv">2</span>], <span class="at">length.out =</span> <span class="dv">200</span>),</span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>    <span class="at">heating_condition =</span> <span class="fu">sort</span>(<span class="fu">unique</span>(df<span class="sc">$</span>heating_condition))</span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>  pr <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">predict</span>(mdl, <span class="at">newdata =</span> grid, <span class="at">se.fit =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>  grid<span class="sc">$</span>fit <span class="ot">&lt;-</span> pr<span class="sc">$</span>fit</span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>  cols <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"sand"</span> <span class="ot">=</span> <span class="st">"#F26B6B"</span>, <span class="st">"ember"</span> <span class="ot">=</span> <span class="st">"#18C3C8"</span>)     <span class="co"># coral, cyan</span></span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>  shapes <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"sand"</span> <span class="ot">=</span> <span class="dv">16</span>, <span class="st">"ember"</span> <span class="ot">=</span> <span class="dv">17</span>)                 <span class="co"># circle, triangle</span></span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>  ltys <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"sand"</span> <span class="ot">=</span> <span class="dv">1</span>, <span class="st">"ember"</span> <span class="ot">=</span> <span class="dv">2</span>)                     <span class="co"># solid, dashed</span></span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> wood_density, <span class="at">y =</span> average_curvature, <span class="at">colour =</span> heating_condition)) <span class="sc">+</span></span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">shape =</span> heating_condition), <span class="at">size =</span> <span class="dv">2</span>, <span class="at">alpha =</span> <span class="fl">0.8</span>) <span class="sc">+</span></span>
+<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_smooth</span>(<span class="at">data =</span> grid,</span>
+<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a>                <span class="fu">aes</span>(<span class="at">x =</span> wood_density, <span class="at">y =</span> fit, <span class="at">linetype =</span> heating_condition),</span>
+<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a>                <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">formula =</span> y <span class="sc">~</span> x) <span class="sc">+</span></span>
+<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_colour_manual</span>(<span class="at">values =</span> cols, <span class="at">name =</span> <span class="cn">NULL</span>) <span class="sc">+</span></span>
+<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_shape_manual</span>(<span class="at">values =</span> shapes, <span class="at">name =</span> <span class="cn">NULL</span>) <span class="sc">+</span></span>
+<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_linetype_manual</span>(<span class="at">values =</span> ltys, <span class="at">name =</span> <span class="cn">NULL</span>) <span class="sc">+</span></span>
+<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> title,</span>
+<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a>         <span class="at">x =</span> <span class="fu">expression</span>(<span class="fu">paste</span>(<span class="st">"Wood density (g/"</span>, cm<span class="sc">^</span><span class="dv">3</span>, <span class="st">")"</span>)),</span>
+<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a>         <span class="at">y =</span> <span class="st">"Edge sharpness (average curvature)"</span>) <span class="sc">+</span></span>
+<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">13</span>) <span class="sc">+</span></span>
+<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"top"</span>)</span>
+<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="best-fit-circle" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> best fit circle</h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>new10 <span class="ot">&lt;-</span> dat_filt <span class="sc">%&gt;%</span> <span class="fu">filter</span>(method <span class="sc">==</span> <span class="st">"best fit circle"</span>, scale <span class="sc">==</span> <span class="st">"10um"</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>new20 <span class="ot">&lt;-</span> dat_filt <span class="sc">%&gt;%</span> <span class="fu">filter</span>(method <span class="sc">==</span> <span class="st">"best fit circle"</span>, scale <span class="sc">==</span> <span class="st">"20um"</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 10 µm</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"## best fit circle • 10um</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>## best fit circle • 10um</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>res_n10 <span class="ot">&lt;-</span> <span class="fu">fit_int_model</span>(new10)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.null</span>(res_n10)) {</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">tidy_anova</span>(res_n10<span class="sc">$</span>anova2))</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(lmtest<span class="sc">::</span><span class="fu">coeftest</span>(res_n10<span class="sc">$</span>model, <span class="at">vcov =</span> sandwich<span class="sc">::</span><span class="fu">vcovHC</span>(res_n10<span class="sc">$</span>model, <span class="at">type =</span> <span class="st">"HC3"</span>)))</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">emmeans_by_heat</span>(res_n10<span class="sc">$</span>model, new10))</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">plot_interaction_custom</span>(res_n10<span class="sc">$</span>model, new10, <span class="st">"best fit circle • 10um"</span>))</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                            term Df            F       Pr(&gt;F)
+1                   wood_density  1 4.647153e-04 0.9828777584
+2              heating_condition  1 1.547052e+01 0.0002333676
+3 wood_density:heating_condition  1 2.022298e+00 0.1605505277
+4                      Residuals 56           NA           NA
+
+t test of coefficients:
+
+                                   Estimate Std. Error t value Pr(&gt;|t|)   
+(Intercept)                         107.619     33.382  3.2239 0.002111 **
+wood_density                        -24.182     50.882 -0.4753 0.636448   
+heating_conditionsand              -161.509    100.680 -1.6042 0.114299   
+wood_density:heating_conditionsand  207.677    146.038  1.4221 0.160551   
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+ heating_condition pred_mean       SE df   ci_low  ci_high
+ ember              90.84878 3.713435 56 83.40987 98.28768
+ sand               73.36427 3.296678 56 66.76023 79.96831
+
+Confidence level used: 0.95 </code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="step-3_silcrete_edge_sharpness_analysis_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>bestfitcircle_10_inter_plot<span class="ot">&lt;-</span><span class="fu">plot_interaction_custom</span>(res_n10<span class="sc">$</span>model, new10, <span class="st">"best fit circle • 10um"</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 20 µm</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"## best fit circle • 20um</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>## best fit circle • 20um</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>res_n20 <span class="ot">&lt;-</span> <span class="fu">fit_int_model</span>(new20)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.null</span>(res_n20)) {</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">tidy_anova</span>(res_n20<span class="sc">$</span>anova2))</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(lmtest<span class="sc">::</span><span class="fu">coeftest</span>(res_n20<span class="sc">$</span>model, <span class="at">vcov =</span> sandwich<span class="sc">::</span><span class="fu">vcovHC</span>(res_n20<span class="sc">$</span>model, <span class="at">type =</span> <span class="st">"HC3"</span>)))</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">emmeans_by_heat</span>(res_n20<span class="sc">$</span>model, new20))</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">plot_interaction_custom</span>(res_n20<span class="sc">$</span>model, new20, <span class="st">"best fit circle • 20um"</span>))</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                            term Df           F       Pr(&gt;F)
+1                   wood_density  1  0.05403144 8.170386e-01
+2              heating_condition  1 18.06085444 8.171912e-05
+3 wood_density:heating_condition  1  2.12199899 1.507814e-01
+4                      Residuals 56          NA           NA
+
+t test of coefficients:
+
+                                   Estimate Std. Error t value Pr(&gt;|t|)  
+(Intercept)                          88.322     34.465  2.5626   0.0131 *
+wood_density                        -24.241     52.312 -0.4634   0.6449  
+heating_conditionsand              -130.212     77.994 -1.6695   0.1006  
+wood_density:heating_conditionsand  165.728    113.769  1.4567   0.1508  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+ heating_condition pred_mean       SE df   ci_low  ci_high
+ ember              71.51071 3.006158 56 65.48865 77.53276
+ sand               56.23132 2.668778 56 50.88512 61.57753
+
+Confidence level used: 0.95 </code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="step-3_silcrete_edge_sharpness_analysis_files/figure-html/unnamed-chunk-3-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>bestfitcircle_20_inter_plot<span class="ot">&lt;-</span><span class="fu">plot_interaction_custom</span>(res_n20<span class="sc">$</span>model, new20, <span class="st">"best fit circle • 20um"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="three-point-stepping-all-distances-scales" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> three point stepping (all distances &amp; scales)</h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>old_combos <span class="ot">&lt;-</span> <span class="fu">expand.grid</span>(</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">scale =</span> <span class="fu">c</span>(<span class="st">"10um"</span>,<span class="st">"20um"</span>),</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">distance =</span> <span class="fu">c</span>(<span class="fl">0.1</span>, <span class="fl">0.5</span>, <span class="fl">1.0</span>, <span class="fl">2.0</span>),</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>adj_means_all <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_len</span>(<span class="fu">nrow</span>(old_combos))) {</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>  sc <span class="ot">&lt;-</span> old_combos<span class="sc">$</span>scale[i]</span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>  di <span class="ot">&lt;-</span> old_combos<span class="sc">$</span>distance[i]</span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>  dfi <span class="ot">&lt;-</span> dat_filt <span class="sc">%&gt;%</span></span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(method <span class="sc">==</span> <span class="st">"three point stepping"</span>, scale <span class="sc">==</span> sc, distance <span class="sc">==</span> di) <span class="sc">%&gt;%</span></span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">drop_na</span>(average_curvature, wood_density, heating_condition)</span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>  ttl <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"three point stepping • "</span>, sc, <span class="st">" • distance "</span>, di)</span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">"## "</span>, ttl, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>, <span class="at">sep =</span> <span class="st">""</span>)</span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a>  res <span class="ot">&lt;-</span> <span class="fu">fit_int_model</span>(dfi)</span>
+<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.null</span>(res)) {</span>
+<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">tidy_anova</span>(res<span class="sc">$</span>anova2))</span>
+<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(lmtest<span class="sc">::</span><span class="fu">coeftest</span>(res<span class="sc">$</span>model, <span class="at">vcov =</span> sandwich<span class="sc">::</span><span class="fu">vcovHC</span>(res<span class="sc">$</span>model, <span class="at">type =</span> <span class="st">"HC3"</span>)))</span>
+<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">emmeans_by_heat</span>(res<span class="sc">$</span>model, dfi))</span>
+<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">plot_interaction_custom</span>(res<span class="sc">$</span>model, dfi, ttl))</span>
+<span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a>    em <span class="ot">&lt;-</span> <span class="fu">emmeans_by_heat</span>(res<span class="sc">$</span>model, dfi) <span class="sc">%&gt;%</span></span>
+<span id="cb12-28"><a href="#cb12-28" aria-hidden="true" tabindex="-1"></a>      <span class="fu">mutate</span>(<span class="at">method =</span> <span class="st">"three point stepping"</span>, <span class="at">scale =</span> sc, <span class="at">distance =</span> di)</span>
+<span id="cb12-29"><a href="#cb12-29" aria-hidden="true" tabindex="-1"></a>    adj_means_all[[<span class="fu">length</span>(adj_means_all)<span class="sc">+</span><span class="dv">1</span>]] <span class="ot">&lt;-</span> em</span>
+<span id="cb12-30"><a href="#cb12-30" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb12-31"><a href="#cb12-31" aria-hidden="true" tabindex="-1"></a>    <span class="fu">message</span>(<span class="st">"Skipped (insufficient rows): "</span>, ttl)</span>
+<span id="cb12-32"><a href="#cb12-32" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb12-33"><a href="#cb12-33" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>## three point stepping • 10um • distance 0.1
+                            term Df         F    Pr(&gt;F)
+1                   wood_density  1 0.3349822 0.5650607
+2              heating_condition  1 0.5754509 0.4512820
+3 wood_density:heating_condition  1 1.3536978 0.2495663
+4                      Residuals 56        NA        NA
+
+t test of coefficients:
+
+                                   Estimate Std. Error t value Pr(&gt;|t|)
+(Intercept)                          40.602     33.406  1.2154   0.2293
+wood_density                        -30.921     47.300 -0.6537   0.5160
+heating_conditionsand               -45.183     39.890 -1.1327   0.2622
+wood_density:heating_conditionsand   65.881     56.624  1.1635   0.2496
+
+ heating_condition pred_mean       SE df   ci_low  ci_high
+ ember              19.15804 1.469189 56 16.21490 22.10118
+ sand               19.66387 1.304303 56 17.05104 22.27670
+
+Confidence level used: 0.95 </code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="step-3_silcrete_edge_sharpness_analysis_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>## three point stepping • 20um • distance 0.1
+                            term Df         F    Pr(&gt;F)
+1                   wood_density  1 1.4393550 0.2352950
+2              heating_condition  1 0.1285712 0.7212664
+3 wood_density:heating_condition  1 1.7874141 0.1866475
+4                      Residuals 56        NA        NA
+
+t test of coefficients:
+
+                                   Estimate Std. Error t value Pr(&gt;|t|)
+(Intercept)                          26.693     23.596  1.1312   0.2628
+wood_density                        -16.997     33.423 -0.5086   0.6131
+heating_conditionsand               -37.308     27.635 -1.3500   0.1824
+wood_density:heating_conditionsand   52.491     39.262  1.3369   0.1866
+
+ heating_condition pred_mean        SE df   ci_low  ci_high
+ ember              14.90495 1.0078011 56 12.88609 16.92382
+ sand               13.99974 0.8946961 56 12.20745 15.79204
+
+Confidence level used: 0.95 </code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="step-3_silcrete_edge_sharpness_analysis_files/figure-html/unnamed-chunk-4-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>## three point stepping • 10um • distance 0.5
+                            term Df         F     Pr(&gt;F)
+1                   wood_density  1 11.112779 0.00152469
+2              heating_condition  1  5.300647 0.02505772
+3 wood_density:heating_condition  1  4.460068 0.03917043
+4                      Residuals 56        NA         NA
+
+t test of coefficients:
+
+                                   Estimate Std. Error t value Pr(&gt;|t|)  
+(Intercept)                         12.9925    19.4049  0.6696  0.50590  
+wood_density                        -5.1025    27.6737 -0.1844  0.85438  
+heating_conditionsand               52.9898    23.8542  2.2214  0.03038 *
+wood_density:heating_conditionsand -71.3754    33.7970 -2.1119  0.03917 *
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+ heating_condition pred_mean        SE df    ci_low  ci_high
+ ember               9.45394 0.9628986 56  7.525022 11.38286
+ sand               12.94484 0.8548330 56 11.232406 14.65728
+
+Confidence level used: 0.95 </code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="step-3_silcrete_edge_sharpness_analysis_files/figure-html/unnamed-chunk-4-3.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>## three point stepping • 20um • distance 0.5
+                            term Df         F      Pr(&gt;F)
+1                   wood_density  1 10.562253 0.001955065
+2              heating_condition  1  4.019284 0.049826278
+3 wood_density:heating_condition  1  4.745481 0.033601157
+4                      Residuals 56        NA          NA
+
+t test of coefficients:
+
+                                   Estimate Std. Error t value Pr(&gt;|t|)  
+(Intercept)                          9.1756    13.2823  0.6908  0.49254  
+wood_density                        -3.8455    18.9277 -0.2032  0.83974  
+heating_conditionsand               38.0283    16.7461  2.2709  0.02702 *
+wood_density:heating_conditionsand -51.5001    23.6411 -2.1784  0.03360 *
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+ heating_condition pred_mean        SE df   ci_low   ci_high
+ ember              6.508796 0.6696125 56 5.167401  7.850191
+ sand               8.821821 0.5944622 56 7.630970 10.012672
+
+Confidence level used: 0.95 </code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="step-3_silcrete_edge_sharpness_analysis_files/figure-html/unnamed-chunk-4-4.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>## three point stepping • 10um • distance 1
+                            term Df        F       Pr(&gt;F)
+1                   wood_density  1 17.04295 0.0001227695
+2              heating_condition  1 13.13417 0.0006263356
+3 wood_density:heating_condition  1 10.04733 0.0024734797
+4                      Residuals 56       NA           NA
+
+t test of coefficients:
+
+                                   Estimate Std. Error t value Pr(&gt;|t|)   
+(Intercept)                          11.197     18.598  0.6021 0.549559   
+wood_density                         -4.961     26.413 -0.1878 0.851692   
+heating_conditionsand                80.251     24.219  3.3136 0.001619 **
+wood_density:heating_conditionsand -108.633     34.272 -3.1698 0.002473 **
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+ heating_condition pred_mean        SE df    ci_low   ci_high
+ ember              7.756942 0.8677524 56  6.018626  9.495259
+ sand              12.670586 0.7703650 56 11.127359 14.213812
+
+Confidence level used: 0.95 </code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="step-3_silcrete_edge_sharpness_analysis_files/figure-html/unnamed-chunk-4-5.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>## three point stepping • 20um • distance 1
+                            term Df        F       Pr(&gt;F)
+1                   wood_density  1 17.16504 0.0001168786
+2              heating_condition  1 11.08927 0.0015408750
+3 wood_density:heating_condition  1 10.33308 0.0021701150
+4                      Residuals 56       NA           NA
+
+t test of coefficients:
+
+                                   Estimate Std. Error t value Pr(&gt;|t|)   
+(Intercept)                          7.7045    12.8843  0.5980 0.552267   
+wood_density                        -3.7671    18.2726 -0.2062 0.837411   
+heating_conditionsand               56.5468    16.9221  3.3416 0.001489 **
+wood_density:heating_conditionsand -76.7441    23.8743 -3.2145 0.002170 **
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+ heating_condition pred_mean        SE df   ci_low  ci_high
+ ember              5.091966 0.6030437 56 3.883924 6.300008
+ sand               8.416731 0.5353644 56 7.344268 9.489195
+
+Confidence level used: 0.95 </code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="step-3_silcrete_edge_sharpness_analysis_files/figure-html/unnamed-chunk-4-6.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>## three point stepping • 10um • distance 2
+                            term Df         F       Pr(&gt;F)
+1                   wood_density  1 12.969440 0.0006725616
+2              heating_condition  1 16.194712 0.0001732428
+3 wood_density:heating_condition  1  9.810223 0.0027588652
+4                      Residuals 56        NA           NA
+
+t test of coefficients:
+
+                                   Estimate Std. Error t value Pr(&gt;|t|)   
+(Intercept)                          8.6055    15.1404  0.5684 0.572050   
+wood_density                        -1.9439    21.5251 -0.0903 0.928364   
+heating_conditionsand               67.0603    20.3694  3.2922 0.001725 **
+wood_density:heating_conditionsand -90.8620    29.0097 -3.1321 0.002759 **
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+ heating_condition pred_mean        SE df    ci_low   ci_high
+ ember              7.257365 0.7029881 56  5.849111  8.665619
+ sand              11.304873 0.6240921 56 10.054666 12.555080
+
+Confidence level used: 0.95 </code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="step-3_silcrete_edge_sharpness_analysis_files/figure-html/unnamed-chunk-4-7.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>## three point stepping • 20um • distance 2
+                            term Df        F       Pr(&gt;F)
+1                   wood_density  1 14.05092 0.0004230773
+2              heating_condition  1 15.68165 0.0002138719
+3 wood_density:heating_condition  1 10.09515 0.0024197629
+4                      Residuals 56       NA           NA
+
+t test of coefficients:
+
+                                   Estimate Std. Error t value Pr(&gt;|t|)   
+(Intercept)                          6.6357    10.7544  0.6170 0.539723   
+wood_density                        -2.9057    15.2867 -0.1901 0.849932   
+heating_conditionsand               48.4792    14.5503  3.3318 0.001533 **
+wood_density:heating_conditionsand -65.8804    20.7348 -3.1773 0.002420 **
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+ heating_condition pred_mean        SE df   ci_low  ci_high
+ ember              4.620542 0.4972681 56 3.624394 5.616690
+ sand               7.411683 0.4414600 56 6.527333 8.296034
+
+Confidence level used: 0.95 </code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="step-3_silcrete_edge_sharpness_analysis_files/figure-html/unnamed-chunk-4-8.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Bind adjusted means</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>adj_means_old <span class="ot">&lt;-</span> <span class="cf">if</span> (<span class="fu">length</span>(adj_means_all) <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">bind_rows</span>(adj_means_all) <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">distance =</span> <span class="fu">as.character</span>(distance))</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>  tibble<span class="sc">::</span><span class="fu">tibble</span>(</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">heating_condition =</span> <span class="fu">character</span>(),</span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">pred_mean =</span> <span class="fu">double</span>(),</span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">ci_low =</span> <span class="fu">double</span>(),</span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">ci_high =</span> <span class="fu">double</span>(),</span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">method =</span> <span class="fu">character</span>(),</span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">scale =</span> <span class="fu">character</span>(),</span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">distance =</span> <span class="fu">character</span>()</span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="summary-figure-old-only" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="summary-figure-old-only"><span class="header-section-number">3.1</span> Summary figure (OLD only)</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>three_point_stepping_summary_plot<span class="ot">&lt;-</span><span class="cf">if</span> (<span class="fu">nrow</span>(adj_means_old) <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(adj_means_old,</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>         <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(distance),</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>             <span class="at">y =</span> pred_mean,</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>             <span class="at">group =</span> <span class="fu">interaction</span>(heating_condition, scale),</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>             <span class="at">colour =</span> heating_condition, <span class="at">shape =</span> scale, <span class="at">linetype =</span> heating_condition)) <span class="sc">+</span></span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">position =</span> <span class="fu">position_dodge</span>(<span class="at">width =</span> <span class="fl">0.3</span>), <span class="at">size =</span> <span class="fl">2.2</span>) <span class="sc">+</span></span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="at">position =</span> <span class="fu">position_dodge</span>(<span class="at">width =</span> <span class="fl">0.3</span>)) <span class="sc">+</span></span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_errorbar</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> ci_low, <span class="at">ymax =</span> ci_high),</span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>                  <span class="at">width =</span> <span class="fl">0.08</span>, <span class="at">position =</span> <span class="fu">position_dodge</span>(<span class="at">width =</span> <span class="fl">0.3</span>)) <span class="sc">+</span></span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_colour_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"sand"</span><span class="ot">=</span><span class="st">"#F26B6B"</span>,<span class="st">"ember"</span><span class="ot">=</span><span class="st">"#18C3C8"</span>), <span class="at">name =</span> <span class="cn">NULL</span>) <span class="sc">+</span></span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_linetype_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"sand"</span><span class="ot">=</span><span class="dv">1</span>,<span class="st">"ember"</span><span class="ot">=</span><span class="dv">2</span>), <span class="at">name =</span> <span class="cn">NULL</span>) <span class="sc">+</span></span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Distance (cm)"</span>, <span class="at">y =</span> <span class="st">"Adjusted mean edge sharpness"</span>,</span>
+<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a>         <span class="at">title =</span> <span class="st">"Adjusted means (±95% CI) by heating condition — three point stepping"</span>) <span class="sc">+</span></span>
+<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">13</span>) <span class="sc">+</span></span>
+<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"top"</span>)</span>
+<span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="combined-comparison-best-fit-circle-vs-three-point-stepping" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Combined comparison: best fit circle vs three point stepping</h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Adjusted means for best fit circle</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>adj_means_new <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.null</span>(res_n10)) <span class="fu">emmeans_by_heat</span>(res_n10<span class="sc">$</span>model, new10) <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">method=</span><span class="st">"best fit circle"</span>, <span class="at">scale=</span><span class="st">"10um"</span>, <span class="at">distance=</span><span class="st">"—"</span>),</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.null</span>(res_n20)) <span class="fu">emmeans_by_heat</span>(res_n20<span class="sc">$</span>model, new20) <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">method=</span><span class="st">"best fit circle"</span>, <span class="at">scale=</span><span class="st">"20um"</span>, <span class="at">distance=</span><span class="st">"—"</span>)</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>adj_all <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(adj_means_new, adj_means_old)</span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(adj_all,</span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(distance, <span class="at">levels=</span><span class="fu">c</span>(<span class="st">"—"</span>,<span class="st">"0.1"</span>,<span class="st">"0.5"</span>,<span class="st">"1"</span>,<span class="st">"2"</span>)),</span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> pred_mean,</span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>           <span class="at">colour =</span> heating_condition, <span class="at">shape =</span> scale, <span class="at">linetype =</span> heating_condition)) <span class="sc">+</span></span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">position =</span> <span class="fu">position_dodge</span>(<span class="at">width =</span> <span class="fl">0.4</span>), <span class="at">size =</span> <span class="fl">2.5</span>) <span class="sc">+</span></span>
+<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">group =</span> <span class="fu">interaction</span>(heating_condition, scale, method)),</span>
+<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a>            <span class="at">position =</span> <span class="fu">position_dodge</span>(<span class="at">width =</span> <span class="fl">0.4</span>)) <span class="sc">+</span></span>
+<span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> ci_low, <span class="at">ymax =</span> ci_high),</span>
+<span id="cb23-17"><a href="#cb23-17" aria-hidden="true" tabindex="-1"></a>                <span class="at">width =</span> <span class="fl">0.12</span>, <span class="at">position =</span> <span class="fu">position_dodge</span>(<span class="at">width =</span> <span class="fl">0.4</span>)) <span class="sc">+</span></span>
+<span id="cb23-18"><a href="#cb23-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> method, <span class="at">scales =</span> <span class="st">"free_x"</span>) <span class="sc">+</span></span>
+<span id="cb23-19"><a href="#cb23-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_colour_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"sand"</span><span class="ot">=</span><span class="st">"#F26B6B"</span>,<span class="st">"ember"</span><span class="ot">=</span><span class="st">"#18C3C8"</span>), <span class="at">name =</span> <span class="cn">NULL</span>) <span class="sc">+</span></span>
+<span id="cb23-20"><a href="#cb23-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_linetype_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"sand"</span><span class="ot">=</span><span class="dv">1</span>,<span class="st">"ember"</span><span class="ot">=</span><span class="dv">2</span>), <span class="at">name =</span> <span class="cn">NULL</span>) <span class="sc">+</span></span>
+<span id="cb23-21"><a href="#cb23-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Distance (cm) — three point stepping; ‘—’ for best fit circle"</span>,</span>
+<span id="cb23-22"><a href="#cb23-22" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Adjusted mean edge sharpness"</span>,</span>
+<span id="cb23-23"><a href="#cb23-23" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Comparison of adjusted means: best fit circle vs three point stepping (10µm &amp; 20µm)"</span>) <span class="sc">+</span></span>
+<span id="cb23-24"><a href="#cb23-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">13</span>) <span class="sc">+</span></span>
+<span id="cb23-25"><a href="#cb23-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"top"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="step-3_silcrete_edge_sharpness_analysis_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<section id="figure-caption-for-manuscript" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="figure-caption-for-manuscript"><span class="header-section-number">4.1</span> Figure caption (for manuscript)</h2>
+<blockquote class="blockquote">
+<p><strong>Figure X.</strong> Comparison of adjusted mean edge sharpness (average curvature) for silcrete flakes heated under ember and sand conditions, controlling for wood density. Results are shown for the <strong>best fit circle</strong> (10 µm and 20 µm; “—”) and for the <strong>three point stepping</strong> (10 µm and 20 µm) measured at increasing distances (0.1–2.0 cm). Error bars are 95% CIs. The best fit circle consistently detects sharper edges after <strong>ember</strong> heating relative to <strong>sand</strong>, whereas the three point stepping often shows the opposite pattern, particularly at greater measurement distances. Differences in absolute values between 10 µm and 20 µm reflect scale sensitivity, but relative contrasts between heating techniques are consistent within method.</p>
+</blockquote>
+</section>
+</section>
+<section id="exports-tables-figure" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Exports (Tables &amp; Figure)</h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create an 'exports' directory next to this file</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>exports_dir <span class="ot">&lt;-</span> <span class="fu">file.path</span>(<span class="fu">getwd</span>(), <span class="st">"step 3-exports"</span>)</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">dir.exists</span>(exports_dir)) <span class="fu">dir.create</span>(exports_dir, <span class="at">recursive =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="fu">suppressPackageStartupMessages</span>({</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">library</span>(dplyr)</span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">library</span>(tidyr)</span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">library</span>(gt)</span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">library</span>(stringr)</span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">library</span>(readr)</span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">library</span>(ggplot2)</span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="table-1.-data-sample-summary" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="table-1.-data-sample-summary"><span class="header-section-number">5.1</span> Table 1. Data sample summary</h2>
+<p>This table summarizes the analytical sample used in this notebook by method, scale, distance, and heating condition (saved to file).</p>
+</section>
+<section id="figures-saved-to-file" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="figures-saved-to-file"><span class="header-section-number">5.2</span> Figures (saved to file)</h2>
+<p>This recreates the papers plots and exports them to high-resolution PNG and PDF suitable for publication.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-comparison-export" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-comparison-export-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="step-3_silcrete_edge_sharpness_analysis_files/figure-html/fig-comparison-export-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-comparison-export-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Comparison of adjusted means: best fit circle vs three point stepping (10µm &amp; 20µm)
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="general-summary" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> General Summary</h1>
+<p>Across all ANOVA models, we observe a consistent pattern:</p>
+<ul>
+<li><strong>Omnibus ANOVA tests</strong> indicate significant overall differences in edge sharpness across heating conditions, even after controlling for wood density and using robust standard errors.</li>
+<li><strong>Coefficient-level contrasts vs.&nbsp;baseline</strong> are not always significant, reflecting that robust SEs widen uncertainty and that differences may lie between non-baseline conditions.</li>
+<li><strong>Pairwise post-hoc tests (emmeans)</strong> clarify which specific heating conditions differ. These contrasts provide the most reliable picture of group-level differences.</li>
+</ul>
+<p><strong>Takeaway.</strong> The results suggest that heating technique has a detectable overall effect on edge sharpness, but the specific contrasts driving this effect are subtle. Interpretation should emphasize the omnibus ANOVA findings, supported by pairwise comparisons rather than sole reliance on baseline contrasts.</p>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      return note.innerHTML;
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

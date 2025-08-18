@@ -1,0 +1,211 @@
+---
+title: "Join wood densities into wide-to-long dataset"
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    code-fold: show
+execute:
+  echo: true
+  warning: true
+  message: true
+params:
+  # Put this .qmd in the same folder as your two files, or override below at render time.
+  main_csv: "wide-to-long_data_COMBINED_with_parsed_flake_AND_fuelwood.csv"
+  wood_xlsx: "wood densities.xlsx"
+  outdir: "."
+---
+
+```{r}
+#| label: setup
+#| include: true
+library(tidyverse)
+library(readr)
+library(readxl)
+library(janitor)
+library(glue)
+library(fs)
+
+# Create output folder
+dir_create(params$outdir)
+
+# Utility: squish whitespace and lower-case for robust joins
+normalize_key <- function(x) {
+  x %>%
+    as.character() %>%
+    stringr::str_replace_all("\\s+", " ") %>%
+    stringr::str_trim() %>%
+    tolower()
+}
+
+# Utility: resolve a file path (try given path, else search by basename)
+resolve_file <- function(path) {
+  if (fs::file_exists(path)) return(path)
+  bn <- basename(path)
+  found <- tryCatch(
+    fs::dir_ls(path=".", recurse=TRUE, type="file", regexp=paste0(bn,"$")),
+    error=function(e) character(0)
+  )
+  if (length(found) > 0) return(found[[1]])
+  stop(glue("File not found: {path}. Working dir: {getwd()}"))
+}
+```
+
+## 1) Load both datasets
+
+```{r}
+#| label: load
+main_path <- resolve_file(params$main_csv)
+wood_path <- resolve_file(params$wood_xlsx)
+
+message(glue("Main CSV:  {main_path}"))
+message(glue("Wood XLSX: {wood_path}"))
+
+main_raw <- readr::read_csv(main_path, show_col_types = FALSE)
+wood_raw <- readxl::read_excel(wood_path)
+
+# Clean column names to snake_case for safety
+main <- janitor::clean_names(main_raw)
+wood <- janitor::clean_names(wood_raw)
+
+cat("Main columns:", paste(names(main), collapse=", "), "\n")
+cat("Wood columns:", paste(names(wood), collapse=", "), "\n")
+```
+
+## 2) Prepare keys and density field
+
+```{r}
+#| label: prep-keys
+# Ensure there is a 'fuelwood' column in both
+if (!"fuelwood" %in% names(main)) stop("The main CSV must contain a 'fuelwood' column.")
+if (!"fuelwood" %in% names(wood)) {
+  # try to map likely variants
+  poss <- grep("^fuel[_ ]?wood$|^wood$", names(wood), ignore.case = TRUE, value = TRUE)
+  if (length(poss) == 0) stop("The wood densities file needs a 'fuelwood' column (or a close variant).")
+  if (length(poss) > 0) {
+    message(glue("Mapping wood densities column '{poss[1]}' -> 'fuelwood'"))
+    wood <- wood %>% rename(fuelwood = all_of(poss[1]))
+  }
+}
+
+# Ensure there is a numeric wood density column; prefer 'wood_density'
+density_col <- NULL
+if ("wood_density" %in% names(wood)) density_col <- "wood_density"
+if (is.null(density_col)) {
+  # look for candidates like density, dens_g_cm3, etc.
+  cand <- grep("wood.*dens|^density$|dens|g.?/?.?cm3|gcm3|gcc|specific_gravity", names(wood),
+               ignore.case = TRUE, value = TRUE)
+  if (length(cand) == 0) {
+    stop("Could not find a wood density column in the wood densities file.")
+  } else {
+    density_col <- cand[1]
+    message(glue("Using '{density_col}' as wood density and renaming to 'wood_density'"))
+    wood <- wood %>% rename(wood_density = all_of(density_col))
+  }
+}
+
+# Normalize the join key for both frames
+main <- main %>% mutate(fuelwood_key = normalize_key(fuelwood))
+wood <- wood %>% mutate(fuelwood_key = normalize_key(fuelwood))
+
+# Check for missing keys
+main_missing <- sum(is.na(main$fuelwood_key) | main$fuelwood_key == "")
+wood_missing <- sum(is.na(wood$fuelwood_key) | wood$fuelwood_key == "")
+message(glue("Empty/NA fuelwood keys — main: {main_missing}, wood: {wood_missing}"))
+```
+
+## 3) Diagnose duplicates in wood table and de-duplicate safely
+
+```{r}
+#| label: dedup-wood
+wood_dupes <- wood %>%
+  count(fuelwood_key, name = "n_rows") %>%
+  filter(n_rows > 1)
+
+if (nrow(wood_dupes) > 0) {
+  message(glue("Found {nrow(wood_dupes)} duplicated fuelwood keys in wood densities; aggregating by mean density."))
+  # Save the list for review
+  write_csv(wood_dupes, file.path(params$outdir, "wood_duplicates.csv"))
+}
+
+# Aggregate wood densities by mean per key to avoid row multiplication on join
+wood_agg <- wood %>%
+  group_by(fuelwood_key) %>%
+  summarise(
+    wood_density = suppressWarnings(mean(as.numeric(wood_density), na.rm = TRUE)),
+    n_source_rows = dplyr::n(),
+    .groups = "drop"
+  )
+```
+
+## 4) Left join and verify
+
+```{r}
+#| label: join-and-verify
+n_before <- nrow(main)
+merged <- main %>%
+  left_join(wood_agg, by = "fuelwood_key")
+
+n_after <- nrow(merged)
+if (n_after != n_before) {
+  warning(glue("Row count changed after join (before: {n_before}, after: {n_after})."))
+} else {
+  message(glue("Row count unchanged after join: {n_after} rows."))
+}
+
+# How many rows didn't find a wood density?
+n_na_density <- sum(is.na(merged$wood_density))
+pct_na <- round(100 * n_na_density / nrow(merged), 2)
+message(glue("Rows with missing wood_density after join: {n_na_density} ({pct_na}%)."))
+
+# Identify any fuelwood keys in main that failed to match
+unmatched <- merged %>%
+  filter(is.na(wood_density)) %>%
+  distinct(fuelwood, fuelwood_key) %>%
+  arrange(fuelwood)
+if (nrow(unmatched) > 0) {
+  write_csv(unmatched, file.path(params$outdir, "unmatched_fuelwood_in_main.csv"))
+  message(glue("Wrote list of unmatched main fuelwood values to 'unmatched_fuelwood_in_main.csv'"))
+}
+
+# Keep original fuelwood, drop helper key if you like; retain diagnostic columns
+merged_out <- merged %>% relocate(wood_density, .after = fuelwood)
+
+# Quick peek
+merged_out %>% select(fuelwood, wood_density) %>% head(12)
+```
+
+## 5) Save merged CSV
+
+```{r}
+#| label: save
+out_csv <- file.path(params$outdir, "wide-to-long_with_wood_density.csv")
+readr::write_csv(merged_out, out_csv)
+message(glue("Saved merged CSV to: {out_csv}"))
+```
+
+## 6) Summary tables
+
+```{r}
+#| label: summary
+# Summary by fuelwood
+summary_by_fuelwood <- merged_out %>%
+  group_by(fuelwood) %>%
+  summarise(
+    n = dplyr::n(),
+    wood_density = unique(wood_density)[1],
+    .groups = "drop"
+  ) %>%
+  arrange(fuelwood)
+
+# Density completeness by method/scale/distance/heating
+completeness <- merged_out %>%
+  mutate(has_density = !is.na(wood_density)) %>%
+  count(method, scale, distance, heating_condition, has_density) %>%
+  tidyr::pivot_wider(names_from = has_density, values_from = n, values_fill = 0, names_prefix = "has_density_") %>%
+  arrange(method, scale, distance, heating_condition)
+
+# Print
+summary_by_fuelwood %>% head(20) %>% knitr::kable(digits = 3, caption = "First 20 fuelwood entries with densities")
+completeness %>% knitr::kable(digits = 0, caption = "Wood density completeness by strata")
+```

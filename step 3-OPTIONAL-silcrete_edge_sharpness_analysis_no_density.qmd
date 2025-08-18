@@ -1,0 +1,221 @@
+---
+title: "Silcrete Edge Sharpness: Heating Technique Only (No Wood-Density Covariate)"
+author: "Analysis Notebook"
+format:
+  html:
+    toc: true
+    number-sections: true
+execute:
+  echo: true
+  warning: false
+  message: false
+---
+
+# Overview
+
+This document repeats the full analysis **without** using wood density as a covariate.  
+All models are of the form:
+
+\[
+\text{average\_curvature} \sim \text{heating\_condition}
+\]
+
+Accordingly:
+- Results focus on the **main effect of heating technique** (ember vs sand).
+- Group means (± 95% CI) are estimated via `emmeans` (no adjustment for covariates).
+- We produce figures showing **group means with 95% CI** for each analysis subset.
+- Unheated observations are excluded, as before.
+
+# Packages & Data
+
+```{r}
+library(tidyverse)
+library(car)        # Type-II Anova
+library(sandwich)   # robust vcov (HC3)
+library(lmtest)     # coeftest with robust SEs
+library(emmeans)    # group means & CI
+library(broom)      # tidying
+library(tibble)
+
+data_path <- "wide-to-long_with_wood_density.csv"
+dat <- readr::read_csv(data_path, show_col_types = FALSE)
+
+dat <- dat %>%
+  mutate(
+    method = tolower(method),
+    scale = tolower(as.character(scale)),
+    treatment = as.character(treatment),
+    heating_condition = tolower(as.character(heating_condition)),
+    distance = suppressWarnings(as.numeric(distance))
+  )
+
+# Exclude unheated
+dat_filt <- dat %>% filter(!treatment %in% c("Unheated","unheated"))
+```
+
+# Helper functions
+
+```{r}
+fit_ht_model <- function(df) {
+  df <- df %>% drop_na(average_curvature, heating_condition)
+  if (nrow(df) < 5) return(NULL)
+  m <- lm(average_curvature ~ heating_condition, data = df)
+  a2 <- tryCatch(
+    car::Anova(m, type = 2, white.adjust = "hc3"),
+    error = function(e) car::Anova(m, type = 2)
+  )
+  list(model = m, anova2 = a2)
+}
+
+tidy_anova <- function(a2) {
+  at <- as.data.frame(a2)
+  at$term <- rownames(at); rownames(at) <- NULL
+  at %>% select(term, everything())
+}
+
+emm_ht <- function(mdl) {
+  em <- emmeans::emmeans(mdl, specs = ~ heating_condition, type = "response")
+  as.data.frame(summary(em)) %>%
+    rename(mean = emmean, ci_low = lower.CL, ci_high = upper.CL)
+}
+
+plot_means <- function(df, mdl, title) {
+  # Pull emmeans for plotting
+  em <- emm_ht(mdl) %>% mutate(heating_condition = as.character(heating_condition))
+  ggplot(em, aes(x = heating_condition, y = mean, colour = heating_condition)) +
+    geom_point(size = 3) +
+    geom_errorbar(aes(ymin = ci_low, ymax = ci_high), width = 0.15) +
+    labs(x = "Heating technique", y = "Edge sharpness (average curvature)",
+         title = title, colour = "Heating") +
+    theme_minimal(base_size = 12) +
+    theme(legend.position = "none")
+}
+
+run_block <- function(df, title) {
+  res <- fit_ht_model(df)
+  if (is.null(res)) return(NULL)
+  m <- res$model; a2 <- res$anova2
+  print(tidy_anova(a2))
+  print(lmtest::coeftest(m, vcov = sandwich::vcovHC(m, type = "HC3")))
+  print(emm_ht(m))
+  plot_means(df, m, title)
+}
+```
+
+# NEW method (10 µm)
+
+```{r}
+new10 <- dat_filt %>% filter(method == "new method", scale == "10um")
+run_block(new10, "NEW method • 10µm")
+```
+
+# NEW method (20 µm)
+
+```{r}
+new20 <- dat_filt %>% filter(method == "new method", scale == "20um")
+run_block(new20, "NEW method • 20µm")
+```
+
+# OLD method — 8 combinations (distance × scale)
+
+```{r}
+old_combos <- expand.grid(
+  scale = c("10um","20um"),
+  distance = c(0.1, 0.5, 1.0, 2.0),
+  stringsAsFactors = FALSE
+)
+
+if (!exists("old_anova_results")) old_anova_results <- list()
+if (!exists("adj_means_all")) adj_means_all <- list()
+
+for (i in seq_len(nrow(old_combos))) {
+  sc <- old_combos$scale[i]
+  disti <- old_combos$distance[i]
+
+  dfi <- dat_filt %>%
+    filter(method == "old method", scale == sc, distance == disti) %>%
+    drop_na(average_curvature, heating_condition)
+
+  cat("\n\n## OLD method • ", sc, " • distance ", disti, "\n", sep = "")
+  res <- fit_ht_model(dfi)
+  if (is.null(res)) next
+
+  # print tables + plot
+  print(tidy_anova(res$anova2))
+  print(lmtest::coeftest(res$model, vcov = sandwich::vcovHC(res$model, type = "HC3")))
+  em <- emm_ht(res$model); print(em)
+  print(plot_means(dfi, res$model, paste0("OLD method • ", sc, " • distance ", disti)))
+
+  # store means for summary
+  adj_means_all[[length(adj_means_all)+1]] <- em %>%
+    mutate(method = "old method", scale = sc, distance = disti)
+}
+
+adj_means_old <- {
+  tmp <- get0("adj_means_all", ifnotfound = list())
+  if (length(tmp) > 0) dplyr::bind_rows(tmp) else tibble::tibble(
+    heating_condition = character(),
+    mean = double(),
+    ci_low = double(),
+    ci_high = double(),
+    method = character(),
+    scale = character(),
+    distance = character()
+  )
+}
+```
+
+## Summary figure (OLD method only)
+
+```{r}
+if (nrow(adj_means_old) > 0) {
+  ggplot(adj_means_old,
+         aes(x = factor(distance), y = mean,
+             group = interaction(heating_condition, scale),
+             colour = heating_condition, shape = scale)) +
+    geom_point(position = position_dodge(width = 0.3), size = 2.5) +
+    geom_line(position = position_dodge(width = 0.3)) +
+    geom_errorbar(aes(ymin = ci_low, ymax = ci_high),
+                  width = 0.1, position = position_dodge(width = 0.3)) +
+    labs(x = "Distance (cm)", y = "Mean edge sharpness",
+         title = "Group means ±95% CI by heating condition (OLD method)",
+         colour = "Heating", shape = "Scale") +
+    theme_minimal(base_size = 12)
+}
+```
+
+# Combined comparison: NEW vs OLD
+
+```{r}
+# NEW method means
+new10_res <- fit_ht_model(new10)
+new20_res <- fit_ht_model(new20)
+
+adj_means_new <- bind_rows(
+  if (!is.null(new10_res)) emm_ht(new10_res$model) %>% mutate(method = "new method", scale = "10um", distance = "—"),
+  if (!is.null(new20_res)) emm_ht(new20_res$model) %>% mutate(method = "new method", scale = "20um", distance = "—")
+)
+
+# Harmonize distance type
+adj_means_old <- adj_means_old %>% mutate(distance = as.character(distance))
+
+adj_means_all_methods <- bind_rows(adj_means_new, adj_means_old)
+
+if (nrow(adj_means_all_methods) > 0) {
+  ggplot(adj_means_all_methods,
+         aes(x = factor(distance, levels = c("—","0.1","0.5","1","2")),
+             y = mean,
+             colour = heating_condition, shape = scale)) +
+    geom_point(position = position_dodge(width = 0.4), size = 2.5) +
+    geom_line(aes(group = interaction(heating_condition, scale, method)),
+              position = position_dodge(width = 0.4)) +
+    geom_errorbar(aes(ymin = ci_low, ymax = ci_high),
+                  width = 0.12, position = position_dodge(width = 0.4)) +
+    facet_wrap(~ method, scales = "free_x") +
+    labs(x = "Distance (cm) — OLD method; ‘—’ for NEW method",
+         y = "Mean edge sharpness",
+         title = "Heating technique effect (no covariates): NEW vs OLD method",
+         colour = "Heating", shape = "Scale") +
+    theme_minimal(base_size = 12)
+}
+```
