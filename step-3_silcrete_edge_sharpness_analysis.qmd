@@ -119,28 +119,28 @@ new10 <- dat_filt %>% filter(method == "best fit circle", scale == "10um")
 new20 <- dat_filt %>% filter(method == "best fit circle", scale == "20um")
 
 # 10 µm
+bestfitcircle_10_inter_plot <- NULL
 cat("## best fit circle • 10um\n")
 res_n10 <- fit_int_model(new10)
 if (!is.null(res_n10)) {
   print(tidy_anova(res_n10$anova2))
   print(lmtest::coeftest(res_n10$model, vcov = sandwich::vcovHC(res_n10$model, type = "HC3")))
   print(emmeans_by_heat(res_n10$model, new10))
-  print(plot_interaction_custom(res_n10$model, new10, "best fit circle • 10um"))
+  bestfitcircle_10_inter_plot <- plot_interaction_custom(res_n10$model, new10, "best fit circle • 10um")
+  print(bestfitcircle_10_inter_plot)
 }
 
-bestfitcircle_10_inter_plot<-plot_interaction_custom(res_n10$model, new10, "best fit circle • 10um")
-
 # 20 µm
+bestfitcircle_20_inter_plot <- NULL
 cat("## best fit circle • 20um\n")
 res_n20 <- fit_int_model(new20)
 if (!is.null(res_n20)) {
   print(tidy_anova(res_n20$anova2))
   print(lmtest::coeftest(res_n20$model, vcov = sandwich::vcovHC(res_n20$model, type = "HC3")))
   print(emmeans_by_heat(res_n20$model, new20))
-  print(plot_interaction_custom(res_n20$model, new20, "best fit circle • 20um"))
+  bestfitcircle_20_inter_plot <- plot_interaction_custom(res_n20$model, new20, "best fit circle • 20um")
+  print(bestfitcircle_20_inter_plot)
 }
-
-bestfitcircle_20_inter_plot<-plot_interaction_custom(res_n20$model, new20, "best fit circle • 20um")
 ```
 
 # three point stepping (all distances & scales)
