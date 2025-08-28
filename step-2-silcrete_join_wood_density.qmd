@@ -102,6 +102,18 @@ if (is.null(density_col)) {
     message(glue("Using '{density_col}' as wood density and renaming to 'wood_density'"))
     wood <- wood %>% rename(wood_density = all_of(density_col))
   }
+
+# Ensure there is a wood density group column named 'wood_density_group'
+if (!"wood_density_group" %in% names(wood)) {
+  cand_grp <- grep("group", names(wood), ignore.case = TRUE, value = TRUE)
+  if (length(cand_grp) > 0) {
+    message(glue("Using '{cand_grp[1]}' as wood density group and renaming to 'wood_density_group'"))
+    wood <- wood %>% rename(wood_density_group = all_of(cand_grp[1]))
+  } else {
+    message("No 'wood_density_group' column found in wood densities file; creating as NA.")
+    wood <- wood %>% mutate(wood_density_group = NA_character_)
+  }
+}
 }
 
 # Normalize the join key for both frames
@@ -133,10 +145,23 @@ wood_agg <- wood %>%
   group_by(fuelwood_key) %>%
   summarise(
     wood_density = suppressWarnings(mean(as.numeric(wood_density), na.rm = TRUE)),
+    wood_density_group = dplyr::first(na.omit(wood_density_group)),
     n_source_rows = dplyr::n(),
     .groups = "drop"
   )
 ```
+
+# Check for inconsistent grouping labels within the same fuelwood_key
+grp_check <- wood %>%
+  group_by(fuelwood_key) %>%
+  summarise(n_groups = n_distinct(wood_density_group, na.rm = TRUE), .groups = "drop") %>%
+  filter(n_groups > 1)
+if (nrow(grp_check) > 0) {
+  warning("Some fuelwood_key values have multiple wood_density_group labels in the source; the join uses the first non-NA label per key.")
+}
+
+
+
 
 ## 4) Left join and verify
 
@@ -169,10 +194,10 @@ if (nrow(unmatched) > 0) {
 }
 
 # Keep original fuelwood, drop helper key if you like; retain diagnostic columns
-merged_out <- merged %>% relocate(wood_density, .after = fuelwood)
+merged_out <- merged %>% relocate(wood_density, wood_density_group, .after = fuelwood)
 
 # Quick peek
-merged_out %>% select(fuelwood, wood_density) %>% head(12)
+merged_out %>% select(fuelwood, wood_density, wood_density_group) %>% head(12)
 ```
 
 ## 5) Save merged CSV

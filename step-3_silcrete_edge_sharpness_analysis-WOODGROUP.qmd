@@ -1,5 +1,5 @@
 ---
-title: "Silcrete Edge Sharpness: Heating Technique vs. Wood Density"
+title: "Silcrete Edge Sharpness: Heating Technique vs. Wood Density Group"
 author: "Analysis Notebook"
 format:
   html:
@@ -19,9 +19,9 @@ Here we analyze how **heating technique** (ember vs sand) and **wood fuel densit
 -   Exclude **unheated** observations.
 -   Analyze **best fit circle method** (10 µm and 20 µm).
 -   Analyze **three point stepping** method at distances **0.1, 0.5, 1.0, 2.0 cm** and scales **10 µm, 20 µm**.
--   Fit OLS with interaction: `average_curvature ~ wood_density * heating_condition`.
+-   Fit OLS with interaction: `average_curvature ~ wood_density_group * heating_condition`.
 -   Use **Type II ANOVA** and **HC3** robust SE for inference.
--   Report **adjusted means** (EMMs) for heating condition at mean wood density.
+-   Report **adjusted means** (EMMs) for heating condition (averaged over wood density groups) and, where useful, by each wood density group.
 
 ## Packages & Data
 
@@ -32,6 +32,7 @@ library(sandwich)
 library(lmtest)
 library(emmeans)
 library(broom)
+library(effectsize)
 library(tibble)
 
 data_path <- "wide-to-long_with_wood_density.csv"
@@ -50,15 +51,21 @@ dat <- dat %>%
   )
 # Exclude unheated
 dat_filt <- dat %>% filter(!treatment %in% c("Unheated", "unheated"))
+
+# Ensure categorical variables are factors for modeling
+dat_filt <- dat_filt %>% mutate(
+  heating_condition = factor(heating_condition),
+  wood_density_group = factor(wood_density_group)
+)
 ```
 
 ## Helper functions
 
 ```{r}
 fit_int_model <- function(df) {
-  df <- df %>% drop_na(average_curvature, wood_density, heating_condition)
+  df <- df %>% drop_na(average_curvature, heating_condition, wood_density_group)
   if (nrow(df) < 5) return(NULL)
-  m <- lm(average_curvature ~ wood_density * heating_condition, data = df)
+  m <- lm(average_curvature ~ heating_condition * wood_density_group, data = df)
   a2 <- tryCatch(
     car::Anova(m, type = 2, white.adjust = "hc3"),
     error = function(e) car::Anova(m, type = 2)
@@ -66,50 +73,68 @@ fit_int_model <- function(df) {
   list(model = m, anova2 = a2)
 }
 
-tidy_anova <- function(a2) {
+tidy_anova <- function(a2, mdl = NULL) {
   at <- as.data.frame(a2)
   at$term <- rownames(at)
   rownames(at) <- NULL
+  # Attach partial eta-squared (with 95% CI) by refitting model outside
+  # We rely on a globally available last-fitted model via parent frame when called.
+  # Safer: pass model explicitly where we call tidy_anova.
   at %>% select(term, everything())
+
 }
 
+add_effectsizes <- function(a2, mdl) {
+  at <- as.data.frame(a2)
+  at$term <- rownames(at); rownames(at) <- NULL
+  # Compute partial eta squared with 95% CI
+  es <- tryCatch({
+    effectsize::eta_squared(mdl, partial = TRUE, ci = 0.95)
+  }, error = function(e) NULL)
+  if (!is.null(es)) {
+    # Normalize column names
+    if ('Parameter' %in% names(es)) es <- dplyr::rename(es, term = Parameter)
+    if ('Eta2_partial' %in% names(es)) es <- dplyr::rename(es, partial_eta2 = Eta2_partial)
+    if ('CI_low' %in% names(es)) es <- dplyr::rename(es, ci_low = CI_low)
+    if ('CI_high' %in% names(es)) es <- dplyr::rename(es, ci_high = CI_high)
+    keep <- intersect(names(es), c('term','partial_eta2','ci_low','ci_high'))
+    es <- es[, keep, drop = FALSE]
+    out <- dplyr::left_join(
+      at %>% dplyr::select(term, dplyr::everything()),
+      es,
+      by = 'term'
+    )
+    return(out)
+  }
+  at
+}
+
+
 emmeans_by_heat <- function(mdl, df) {
-  mean_wd <- mean(df$wood_density, na.rm = TRUE)
-  em <- emmeans::emmeans(mdl, specs = ~ heating_condition,
-                         at = list(wood_density = mean_wd),
-                         type = "response")
+  # Marginal means for heating_condition, averaging equally over wood_density_group levels
+  em <- emmeans::emmeans(mdl, specs = ~ heating_condition)
   as.data.frame(summary(em)) %>%
     rename(pred_mean = emmean, ci_low = lower.CL, ci_high = upper.CL)
 }
 
+
 # Plot in requested style
 plot_interaction_custom <- function(mdl, df, title) {
-  rng <- range(df$wood_density, na.rm = TRUE)
-  grid <- expand.grid(
-    wood_density = seq(rng[1], rng[2], length.out = 200),
-    heating_condition = sort(unique(df$heating_condition))
-  )
-  pr <- as.data.frame(predict(mdl, newdata = grid, se.fit = TRUE))
-  grid$fit <- pr$fit
-
-  cols <- c("sand" = "#F26B6B", "ember" = "#18C3C8")     # coral, cyan
-  shapes <- c("sand" = 16, "ember" = 17)                 # circle, triangle
-  ltys <- c("sand" = 1, "ember" = 2)                     # solid, dashed
-
-  ggplot(df, aes(x = wood_density, y = average_curvature, colour = heating_condition)) +
-    geom_point(aes(shape = heating_condition), size = 2, alpha = 0.8) +
-    geom_smooth(data = grid,
-                aes(x = wood_density, y = fit, linetype = heating_condition),
-                se = FALSE, method = "lm", formula = y ~ x) +
+  # EMMs for the interaction to visualize two categorical predictors
+  em <- emmeans::emmeans(mdl, ~ heating_condition | wood_density_group)
+  df_em <- as.data.frame(summary(em)) %>%
+    rename(pred_mean = emmean, ci_low = lower.CL, ci_high = upper.CL)
+  cols <- c("sand" = "#F26B6B", "ember" = "#18C3C8")
+  shapes <- c("sand" = 16, "ember" = 17)
+  ggplot(df_em, aes(x = wood_density_group, y = pred_mean, colour = heating_condition)) +
+    geom_point(aes(shape = heating_condition), position = position_dodge(width = 0.5), size = 2.5) +
+    geom_errorbar(aes(ymin = ci_low, ymax = ci_high), position = position_dodge(width = 0.5), width = 0.2) +
     scale_colour_manual(values = cols, name = NULL) +
     scale_shape_manual(values = shapes, name = NULL) +
-    scale_linetype_manual(values = ltys, name = NULL) +
-    labs(title = title,
-         x = expression(paste("Wood density (g/", cm^3, ")")),
-         y = "Edge sharpness (average curvature)") +
-    theme_minimal(base_size = 13) +
-    theme(legend.position = "top")
+    labs(title = title, x = "Wood density group", y = "Edge sharpness (average curvature)") +
+    theme_minimal(base_size = 13) + theme(legend.position = "top")
 }
+
 ```
 
 # best fit circle
@@ -123,7 +148,7 @@ bestfitcircle_10_inter_plot <- NULL
 cat("## best fit circle • 10um\n")
 res_n10 <- fit_int_model(new10)
 if (!is.null(res_n10)) {
-  print(tidy_anova(res_n10$anova2))
+  print(add_effectsizes(res_n10$anova2, res_n10$model))
   print(lmtest::coeftest(res_n10$model, vcov = sandwich::vcovHC(res_n10$model, type = "HC3")))
   print(emmeans_by_heat(res_n10$model, new10))
   bestfitcircle_10_inter_plot <- plot_interaction_custom(res_n10$model, new10, "best fit circle • 10um")
@@ -135,7 +160,7 @@ bestfitcircle_20_inter_plot <- NULL
 cat("## best fit circle • 20um\n")
 res_n20 <- fit_int_model(new20)
 if (!is.null(res_n20)) {
-  print(tidy_anova(res_n20$anova2))
+  print(add_effectsizes(res_n20$anova2, res_n20$model))
   print(lmtest::coeftest(res_n20$model, vcov = sandwich::vcovHC(res_n20$model, type = "HC3")))
   print(emmeans_by_heat(res_n20$model, new20))
   bestfitcircle_20_inter_plot <- plot_interaction_custom(res_n20$model, new20, "best fit circle • 20um")
@@ -160,14 +185,14 @@ for (i in seq_len(nrow(old_combos))) {
 
   dfi <- dat_filt %>%
     filter(method == "three point stepping", scale == sc, distance == di) %>%
-    drop_na(average_curvature, wood_density, heating_condition)
+    drop_na(average_curvature, heating_condition, wood_density_group)
 
   ttl <- paste0("three point stepping • ", sc, " • distance ", di)
   cat("## ", ttl, "\n", sep = "")
 
   res <- fit_int_model(dfi)
   if (!is.null(res)) {
-    print(tidy_anova(res$anova2))
+    print(add_effectsizes(res$anova2, res$model))
     print(lmtest::coeftest(res$model, vcov = sandwich::vcovHC(res$model, type = "HC3")))
     print(emmeans_by_heat(res$model, dfi))
     print(plot_interaction_custom(res$model, dfi, ttl))
@@ -248,10 +273,6 @@ ggplot(adj_all,
   theme(legend.position = "top")
 ```
 
-## Figure caption (for manuscript)
-
-> **Figure X.** Comparison of adjusted mean edge sharpness (average curvature) for silcrete flakes heated under ember and sand conditions, controlling for wood density. Results are shown for the **best fit circle** (10 µm and 20 µm; “—”) and for the **three point stepping** (10 µm and 20 µm) measured at increasing distances (0.1–2.0 cm). Error bars are 95% CIs. The best fit circle consistently detects sharper edges after **ember** heating relative to **sand**, whereas the three point stepping often shows the opposite pattern, particularly at greater measurement distances. Differences in absolute values between 10 µm and 20 µm reflect scale sensitivity, but relative contrasts between heating techniques are consistent within method.
-
 
 # Exports (Tables & Figure)
 
@@ -285,8 +306,8 @@ This table summarizes the analytical sample used in this notebook by method, sca
 stopifnot(exists("dat_filt"))
 
 sample_summary <- dat_filt %>%
-  dplyr::select(method, scale, distance, heating_condition, average_curvature, wood_density) %>%
-  tidyr::drop_na(average_curvature, wood_density, heating_condition) %>%
+  dplyr::select(method, scale, distance, heating_condition, average_curvature, wood_density_group) %>%
+  tidyr::drop_na(average_curvature, heating_condition, wood_density_group) %>%
   dplyr::count(method, scale, distance, heating_condition, name = "n") %>%
   dplyr::arrange(method, scale, distance, heating_condition)
 
