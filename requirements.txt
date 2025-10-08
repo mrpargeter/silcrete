@@ -1,6 +1,0 @@
-# Optional Python deps used in Quarto chunks
-pandas
-numpy
-matplotlib
-scipy
-statsmodels

@@ -17,7 +17,7 @@ execute:
 Here we analyze how **heating technique** (ember vs sand) and **wood fuel density** affect silcrete flake **edge sharpness** (average curvature).
 
 -   Exclude **unheated** observations.
--   Analyze **best fit circle method** (10 µm and 20 µm).
+-   Analyze **best fit circle method** (10 µm).
 -   Analyze **three point stepping** method at distances **0.1, 0.5, 1.0, 2.0 cm** and the **10 µm** scale 
 -   Fit OLS with interaction: `average_curvature ~ wood_density_group * heating_condition`.
 -   Use **Type II ANOVA** and **HC3** robust SE for inference.
@@ -159,7 +159,7 @@ if (!is.null(res_n10)) {
 
 ```{r}
 old_combos <- expand.grid(
-  scale = c("20um"),
+  scale = c("10um"),
   distance = c(0.1, 0.5, 1.0, 2.0),
   stringsAsFactors = FALSE
 )
